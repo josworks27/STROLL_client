@@ -1,10 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
-import './LoginInfo.css'
+import './LoginInfo.css';
 
-class LoginInfo extends React.Component {
+class LoginInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -61,4 +65,4 @@ class LoginInfo extends React.Component {
   }
 }
 
-export default Form.create({ name: 'normal_login'})(LoginInfo)
+export default Form.create({ name: 'normal_login' })(LoginInfo);

@@ -1,15 +1,13 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-/* .login-form {
-
-} */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-form {
+}
 .login-form-forgot {
-    float: right;
+  float: right;
 }
 .login-form-button {
-    width: 100%;
-  
+  width: 100%;
 }
