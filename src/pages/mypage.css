@@ -1,0 +1,70 @@
+.cl_mypage {
+  display: flex;
+}
+.cl_ThemeList {
+  height: 750px;
+  width: 200px;
+  background-color: rgb(138, 188, 48);
+}
+.cl_tag {
+  position: relative;
+  color: white;
+  height: 100px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: x-large;
+  font-weight: 700;
+  top: 100px;
+}
+.cl_ThemeList_category {
+  font-style: italic;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: xx-large;
+  font-weight: 700;
+  top: 35px;
+}
+.cl_trailTag {
+  font-weight: 700;
+  color: rgb(138, 188, 48);
+  font-size: xx-large;
+}
+.cl_trails {
+  height: 460px;
+  border-right: 3px solid rgb(138, 188, 48);
+  padding-left: 10px;
+  width: 550px;
+  display: flex;
+  font-size: x-large;
+  font-weight: 700;
+  flex-direction: column;
+}
+.cl_trail {
+  width: 450px;
+  border: 3px solid rgb(138, 188, 48);
+  padding: 20px;
+  margin-bottom: 25px;
+}
+.cl_everyTrails {
+  position: absolute;
+  top: 170px;
+  left: 950px;
+  display: flex;
+  width: 400px;
+  height: 400px;
+  border: 1px solid rgb(138, 188, 48);
+  justify-content: center;
+}
+.cl_addTrailBtn {
+  color: white;
+  display: flex;
+  position: absolute;
+  left: 1300px;
+  top: 100px;
+}
