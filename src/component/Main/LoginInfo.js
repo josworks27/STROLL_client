@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
 import './LoginInfo.css';
+import { Link, Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 class LoginInfo extends Component {
   constructor(props) {
@@ -58,7 +60,10 @@ class LoginInfo extends Component {
           >
             Log in
           </Button>
-          Or <a href="">register now!</a>
+          Or
+					<Link to='/signup'>
+						<a href=''>register now!</a>
+					</Link>
         </Form.Item>
       </Form>
     );
