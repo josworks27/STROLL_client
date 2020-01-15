@@ -30,10 +30,18 @@ body {
   border-color: rgb(166, 207, 68);
   color: white;
 }
+.ant-btn-primary:focus {
+  color: #fff;
+  background-color: rgb(138, 188, 48);
+  border-color: rgb(138, 188, 48);
+}
 
 a {
   color: rgb(138, 188, 48);
 }
 a:hover {
   color: rgb(166, 207, 68);
+}
+a:focus {
+  color: rgb(138, 188, 48);
 }
