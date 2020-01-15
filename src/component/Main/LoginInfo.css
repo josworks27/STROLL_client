@@ -1,18 +1,19 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .cl_STROLL {
+  position: relative;
+  top: 200px;
   font-size: -webkit-xxx-large;
   display: flex;
   justify-content: center;
-  align-items: center;
   color: rgb(138, 188, 48);
-  /* display: flex; */
   font-weight: 800;
 }
 .login-form {
+  top: 200px;
+  left: 500px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 .login-form-forgot {
   float: right;

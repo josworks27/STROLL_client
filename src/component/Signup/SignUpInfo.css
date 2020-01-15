@@ -1,5 +1,8 @@
-body {
+.cl_SignUpInfo {
+  top: 200px;
+  left: 430px;
+  width: 400px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
