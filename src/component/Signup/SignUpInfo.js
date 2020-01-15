@@ -77,76 +77,83 @@ class SignUpInfo extends React.Component {
     };
 
     return (
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-        <Form.Item label="E-mail">
-          {getFieldDecorator('email', {
-            rules: [
-              {
-                type: 'email',
-                message: 'The input is not valid E-mail!',
-              },
-              {
-                required: true,
-                message: 'Please input your E-mail!',
-              },
-            ],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="Password" hasFeedback>
-          {getFieldDecorator('password', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your password!',
-              },
-              {
-                validator: this.validateToNextPassword,
-              },
-            ],
-          })(<Input.Password />)}
-        </Form.Item>
-        <Form.Item label="Confirm Password" hasFeedback>
-          {getFieldDecorator('confirm', {
-            rules: [
-              {
-                required: true,
-                message: 'Please confirm your password!',
-              },
-              {
-                validator: this.compareToFirstPassword,
-              },
-            ],
-          })(<Input.Password onBlur={this.handleConfirmBlur} />)}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              Nickname&nbsp;
-              <Tooltip title="What do you want others to call you?">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </span>
-          }
+      <div>
+        <div className="cl_STROLL">STROLL 🍃</div>
+        <Form
+          {...formItemLayout}
+          onSubmit={this.handleSubmit}
+          className="cl_SignUpInfo"
         >
-          {getFieldDecorator('nickname', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your nickname!',
-                whitespace: true,
-              },
-            ],
-          })(<Input />)}
-        </Form.Item>
+          <Form.Item label="E-mail">
+            {getFieldDecorator('email', {
+              rules: [
+                {
+                  type: 'email',
+                  message: 'The input is not valid E-mail!',
+                },
+                {
+                  required: true,
+                  message: 'Please input your E-mail!',
+                },
+              ],
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item label="Password" hasFeedback>
+            {getFieldDecorator('password', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your password!',
+                },
+                {
+                  validator: this.validateToNextPassword,
+                },
+              ],
+            })(<Input.Password />)}
+          </Form.Item>
+          <Form.Item label="Confirm Password" hasFeedback>
+            {getFieldDecorator('confirm', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please confirm your password!',
+                },
+                {
+                  validator: this.compareToFirstPassword,
+                },
+              ],
+            })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+          </Form.Item>
+          <Form.Item
+            label={
+              <span>
+                Nickname&nbsp;
+                <Tooltip title="What do you want others to call you?">
+                  <Icon type="question-circle-o" />
+                </Tooltip>
+              </span>
+            }
+          >
+            {getFieldDecorator('nickname', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your nickname!',
+                  whitespace: true,
+                },
+              ],
+            })(<Input />)}
+          </Form.Item>
 
-        <Form.Item {...tailFormItemLayout}>
-          <Link to="/">
-            <Button type="primary" htmlType="submit">
-              Register
-            </Button>
-          </Link>
-        </Form.Item>
-      </Form>
+          <Form.Item {...tailFormItemLayout}>
+            <Link to="/">
+              <Button type="primary" htmlType="submit">
+                Register
+              </Button>
+            </Link>
+          </Form.Item>
+        </Form>
+      </div>
     );
   }
 }
