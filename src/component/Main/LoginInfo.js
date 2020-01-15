@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './LoginInfo.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { Redirect } from 'react-router-dom';
 
 class LoginInfo extends Component {
@@ -56,7 +56,7 @@ class LoginInfo extends Component {
               htmlType="submit"
               className="login-form-button"
             >
-              Log in
+              <Link to="/main">Log in</Link>
             </Button>
             Or
             <Link to="/signup">
