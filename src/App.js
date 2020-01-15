@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import LoginInfo from './component/Main/LoginInfo';
 
-function App() {
-  return <div className="App">Hello world! Dev Branch</div>;
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <LoginInfo>Login</LoginInfo>
+      </div>
+    );
+  }
 }
-console.log('');
-export default App;
