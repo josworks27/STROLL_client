@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './SignUpInfo.css';
+import { Link } from 'react-router-dom';
 
 import { Form, Input, Tooltip, Icon, Button } from 'antd';
 
@@ -12,11 +13,6 @@ class SignUpInfo extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // this.props.form.validateFieldsAndScroll((err, values) => {
-    //   if (!err) {
-    //     console.log('Received values of form: ', values);
-    //   }
-    // });
   };
 
   handleConfirmBlur = e => {
@@ -144,9 +140,11 @@ class SignUpInfo extends React.Component {
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Register
-          </Button>
+          <Link to="/">
+            <Button type="primary" htmlType="submit">
+              Register
+            </Button>
+          </Link>
         </Form.Item>
       </Form>
     );

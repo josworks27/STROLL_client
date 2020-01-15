@@ -3,6 +3,15 @@ body {
   justify-content: center;
   align-items: center;
 }
+.cl_STROLL {
+  font-size: -webkit-xxx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(138, 188, 48);
+  /* display: flex; */
+  font-weight: 800;
+}
 .login-form {
 }
 .login-form-forgot {
@@ -10,4 +19,21 @@ body {
 }
 .login-form-button {
   width: 100%;
+}
+.ant-btn-primary {
+  color: #fff;
+  background-color: rgb(138, 188, 48);
+  border-color: rgb(138, 188, 48);
+}
+.ant-btn-primary:hover {
+  background-color: rgb(166, 207, 68); /* Green */
+  border-color: rgb(166, 207, 68);
+  color: white;
+}
+
+a {
+  color: rgb(138, 188, 48);
+}
+a:hover {
+  color: rgb(166, 207, 68);
 }
