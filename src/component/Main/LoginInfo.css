@@ -31,11 +31,10 @@ body {
   color: white;
 }
 .ant-btn-primary:focus {
-  color: #fff;
   background-color: rgb(138, 188, 48);
   border-color: rgb(138, 188, 48);
+  color: white;
 }
-
 a {
   color: rgb(138, 188, 48);
 }
