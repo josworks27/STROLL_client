@@ -11,6 +11,7 @@ const { Header, Footer, Sider, Content } = Layout;
 // import { Link, Redirect } from 'react-router-dom';
 // import { Redirect } from 'react-router-dom';
 
+
 class mypage_page extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +37,7 @@ class mypage_page extends Component {
       //     Add Trail
       //   </Button>
       // </div>
+
     );
   }
 }
