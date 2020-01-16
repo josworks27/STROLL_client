@@ -1,4 +1,5 @@
 .cl_STROLL {
+  z-index: 2;
   position: relative;
   top: 200px;
   font-size: -webkit-xxx-large;
