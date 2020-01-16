@@ -6,7 +6,7 @@ import trailinfo_page from './pages/trailinfo'
 // import {addTrail_page, login_page, mypage_page, signup_page, trailinfo_page} from './pages'
 // import LoginInfo from './component/Main/LoginInfo';
 // import SignUpInfo from './component/Signup/SignUpInfo';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 // import { LoginInfo } from './index';
 // import Routes from './Route/Routes';
 import './index.css';

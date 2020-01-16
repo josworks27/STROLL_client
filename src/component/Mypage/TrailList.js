@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TrailListElement from './TrailListElement';
 import EveryTrails from './EveryTrails';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon, Row, Col } from 'antd';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -20,26 +20,29 @@ export default class TrailList extends Component {
   };
   render() {
     return (
-      <Layout style={{ minHeight: '100vh' }}>
+      <Content style={{ minHeight: '100vh' }}>
         <Layout>
-          <Header style={{ background: '#fff', padding: 0 }} />
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '20px 0' }}>
               <Breadcrumb.Item className="cl_trailTag">
                 With pet
               </Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 500 }}>
-              <div className="cl_trails">
+            <Row id="id_Mypage_main_row">
+              <Col span={8} className="cl_Mypage_main_content">
                 {trail.map(el => {
                   return <TrailListElement key={'trail' + el} trail={el} />;
                 })}
-              </div>
-            </div>
+              </Col>
+              <Col span={16} className="cl_Mypage_main_content">
+                {/* 지도가 올 자리 */}
+                <EveryTrails></EveryTrails>
+              </Col>
+            </Row>
           </Content>
         </Layout>
-        <EveryTrails></EveryTrails>
-      </Layout>
+        
+      </Content>
     );
   }
 }
