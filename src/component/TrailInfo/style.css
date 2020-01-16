@@ -1,0 +1,30 @@
+/* Info_Map */
+#id_trailinfo_info_map{
+    margin: 2%;
+    padding: 5%;
+    border: indigo 4px solid;
+    /* float: left; */
+    width: 55%;
+    height: 100%;
+}
+.cl_contents_in_TrailInfoPage_InfoMap{
+    margin: auto;
+}
+
+/* Info_Trail */
+#id_trailinfo_info_trail{
+    margin: 2%;
+    padding: 5%;
+    border: indigo 4px solid;
+    /* float: right; */
+    width: 35%;
+    height: 100%;
+}
+
+/* Photozone */
+/* #id_trailinfo_photozone{
+    margin: auto;
+    width:80%;
+} */
+
+/* RecentReview */

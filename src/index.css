@@ -1,3 +1,13 @@
+/* Root.js */
 #root {
-  width: 1400px;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
+/* App.js */
+#appjs{
+  margin: auto;
+  width: 100%;
+  height: 100%;
 }
