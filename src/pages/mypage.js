@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import ThemeList from '../component/Mypage/ThemeList';
 import TrailList from '../component/Mypage/TrailList';
 import { Button } from 'antd';
-import './mypage.css';
-// import { Form, Icon, Input, Button, Checkbox } from 'antd';
-// import 'antd/dist/antd.css';
-// import './LoginInfo.css';
-// import { Link, Redirect } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
+import '../component/Mypage/mypage.css';
 
 class mypage_page extends Component {
   constructor(props) {
@@ -18,6 +13,7 @@ class mypage_page extends Component {
     return (
       <div className="cl_mypage">
         <ThemeList> </ThemeList>
+        <div className="cl_line"></div>
         <TrailList> </TrailList>
         <Button type="primary" className="cl_addTrailBtn">
           Add Trail
