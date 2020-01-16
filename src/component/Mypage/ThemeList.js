@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ThemeListElement from './ThemeListElement';
 import { Menu } from 'antd';
+import { Button, Layout } from 'antd';
 
+const { Header, Footer, Sider, Content } = Layout;
 let tag = ['With pet', 'Night view', 'Calm', 'Lake'];
 export default class ThemeList extends Component {
   constructor(props) {
@@ -17,7 +19,7 @@ export default class ThemeList extends Component {
   };
   render() {
     return (
-      <div>
+      <Sider id='id_mypage_sider'>
         <Menu
           theme="dark"
           defaultSelectedKeys={['1']}
@@ -35,7 +37,7 @@ export default class ThemeList extends Component {
             );
           })}
         </Menu>
-      </div>
+      </Sider>
     );
   }
 }

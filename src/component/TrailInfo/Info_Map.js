@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './style.css';
 import Photozone from './Photozone';
-import { Col } from 'antd';
-const axios = require('axios');
-
+import { Col, Layout } from 'antd';
+const { Header, Footer, Sider, Content } = Layout;
+// const axios = require('axios');
+/*
 // 네이버 지도 api에 접근하기 위한 id, secret 값
 const NAVER_MAP_CLIENT_ID = 'yyaphdaaa5';
 const NAVER_MAP_CLIENT_SECRET = 'KKadn3cJ4IelUyP99oXS51BEl71rVoUYWWjJaYB4';
@@ -18,8 +19,8 @@ const config = {
   url: URL,
   headers: Naver_headers,
 };
-
-let checkMap = false;
+*/
+// let checkMap = false;
 
 class Info_Map extends Component {
   constructor(props) {
@@ -61,45 +62,50 @@ class Info_Map extends Component {
 
   render() {
     let state = this.state;
-    if (!checkMap) {
-      console.log('지도 로딩중');
-      let response = makeRequest();
-      console.log(11111, response);
-      // axios
-      //   .get(URL, Naver_headers)
-      //   .then(response => {
-      //     // If request is good...
-      //     console.log(11111, response.data);
-      //     checkMap = true;
-      //     // naver = response
-      //   })
-      //   .catch(error => {
-      //     console.log('error ', error);
-      //   });
-    }
+    // if (!checkMap) {
+    //   console.log('지도 로딩중');
+    //   let response = makeRequest();
+    //   console.log(11111, response);
+    //   // axios
+    //   //   .get(URL, Naver_headers)
+    //   //   .then(response => {
+    //   //     // If request is good...
+    //   //     console.log(11111, response.data);
+    //   //     checkMap = true;
+    //   //     // naver = response
+    //   //   })
+    //   //   .catch(error => {
+    //   //     console.log('error ', error);
+    //   //   });
+    // }
     return (
       <Col span={12} id="id_trailinfo_info_map">
-        <div className="cl_contents_in_TrailInfoPage_InfoMap">
-          <button> 홈으로 </button>
-          <button> 이 주변의 모든 산책로는? </button>
-        </div>
-        <div className="cl_contents_in_TrailInfoPage_InfoMap" id="id_map">
-          {/* {state.map ? state.map : null} */}
-        </div>
-        <Photozone className="cl_contents_in_TrailInfoPage_InfoMap"></Photozone>
+        <Layout>
+          <Header className='cl_trailinfo_header'>
+            Header
+            {/* <button> 홈으로 </button>
+            <button> 이 주변의 모든 산책로는? </button> */}
+          </Header>
+          <Content className='cl_trailinfo_content' id='id_trailinfo_map'>
+            지도가 올 자리 입니다.
+            {/* <img src="navermap.png" id="id_img_trailinfo" alt=""></img> */}
+            <div id="id_test"></div>
+          </Content>
+          <Photozone className="cl_contents_in_TrailInfoPage_InfoMap"></Photozone>
+        </Layout>
       </Col>
     );
   }
 }
-async function makeRequest() {
-  const config = {
-    method: 'get',
-    url: URL,
-    headers: Naver_headers,
-  };
+// async function makeRequest() {
+//   const config = {
+//     method: 'get',
+//     url: URL,
+//     headers: Naver_headers,
+//   };
 
-  let res = await axios(config);
-  return res;
-  // console.log(res.request._header);
-}
+//   let res = await axios(config);
+//   return res;
+//   // console.log(res.request._header);
+// }
 export default Info_Map;

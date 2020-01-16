@@ -1,30 +1,69 @@
+/* antd */
+ /* .ant-layout-content{
+    flex: none;
+    padding:10%;
+} */
+.ant-layout{
+    height:100%
+}
+
+
+/* 공통 */
+.cl_trailinfo_header{
+    padding-left: 5%;
+    background-color: rgb(138, 188, 48);
+}
+.cl_trailinfo_footer{
+    padding:5%;
+    background-color: rgb(138, 188, 48);
+}
+.cl_trailinfo_content{
+    padding: 5%;
+}
 /* Info_Map */
 #id_trailinfo_info_map{
     margin: 2%;
-    padding: 5%;
+    padding: 3%;
     border: indigo 4px solid;
     /* float: left; */
     width: 55%;
     height: 100%;
 }
-.cl_contents_in_TrailInfoPage_InfoMap{
-    margin: auto;
+#id_img_trailinfo{
+    width: 90%;
+    height: 90%;
+}
+#id_test{
+    width: 90%;
+    height: 90%;
+}
+#id_trailinfo_map{
+    height: 60%;
 }
 
 /* Info_Trail */
 #id_trailinfo_info_trail{
     margin: 2%;
-    padding: 5%;
+    padding: 3%;
     border: indigo 4px solid;
     /* float: right; */
     width: 35%;
     height: 100%;
 }
+#id_trialinfo_review{
+    height: 40%;
+}
 
 /* Photozone */
-/* #id_trailinfo_photozone{
-    margin: auto;
-    width:80%;
-} */
+#id_trailinfo_photozone{
+    height: 30%;
+}
 
 /* RecentReview */
+#id_trialinfo_commentBox{
+    height:50%;
+}
+#id_trailinfo_commentlist{
+    height: 80%;
+    background-color: grey;
+}
