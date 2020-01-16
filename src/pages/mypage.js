@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ThemeList from '../component/Mypage/ThemeList';
 import TrailList from '../component/Mypage/TrailList';
 import { Button, Layout } from 'antd';
-import './mypage.css';
+import '../component/Mypage/mypage.css';
 
 const { Header, Footer, Sider, Content } = Layout;
 // import { Form, Icon, Input, Button, Checkbox } from 'antd';
