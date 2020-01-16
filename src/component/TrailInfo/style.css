@@ -18,14 +18,13 @@
     background-color: rgb(138, 188, 48);
 }
 .cl_trailinfo_content{
-    padding: 5%;
+    /* padding: 5%; */
 }
 /* Info_Map */
 #id_trailinfo_info_map{
     margin: 2%;
     padding: 3%;
     border: indigo 4px solid;
-    /* float: left; */
     width: 55%;
     height: 100%;
 }
@@ -38,6 +37,8 @@
     height: 90%;
 }
 #id_trailinfo_map{
+    margin: auto;
+    width: 80%;
     height: 60%;
 }
 
