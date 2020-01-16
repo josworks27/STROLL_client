@@ -41,7 +41,9 @@
     width: 80%;
     height: 60%;
 }
-
+#id_button_home{
+    float:right;
+}
 /* Info_Trail */
 #id_trailinfo_info_trail{
     margin: 2%;

@@ -30,14 +30,6 @@ class mypage_page extends Component {
           </TrailList>
         </Layout>
       </Layout>
-      // <div className="cl_mypage">
-      //   <ThemeList> </ThemeList>
-      //   <TrailList> </TrailList>
-      //   <Button type="primary" className="cl_addTrailBtn">
-      //     Add Trail
-      //   </Button>
-      // </div>
-
     );
   }
 }
