@@ -61,7 +61,7 @@
   float: right;
   width:10%;
   color: white;
-  border: rgb(62, 95, 0) solid 5px;
+  /* border: rgb(62, 95, 0) solid 5px; */
   margin-top: 1%;
 }
 
@@ -74,20 +74,24 @@
 }
 
 .cl_Mypage_main_content{
-  border: 3px solid rgb(138, 188, 48);
+  /* border: 3px solid rgb(138, 188, 48); */
   height: 100%;
 }
 #id_Mypage_main_row{
   height: 80%;
 }
 #id_Mypage_traillistElement{
+  /* color: white; */
+  padding: 5%;
   width: 90%;
   height: 10%;
   margin: 5%;
+  background-color: rgb(138, 188, 48);
 }
 .cl_trail {
+  color: white;
   height: 100%;
   width: 100%;
-  border: 3px solid rgb(138, 188, 48);
+  /* border: 3px solid rgb(138, 188, 48); */
   margin: auto;
 }

@@ -1,5 +1,7 @@
 /*global daum*/
 /*global kakao*/
+
+// 이 페이지에는 점들이 선으로 연결되어있어야 함
 import React, { Component } from 'react';
 import './style.css';
 import Photozone from './Photozone';

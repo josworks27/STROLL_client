@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Layout } from 'antd';
 import 'antd/dist/antd.css';
 import './LoginInfo.css';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 // import { Redirect } from 'react-router-dom';
+const { Header, Footer, Content } = Layout;
 
 class LoginInfo extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class LoginInfo extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div>
+      <div id='id_wrapper'>
         <div className="cl_STROLL">STROLL 🍃</div>
         <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item>

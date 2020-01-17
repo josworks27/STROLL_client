@@ -70,7 +70,7 @@ export default class Map extends Component {
 
         <div>
           {
-            // dots.map(dot => {console.log(dot.circle.position)})
+          // dots.map(dot => {console.log(dot.circle.position)})
           }
         </div>
       </div>
