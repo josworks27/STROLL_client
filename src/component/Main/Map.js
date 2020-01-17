@@ -12,8 +12,8 @@ export default class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Lat: 37.502908,
-      Lng: 127.05002,
+      Lat: this.props.location[0],
+      Lng: this.props.location[1]
     };
   }
   componentDidMount() {

@@ -36,15 +36,16 @@ export default class App extends Component {
   /*addTrail 페이지에 사용되는 method */
 
   render() {
-    console.log(this.state.location);
-    let state = this.state;
+    let { isLogin, location} = this.state;
+    console.log('App.js에서의 출력',location);
+
     return (
       <div id="appjs">
-        <Route exact path="/" component={Login_page} />
+        <Route exact path="/" component={() => <Login_page location={location} isLogin={isLogin}/>} />
         <Switch>
-          <Route path="/signup" component={Signup_page} />
+          <Route path="/signup" component={() => <Signup_page location={location} isLogin={isLogin}/>} />
           <Route path="/trailinfo" component={Trailinfo_page} />
-          <Route path="/main" component={() => <Mypage_page location={state.location} />} />
+          <Route path="/main" component={() => <Mypage_page location={location} isLogin={isLogin}/>} />
           <Route path="/addtrail" component={AddTrail_page} />
         </Switch>
       </div>

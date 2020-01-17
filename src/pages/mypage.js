@@ -9,12 +9,13 @@ class mypage_page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: this.props.location
+      location: this.props.location,
+      isLogin: this.props.isLogin
     };
   }
   render() {
-    let state = this.state;
-    console.log(state.location)
+    const {location, isLogin} = this.state;
+    console.log('메인 화면에서의 출력', location)
     return (
       <Layout className="cl_mypage">
         <ThemeList></ThemeList>
@@ -27,7 +28,7 @@ class mypage_page extends Component {
             <Link to="/">로그아웃</Link>
           </Button>
 
-          <TrailList></TrailList>
+          <TrailList location={location}></TrailList>
         </Layout>
       </Layout>
     );

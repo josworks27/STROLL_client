@@ -9,7 +9,10 @@ const { Header, Footer, Content } = Layout;
 class LoginInfo extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      location: this.props.location,
+      isLogin : this.props.isLogin
+    };
   }
 
   handleSubmit(e) {
@@ -17,6 +20,8 @@ class LoginInfo extends Component {
   }
 
   render() {
+    const {location, isLogin} = this.state;
+    console.log('로그인 화면', location);
     const { getFieldDecorator } = this.props.form;
     return (
       <div id='id_wrapper'>

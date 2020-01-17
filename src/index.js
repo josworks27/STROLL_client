@@ -11,7 +11,7 @@ ReactDOM.render(<Root />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
-export { default as LoginInfo } from './component/Main/LoginInfo';
+export { default as LoginInfo } from './component/Login/LoginInfo';
 // export { default as LoginInfo } from './component/AddTrail/Info_Map';
 // export { default as LoginInfo } from './component/AddTrail//Info_Trail_Input';
 // export { default as LoginInfo } from './component/Mypage/';

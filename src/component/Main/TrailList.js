@@ -11,6 +11,8 @@ export default class TrailList extends Component {
     super(props);
     this.state = {
       collapsed: false,
+      location: this.props.location,
+      isLogin: this.props.isLogin
     };
   }
 
@@ -19,6 +21,7 @@ export default class TrailList extends Component {
     this.setState({ collapsed });
   };
   render() {
+    const {location, isLogin} = this.state; 
     return (
       <Content style={{ minHeight: '100vh' }} className="cl_mypage_info">
         <Layout>
@@ -36,7 +39,7 @@ export default class TrailList extends Component {
               </Col>
               <Col span={16} className="cl_Mypage_main_content">
                 {/* 지도가 올 자리 */}
-                <Map></Map>
+                <Map location={location}></Map>
               </Col>
             </Row>
           </Content>
