@@ -17,7 +17,7 @@ class mypage_page extends Component {
       <Layout className="cl_mypage">
         <ThemeList></ThemeList>
         <Layout>
-          <Header id="id_mypage_header"></Header>
+          {/* <Header id="id_mypage_header"></Header> */}
           <Button type="primary" className="cl_addTrailBtn">
             <Link to="/addtrail">Add Trail</Link>
           </Button>

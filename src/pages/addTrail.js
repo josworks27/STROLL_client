@@ -19,7 +19,6 @@ class addTrail_page extends Component {
         <Link to="/">
           <div className="cl_addTrail_logo">STROLL</div>
         </Link>
-
         <Info_Map></Info_Map>
         <Info_Trail></Info_Trail>
       </Row>

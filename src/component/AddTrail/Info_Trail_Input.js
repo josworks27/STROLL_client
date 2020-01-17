@@ -44,6 +44,8 @@ class Info_Trail_Input extends Component {
         <Layout id="id_addTrail_Input">
           <Content>
             <Form onSubmit={this.handleSubmit} className="cl_addTrail_form">
+              <Rate className="cl_addTrail_rate" />
+              {/* <div className="cl_addTRail_head">Create Your Trail !</div> */}
               <Form.Item className="cl_Trailname">
                 {getFieldDecorator('username', {
                   rules: [
@@ -76,7 +78,13 @@ class Info_Trail_Input extends Component {
                 <Option value="Calm">Calm</Option>
                 <Option value="Lake">Lake</Option>
               </Select>
-
+              <div>
+                <TextArea
+                  rows={6}
+                  className="cl_addTrail_text"
+                  placeholder="Write your review !"
+                />
+              </div>
               <Form.Item className="cl_addTrail_upload">
                 {getFieldDecorator('dragger', {
                   valuePropName: 'fileList',
@@ -105,15 +113,7 @@ class Info_Trail_Input extends Component {
                 </Button>
               </Form.Item>
 
-              <div>
-                <TextArea
-                  rows={6}
-                  className="cl_addTrail_text"
-                  placeholder="Write your review !"
-                />
-              </div>
-              <Rate className="cl_addTrail_rate" />
-              <div className="cl_addTRail_head">Create Your Trail !</div>
+
             </Form>
           </Content>
         </Layout>
