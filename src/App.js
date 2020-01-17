@@ -20,7 +20,7 @@ export default class App extends Component {
     this.state = {
       /*모든 페이지에 사용되는 state */
       isLogin: false,
-      location: this.props.location
+      location: this.props.location,
       // myLocation: window.navigator.geolocation.getCurrentPosition()
       /*login 페이지에 사용되는 state */
       /*signup 페이지에 사용되는 state */
@@ -28,8 +28,12 @@ export default class App extends Component {
       /*trailinfo 페이지에 사용되는 state */
       /*addTrail 페이지에 사용되는 state */
     };
+    this.handleIsloginState = this.handleIsloginState.bind(this);
   }
   /*login 페이지에 사용되는 method */
+  handleIsloginState() {
+    this.setState({ isLogin: true });
+  }
   /*signup 페이지에 사용되는 method */
   /*mypage 페이지에 사용되는 method */
   /*trailinfo 페이지에 사용되는 method */
@@ -40,11 +44,23 @@ export default class App extends Component {
     let state = this.state;
     return (
       <div id="appjs">
-        <Route exact path="/" component={Login_page} />
+        <Route
+          exact
+          path="/"
+          component={() => (
+            <Login_page
+              handleIsloginState={this.handleIsloginState}
+              isLogin={state.isLogin}
+            />
+          )}
+        />
         <Switch>
           <Route path="/signup" component={Signup_page} />
           <Route path="/trailinfo" component={Trailinfo_page} />
-          <Route path="/main" component={() => <Mypage_page location={state.location} />} />
+          <Route
+            path="/main"
+            component={() => <Mypage_page location={state.location} />}
+          />
           <Route path="/addtrail" component={AddTrail_page} />
         </Switch>
       </div>

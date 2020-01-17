@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginInfo from '../component/Main/LoginInfo'
+import LoginInfo from '../component/Login/LoginInfo';
 
 class login_page extends Component {
   constructor(props) {
@@ -7,10 +7,7 @@ class login_page extends Component {
     this.state = {};
   }
   render() {
-    
-    return (
-        <LoginInfo> </LoginInfo>
-    );
+    return <LoginInfo isLogin={this.props.isLogin}> </LoginInfo>;
   }
 }
 
