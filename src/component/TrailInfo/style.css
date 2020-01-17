@@ -4,6 +4,11 @@
 }
 
 /* 공통 */
+#id_trailinfo_main_row{
+    width: 90%;
+    margin: auto;
+    height: 90%;
+}
 .cl_trailinfo_header{
     padding-left: 5%;
     background-color: rgb(138, 188, 48);
