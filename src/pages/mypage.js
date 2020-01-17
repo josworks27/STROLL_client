@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import ThemeList from '../component/Mypage/ThemeList';
-import TrailList from '../component/Mypage/TrailList';
+import ThemeList from '../component/Main/ThemeList';
+import TrailList from '../component/Main/TrailList';
 import { Button, Layout } from 'antd';
-import '../component/Mypage/mypage.css';
+import '../component/Main/mypage.css';
 import { Link } from 'react-router-dom';
-const { Header, Footer, Sider, Content } = Layout;
-
 
 class mypage_page extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      location: this.props.location
+    };
   }
   render() {
+    let state = this.state;
+    console.log(state.location)
     return (
       <Layout className="cl_mypage">
         <ThemeList></ThemeList>

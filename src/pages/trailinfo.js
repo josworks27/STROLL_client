@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Info_Map from '../component/TrailInfo/Info_Map';
 import Info_Trail from '../component/TrailInfo/Info_Trail';
 import { Row } from 'antd';
-import './trailinfo.css';
+import '../component/TrailInfo/style.css'
 
 class trailinfo_page extends Component {
   constructor(props) {
