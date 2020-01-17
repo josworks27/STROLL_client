@@ -6,6 +6,7 @@ import '../component/Mypage/mypage.css';
 import { Link } from 'react-router-dom';
 const { Header, Footer, Sider, Content } = Layout;
 
+
 class mypage_page extends Component {
   constructor(props) {
     super(props);
@@ -13,18 +14,20 @@ class mypage_page extends Component {
   }
   render() {
     return (
-      <div className="cl_mypage">
-        <Link to="/">
-          <div className="cl_logo">STROLL</div>
-        </Link>
+      <Layout className="cl_mypage">
         <ThemeList></ThemeList>
+        <Layout>
+          <Header id="id_mypage_header"></Header>
+          <Button type="primary" className="cl_addTrailBtn">
+            <Link to="/addtrail">Add Trail</Link>
+          </Button>
+          <Button type="primary" className="cl_addTrailBtn">
+            <Link to="/">로그아웃</Link>
+          </Button>
 
-        <TrailList></TrailList>
-
-        <Button type="primary" className="cl_addTrailBtn">
-          <Link to="/addtrail">Add Trail</Link>
-        </Button>
-      </div>
+          <TrailList></TrailList>
+        </Layout>
+      </Layout>
     );
   }
 }

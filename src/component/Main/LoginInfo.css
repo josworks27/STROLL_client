@@ -1,20 +1,23 @@
 .cl_STROLL {
-  z-index: 2;
-  position: relative;
-  top: 200px;
+  /* z-index: 2; */
+  /* position: relative; */
+  /* top: 200px; */
   font-size: -webkit-xxx-large;
   display: flex;
   justify-content: center;
   color: rgb(138, 188, 48);
   font-weight: 800;
 }
+#id_wrapper{
+  margin: 15%;
+}
 .login-form {
-  top: 200px;
-  left: 500px;
   width: 400px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  margin: auto;
+  /* justify-content: center; */
+  /* position: relative; */
 }
 .login-form-forgot {
   float: right;

@@ -5,11 +5,16 @@ import { Link } from 'react-router-dom';
 export default class TrailListElement extends Component {
   render() {
     return (
-      <Row id="id_Mypage_traillistElement">
-        <Link to="/trailinfo">
-          <Col span={18} className="cl_trail" onClick={() => {}}></Col>
-        </Link>
-      </Row>
+      <Link to="/trailinfo">
+        <Row id="id_Mypage_traillistElement">
+          {/* <Link to='/trailinfo'> */}
+          <Col span={18} className="cl_trail">
+            {this.props.trail}
+          </Col>
+          {/* </Link> */}
+        </Row>
+      </Link>
+
     );
   }
 }

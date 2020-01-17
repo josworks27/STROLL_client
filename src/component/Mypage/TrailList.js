@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TrailListElement from './TrailListElement';
-import EveryTrails from './EveryTrails';
+import Map from './Map';
 import { Layout, Menu, Breadcrumb, Icon, Row, Col } from 'antd';
 
 const { Content, Footer, Sider } = Layout;
@@ -36,7 +36,7 @@ export default class TrailList extends Component {
               </Col>
               <Col span={16} className="cl_Mypage_main_content">
                 {/* 지도가 올 자리 */}
-                <EveryTrails></EveryTrails>
+                <Map></Map>
               </Col>
             </Row>
           </Content>
