@@ -3,7 +3,7 @@ import TrailListElement from './TrailListElement';
 import Map from './Map';
 import { Layout, Menu, Breadcrumb, Icon, Row, Col } from 'antd';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 let trail = ['pet trail1', 'pet trail2', 'pet trail3', 'pet trail4'];
 export default class TrailList extends Component {
@@ -20,7 +20,7 @@ export default class TrailList extends Component {
   };
   render() {
     return (
-      <Content style={{ minHeight: '100vh' }}>
+      <Content style={{ minHeight: '100vh' }} className="cl_mypage_info">
         <Layout>
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '20px 0' }}>
@@ -41,7 +41,6 @@ export default class TrailList extends Component {
             </Row>
           </Content>
         </Layout>
-        
       </Content>
     );
   }

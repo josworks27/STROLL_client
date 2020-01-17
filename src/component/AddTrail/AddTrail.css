@@ -1,0 +1,99 @@
+#id_addTrail_main_row {
+  /* border: 2px solid rgb(138, 188, 48); */
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+  height: 92%;
+  top: 2%;
+}
+#id_addTrail_Map {
+  width: 700px;
+  height: 550px;
+  left: 6%;
+  top: 8%;
+}
+
+.cl_addTrail_logo {
+  padding-left: 2%;
+  border-radius: 2px;
+  width: 240px;
+  background: rgb(138, 188, 48);
+  left: 1%;
+  top: -36px;
+  z-index: 1;
+  position: absolute;
+  color: white;
+  font-size: -webkit-xxx-large;
+  font-weight: 800;
+}
+.cl_addTrail_form {
+  left: -29px;
+  justify-content: center;
+  border: 2px solid rgb(138, 188, 48);
+  position: absolute;
+
+  flex-direction: row;
+  top: 7%;
+  width: 100%;
+  height: 86%;
+}
+.cl_addTrail_rate {
+  left: 15%;
+  display: flex;
+  top: -400px;
+  position: relative;
+}
+.cl_Trailname {
+  left: 15%;
+  top: 83px;
+  margin-right: 2%;
+  width: 200px;
+}
+.cl_tagSelector {
+  left: 15%;
+  height: 0px;
+  top: 70px;
+  position: relative;
+}
+.cl_addTrail_text {
+  left: 15%;
+  width: 400px;
+  display: flex;
+  top: -125px;
+  resize: none;
+}
+.cl_addTrail_upload {
+  left: 15%;
+  margin-bottom: -1px;
+  height: 28%;
+  top: 44%;
+  width: 400px;
+}
+.cl_addTrail_btn {
+  width: 102px;
+  position: relative;
+  top: 255px;
+  left: 84%;
+}
+
+.cl_addTRail_head {
+  width: 426px;
+  font-style: italic;
+  color: rgb(138, 188, 48);
+  font-size: -webkit-xxx-large;
+  font-weight: 800;
+  left: 13%;
+  display: flex;
+  top: -515px;
+  position: relative;
+  background-color: rgb(241, 242, 245);
+}
+.ant-alert {
+  width: 500px;
+  text-align: center;
+  position: relative;
+  left: 100px;
+  top: 100px;
+  z-index: 3;
+  font-weight: 600;
+}

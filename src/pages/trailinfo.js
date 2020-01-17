@@ -3,12 +3,6 @@ import Info_Map from '../component/TrailInfo/Info_Map';
 import Info_Trail from '../component/TrailInfo/Info_Trail';
 import { Row } from 'antd';
 import './trailinfo.css';
-// import { Route } from 'react-router-dom';
-// import { Form, Icon, Input, Button, Checkbox } from 'antd';
-// import 'antd/dist/antd.css';
-// import './LoginInfo.css';
-// import { Link, Redirect } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
 
 class trailinfo_page extends Component {
   constructor(props) {
@@ -17,7 +11,7 @@ class trailinfo_page extends Component {
   }
   render() {
     return (
-      <Row id='id_trailinfo_main_row'>
+      <Row id="id_trailinfo_main_row">
         <Info_Map></Info_Map>
         <Info_Trail></Info_Trail>
       </Row>

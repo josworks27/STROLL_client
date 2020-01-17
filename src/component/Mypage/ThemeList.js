@@ -3,7 +3,7 @@ import ThemeListElement from './ThemeListElement';
 import { Menu } from 'antd';
 import { Button, Layout } from 'antd';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 let tag = ['With pet', 'Night view', 'Calm', 'Lake'];
 export default class ThemeList extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class ThemeList extends Component {
   };
   render() {
     return (
-      <Sider id='id_mypage_sider'>
+      <Sider id="id_mypage_sider">
         <Menu
           theme="dark"
           defaultSelectedKeys={['1']}

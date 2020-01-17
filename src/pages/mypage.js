@@ -5,11 +5,7 @@ import { Button, Layout } from 'antd';
 import '../component/Mypage/mypage.css';
 import { Link } from 'react-router-dom';
 const { Header, Footer, Sider, Content } = Layout;
-// import { Form, Icon, Input, Button, Checkbox } from 'antd';
-// import 'antd/dist/antd.css';
-// import './LoginInfo.css';
-// import { Link, Redirect } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
+
 
 class mypage_page extends Component {
   constructor(props) {
