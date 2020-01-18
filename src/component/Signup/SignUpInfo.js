@@ -1,3 +1,11 @@
+/*
+body:{
+  "email": "blah@gmail.com"
+  "password": "123",
+  "username": "troll"
+}
+*/
+
 import React from 'react';
 import 'antd/dist/antd.css';
 import './SignUpInfo.css';
@@ -5,20 +13,19 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Input, Tooltip, Icon, Button } from 'antd';
 
-
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 class SignUpInfo extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      isLogin : this.props.isLogin,
+      isLogin: this.props.isLogin,
       location: this.props.location,
       confirmDirty: false,
       autoCompleteResult: [],
-      isSignedUp : false
+      isSignedUp: false,
     };
   }
 
@@ -28,28 +35,45 @@ class SignUpInfo extends React.Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    let flag = false;
+    // let flag = false;
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        flag = true;
+        // flag = true;
+        let signUpData = {
+          email: values.email,
+          password: values.password,
+          username: values.username,
+        };
         console.log('Received values of form: ', values);
+        this.setState({
+          isSignedUp: true,
+        });
+        /**************axios post 요청***************** */
+        // axios
+        //   .post('/signup', signUpData, {
+        //     headers: { 'Content-Type': 'application/json' },
+        //   })
+        //   .then(res => {
+        //     if (res.status === 200) {
+        //       this.setState({
+        //         isSignedUp: true,
+        //       });
+        //     }
+        //     else if (res.status === 404){
+        //       this.setState({
+        //         isSignedUp: false
+        //       });
+        //     }
+        //   });
+        /*********************************************** */
       }
     });
-    // 1. 서버에 포스트 요청
-    // let response = await axios.post('/signup', {
-    //   email: values.email,
-    //   password: values.password,
-    //   username: values.username
-    // })
-    // 2. response 의 statusCode에 따라 분기한다
-    //   2-1. 404일 경우 flag를 false로 다시 바꾼다
-    //        alert를 띄운다
-    //   2-2. 200일 경우 flag를 true로 바꾸고 login페이지로 넘어간다
-    if(flag){
-      this.setState({
-        isSignedUp :true
-      })
-    }
+
+    // if (flag) {
+    //   this.setState({
+    //     isSignedUp: true,
+    //   });
+    // }
   };
 
   handleConfirmBlur = e => {
@@ -113,7 +137,7 @@ class SignUpInfo extends React.Component {
         },
       },
     };
-    if(!isSignedUp){
+    if (!isSignedUp) {
       return (
         <div>
           <div className="cl_STROLL">STROLL 🍃</div>
@@ -182,23 +206,24 @@ class SignUpInfo extends React.Component {
                 ],
               })(<Input />)}
             </Form.Item>
-  
+
             <Form.Item {...tailFormItemLayout}>
               {/* <Link to="/"> */}
-                <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
-                  Register
-                </Button>
+              <Button
+                type="primary"
+                htmlType="submit"
+                disabled={hasErrors(getFieldsError())}
+              >
+                Register
+              </Button>
               {/* </Link> */}
             </Form.Item>
           </Form>
         </div>
       );
-    }else{
-      return (
-        <Redirect to='/'> </Redirect>
-      );
+    } else {
+      return <Redirect to="/"> </Redirect>;
     }
-    
   }
 }
 

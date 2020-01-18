@@ -9,12 +9,12 @@ export default class TrailListElement extends Component {
         <Row id="id_Mypage_traillistElement">
           {/* <Link to='/trailinfo'> */}
           <Col span={18} className="cl_trail">
-            {this.props.trail}
+            {this.props.trail.title}
+            {this.props.trail.username}
           </Col>
           {/* </Link> */}
         </Row>
       </Link>
-
     );
   }
 }

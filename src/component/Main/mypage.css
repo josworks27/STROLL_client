@@ -21,7 +21,13 @@
   font-weight: 700;
   top: 124px;
 }
+.cl_tag:hover{
+  cursor: pointer;
+  opacity: 0.5;
+  background-color: rgb(172, 199, 121);
+}
 .cl_ThemeList_category {
+  margin-bottom: 25%;
   font-style: italic;
   color: white;
   position: relative;
@@ -106,6 +112,7 @@
   /* border: 3px solid rgb(138, 188, 48); */
   margin: auto;
 }
+
 .cl_logo {
   padding-left: 0.2%;
   background: white;
