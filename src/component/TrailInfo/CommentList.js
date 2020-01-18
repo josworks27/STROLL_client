@@ -1,19 +1,21 @@
 import React from 'react';
-import CommentListElement from './CommentListElement'
-let fake_comment = ['강아지랑 걷기 좋아요~', '코딩하기 좋은날씨', '꼭 그렇게 다 가져가야만 속이 후련했냐!']
+import CommentListElement from './CommentListElement';
+
 class CommentList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
+    let fake_comment = this.props.comments;
     return (
-    <div id="id_trailinfo_commentlist">
-      {
-        fake_comment.map(comment => <CommentListElement comment={comment}> comment </CommentListElement>)
-      }
-        
-    </div>
+      <div id="id_trailinfo_commentlist">
+        {fake_comment.map((comment, i) => (
+          <CommentListElement key={i} comment={comment}>
+            comment
+          </CommentListElement>
+        ))}
+      </div>
     );
   }
 }
