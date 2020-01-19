@@ -1,4 +1,5 @@
 import React from 'react';
+import { Rate } from 'antd';
 
 class CommentListElement extends React.Component {
   constructor(props) {
@@ -6,7 +7,12 @@ class CommentListElement extends React.Component {
     this.state = {};
   }
   render() {
-    return <div>{this.props.comment}</div>;
+    return (
+      <div>
+        {this.props.comment}
+        <Rate disabled defaultValue={2.5}></Rate>
+      </div>
+    );
   }
 }
 
