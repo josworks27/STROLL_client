@@ -105,6 +105,7 @@ export default class TrailList extends Component {
                   <TrailListElement
                     key={'trail' + trail + index}
                     trail={trail}
+                    handleSelectTrail={this.props.handleSelectTrail}
                   />
                 ))}
               </Col>

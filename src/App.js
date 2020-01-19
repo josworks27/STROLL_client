@@ -17,9 +17,11 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     /*login 페이지에 사용되는 state & method */
+    this.handleIsloginState = this.handleIsloginState.bind(this);
     /*signup 페이지에 사용되는 state & method */
     /*mypage 페이지에 사용되는 state & method */
     this.handleSelectThemeBtn = this.handleSelectThemeBtn.bind(this);
+    this.handleSelectTrail = this.handleSelectTrail.bind(this);
     /*trailinfo 페이지에 사용되는 state & method */
     /*addTrail 페이지에 사용되는 state & method */
     this.state = {
@@ -33,16 +35,15 @@ export default class App extends Component {
 
       /*mypage 페이지에 사용되는 state */
       currentTheme: null,
-
+      currentTrail: null   //선택한 trail에 대한 모든 정보를 가지고 있는 객체
       /*trailinfo 페이지에 사용되는 state */
 
       /*addTrail 페이지에 사용되는 state */
     };
-    this.handleIsloginState = this.handleIsloginState.bind(this);
+ 
   }
 
   /*login 페이지에 사용되는 method */
-
   handleIsloginState() {
     this.setState({ isLogin: true });
   }
@@ -51,18 +52,21 @@ export default class App extends Component {
   /*mypage 페이지에 사용되는 method */
   // mypage에 theme을 전달하는 함수
   handleSelectThemeBtn(theme) {
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaa', theme);
     this.setState({
       currentTheme: theme,
     });
   }
+  // 선택한 트레일을 
+  handleSelectTrail(trail){
+    console.log('your trail is: ', trail);
 
+  }
   /*trailinfo 페이지에 사용되는 method */
 
   /*addTrail 페이지에 사용되는 method */
 
   render() {
-    let { isLogin, location, currentTheme } = this.state;
+    let { isLogin, location, currentTheme, currentTrail } = this.state;
     console.log('App.js에서의 출력', location);
 
     return (
@@ -86,7 +90,8 @@ export default class App extends Component {
               <Signup_page location={location} isLogin={isLogin} />
             )}
           />
-          <Route path="/trailinfo" component={Trailinfo_page} />
+          {/* <Route path="/trailinfo" component={() => <Trailinfo_page />} /> */}
+          <Route path="/trailinfo" component={() => <Trailinfo_page currentTrail={currentTrail} />} />
           <Route
             path="/main"
 
@@ -96,6 +101,7 @@ export default class App extends Component {
                 isLogin={isLogin}
                 currentTheme={currentTheme}
                 handleSelectThemeBtn={this.handleSelectThemeBtn}
+                handleSelectTrail={this.handleSelectTrail}
               />
             )}
           />
