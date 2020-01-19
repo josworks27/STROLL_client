@@ -56,6 +56,7 @@ class mypage_page extends Component {
           <TrailList
             location={location}
             currentTheme={this.props.currentTheme}
+            handleSelectTrail={this.props.handleSelectTrail}
           ></TrailList>
         </Layout>
       </Layout>

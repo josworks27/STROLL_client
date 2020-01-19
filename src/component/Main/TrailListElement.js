@@ -8,7 +8,7 @@ export default class TrailListElement extends Component {
       <Link to="/trailinfo">
         <Row id="id_Mypage_traillistElement">
           {/* <Link to='/trailinfo'> */}
-          <Col span={18} className="cl_trail">
+          <Col span={18} className="cl_trail" onClick={()=>this.props.handleSelectTrail(this.props.trail)}>
             {this.props.trail.title}
             {this.props.trail.username}
           </Col>
