@@ -87,7 +87,16 @@ export default class App extends Component {
               />
             )}
           />
-          <Route path="/addtrail" component={AddTrail_page} />
+          <Route
+            path="/addtrail"
+            component={() => (
+              <AddTrail_page
+                location={location}
+                isLogin={isLogin}
+                currentTheme={currentTheme}
+              />
+            )}
+          />
         </Switch>
       </div>
     );
