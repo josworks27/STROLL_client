@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import LoginInfo from '../component/Login/LoginInfo'
+import LoginInfo from '../component/Login/LoginInfo';
+
 
 class login_page extends Component {
   constructor(props) {
@@ -10,10 +11,9 @@ class login_page extends Component {
     };
   }
   render() {
-    const {location, isLogin} = this.state;
-    return (
-        <LoginInfo location={location} isLogin={isLogin}> </LoginInfo>
-    );
+
+    return <LoginInfo isLogin={this.props.isLogin}> </LoginInfo>;
+
   }
 }
 

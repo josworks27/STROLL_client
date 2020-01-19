@@ -38,10 +38,14 @@ export default class App extends Component {
 
       /*addTrail 페이지에 사용되는 state */
     };
+    this.handleIsloginState = this.handleIsloginState.bind(this);
   }
 
   /*login 페이지에 사용되는 method */
 
+  handleIsloginState() {
+    this.setState({ isLogin: true });
+  }
   /*signup 페이지에 사용되는 method */
 
   /*mypage 페이지에 사용되는 method */
@@ -66,7 +70,14 @@ export default class App extends Component {
         <Route
           exact
           path="/"
-          component={() => <Login_page location={location} isLogin={isLogin} />}
+
+          component={() => (
+            <Login_page
+              handleIsloginState={this.handleIsloginState}
+              isLogin={state.isLogin}
+            />
+          )}
+
         />
         <Switch>
           <Route
@@ -78,6 +89,7 @@ export default class App extends Component {
           <Route path="/trailinfo" component={Trailinfo_page} />
           <Route
             path="/main"
+
             component={() => (
               <Mypage_page
                 location={location}
@@ -97,6 +109,7 @@ export default class App extends Component {
               />
             )}
           />
+
         </Switch>
       </div>
     );
