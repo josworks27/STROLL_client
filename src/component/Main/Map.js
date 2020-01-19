@@ -12,15 +12,18 @@ export default class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Lat: this.props.location[0],
-      Lng: this.props.location[1],
+      Lat: null,
+      Lng: null,
     };
   }
   componentDidMount() {
+    console.log(1213123123, this.props.location);
     var container = document.getElementById('id_everyTrails'); //지도를 담을 영역의 DOM 레퍼런스
+    var test = [this.props.location[0], this.props.location[1]];
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
-      center: new window.daum.maps.LatLng(this.state.Lat, this.state.Lng), //지도의 중심좌표.
+      // center: new window.daum.maps.LatLng(37.502968, 127.050449), //지도의 중심좌표.
+      center: new window.daum.maps.LatLng(this.props.location[0], this.props.location[1]), //지도의 중심좌표.
       level: 5, //지도의 레벨(확대, 축소 정도)
     };
 

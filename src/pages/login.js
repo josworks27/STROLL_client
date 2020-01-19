@@ -12,7 +12,7 @@ class login_page extends Component {
   }
   render() {
 
-    return <LoginInfo isLogin={this.props.isLogin}> </LoginInfo>;
+    return <LoginInfo isLogin={this.props.isLogin} handleIsloginState={this.props.handleIsloginState}> </LoginInfo>;
 
   }
 }

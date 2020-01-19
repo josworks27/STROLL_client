@@ -24,7 +24,8 @@ import TrailList from '../component/Main/TrailList';
 import { Button, Layout } from 'antd';
 import '../component/Main/mypage.css';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
+axios.defaults.withCredentials = true;
 class mypage_page extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +33,28 @@ class mypage_page extends Component {
       location: this.props.location,
       isLogin: this.props.isLogin,
     };
+  }
+  componentDidMount(){
+    
+    axios
+    .get('http://27bd42cc.ngrok.io/trails', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
+      },
+    })
+    .then(res => {
+      // console.log("TOKEN", res)
+      if (res.status === 200) {
+        // isLogin state가 true이면 /main으로 가도록 리디렉션
+        console.log(res);
+      } else if (res.status === 401) {
+        console.log('Error 401');
+      }
+    })
+    .catch(err => {
+      throw err;
+    });
   }
   render() {
     const { location, isLogin } = this.state;

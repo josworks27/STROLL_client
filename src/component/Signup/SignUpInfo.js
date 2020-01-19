@@ -5,7 +5,6 @@ body:{
   "username": "troll"
 }
 */
-
 import React from 'react';
 import 'antd/dist/antd.css';
 import './SignUpInfo.css';
@@ -45,26 +44,31 @@ class SignUpInfo extends React.Component {
           username: values.username,
         };
         console.log('Received values of form: ', values);
-        this.setState({
-          isSignedUp: true,
-        });
+        // this.setState({
+        //   isSignedUp: true,
+        // });
         /**************axios post 요청***************** */
-        // axios
-        //   .post('/signup', signUpData, {
-        //     headers: { 'Content-Type': 'application/json' },
-        //   })
-        //   .then(res => {
-        //     if (res.status === 200) {
-        //       this.setState({
-        //         isSignedUp: true,
-        //       });
-        //     }
-        //     else if (res.status === 404){
-        //       this.setState({
-        //         isSignedUp: false
-        //       });
-        //     }
-        //   });
+        axios
+          .post('http://27bd42cc.ngrok.io/signup', signUpData, {
+            headers: { 'Content-Type': 'application/json' },
+          })
+          .then(res => {
+            console.log(res.data)
+            if (res.status === 201) {
+              this.setState({
+                isSignedUp: true,
+              });
+            }
+            else if (res.status === 409){
+              // console.log('error');
+              alert('Existing information');
+              // this.setState({
+              //   isSignedUp: false
+              // });
+            }
+          }).catch(err =>{
+            throw err;
+          });
         /*********************************************** */
       }
     });
