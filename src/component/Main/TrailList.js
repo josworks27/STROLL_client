@@ -43,7 +43,7 @@ let fake_trail = [
   {
     trailId: 2,
     location1: [37.385816, 127.124534],
-    location2: [37.385593, 127.126410],
+    location2: [37.385593, 127.12641],
     location3: [37.384306, 127.124318],
     location4: [37.382814, 127.122516],
     location5: [37.383735, 127.120274],
@@ -61,7 +61,7 @@ let fake_trail = [
     username: '코드스테이츠',
     title: '반려동물과 함께하기 좋은 산책로1',
     tag: 'With pet', // - 추후논의 - 선택한 리스트 제목 =>
-  }
+  },
 ];
 let trail = ['pet trail1', 'pet trail2', 'pet trail3', 'pet trail4'];
 export default class TrailList extends Component {
@@ -84,10 +84,10 @@ export default class TrailList extends Component {
     let traillist;
     let currentTheme = this.props.currentTheme;
     console.log('Current Theme: ', currentTheme);
-    if(!currentTheme){
+    if (!currentTheme) {
       traillist = fake_trail;
-    }else{
-      traillist = fake_trail.filter(trail => trail.tag === currentTheme)
+    } else {
+      traillist = fake_trail.filter(trail => trail.tag === currentTheme);
     }
     return (
       <Content style={{ minHeight: '100vh' }} className="cl_mypage_info">
@@ -101,8 +101,11 @@ export default class TrailList extends Component {
             </Breadcrumb>
             <Row id="id_Mypage_main_row">
               <Col span={8} className="cl_Mypage_main_content">
-                {traillist.map(trail => (
-                  <TrailListElement key={'trail' + trail} trail={trail} />
+                {traillist.map((trail, index) => (
+                  <TrailListElement
+                    key={'trail' + trail + index}
+                    trail={trail}
+                  />
                 ))}
               </Col>
               <Col span={16} className="cl_Mypage_main_content">

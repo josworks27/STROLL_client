@@ -13,7 +13,7 @@ export default class Map extends Component {
     super(props);
     this.state = {
       Lat: this.props.location[0],
-      Lng: this.props.location[1]
+      Lng: this.props.location[1],
     };
   }
   componentDidMount() {
@@ -29,35 +29,45 @@ export default class Map extends Component {
     //마커 만들기
     var marker1, marker2, marker3, marker4, marker5;
     var trails = this.props.traillist;
+    console.log(111111, trails)
     for (let i = 0; i < trails.length; i++) {
       // for(let j=0 ; j<5 ; j++){
-        marker1 = new kakao.maps.CustomOverlay({
-          content: '<span class="dot"></span>',
-          zIndex: 1,
-        });
-        marker2 = new kakao.maps.CustomOverlay({
-          content: '<span class="dot"></span>',
-          zIndex: 1,
-        });
-        marker3 = new kakao.maps.CustomOverlay({
-          content: '<span class="dot"></span>',
-          zIndex: 1,
-        });
-        marker4 = new kakao.maps.CustomOverlay({
-          content: '<span class="dot"></span>',
-          zIndex: 1,
-        });
-        marker5 = new kakao.maps.CustomOverlay({
-          content: '<span class="dot"></span>',
-          zIndex: 1,
-        });
-        marker1.setPosition(new kakao.maps.LatLng(trails[i].location1[0], trails[i].location1[1]));
-        marker2.setPosition(new kakao.maps.LatLng(trails[i].location2[0], trails[i].location2[1]));
-        marker3.setPosition(new kakao.maps.LatLng(trails[i].location3[0], trails[i].location3[1]));
-        marker4.setPosition(new kakao.maps.LatLng(trails[i].location4[0], trails[i].location4[1]));
-        marker5.setPosition(new kakao.maps.LatLng(trails[i].location5[0], trails[i].location5[1]));
+      marker1 = new kakao.maps.CustomOverlay({
+        content: '<span class="dot0"></span>',
+        zIndex: 1,
+      });
+      marker2 = new kakao.maps.CustomOverlay({
+        content: '<span class="dot1"></span>',
+        zIndex: 1,
+      });
+      marker3 = new kakao.maps.CustomOverlay({
+        content: '<span class="dot2"></span>',
+        zIndex: 1,
+      });
+      marker4 = new kakao.maps.CustomOverlay({
+        content: '<span class="dot3"></span>',
+        zIndex: 1,
+      });
+      marker5 = new kakao.maps.CustomOverlay({
+        content: '<span class="dot4"></span>',
+        zIndex: 1,
+      });
+      marker1.setPosition(
+        new kakao.maps.LatLng(trails[i].location1[0], trails[i].location1[1]),
+      );
+      marker2.setPosition(
+        new kakao.maps.LatLng(trails[i].location2[0], trails[i].location2[1]),
+      );
+      marker3.setPosition(
+        new kakao.maps.LatLng(trails[i].location3[0], trails[i].location3[1]),
+      );
+      marker4.setPosition(
+        new kakao.maps.LatLng(trails[i].location4[0], trails[i].location4[1]),
+      );
+      marker5.setPosition(
+        new kakao.maps.LatLng(trails[i].location5[0], trails[i].location5[1]),
+      );
       // }
-      
 
       marker1.setMap(map);
       marker2.setMap(map);
@@ -65,7 +75,7 @@ export default class Map extends Component {
       marker4.setMap(map);
       marker5.setMap(map);
     }
-    
+
     // // 마커 추가
     // kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     //   let clickPosition = mouseEvent.latLng;
@@ -99,7 +109,7 @@ export default class Map extends Component {
 
         <div>
           {
-          // dots.map(dot => {console.log(dot.circle.position)})
+            // dots.map(dot => {console.log(dot.circle.position)})
           }
         </div>
       </div>
@@ -107,19 +117,10 @@ export default class Map extends Component {
   }
 }
 
-
-
-
-
-
-
-
-
 // 지도 중심좌표 가져오기
 // var position = map.getCenter();
 // 지도 중심좌표 설정
 // map.setCenter(new kakao.maps.LatLng(37.537183, 127.005454));
-
 
 // //마커 만들기
 // var marker = new kakao.maps.Marker({

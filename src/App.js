@@ -74,7 +74,7 @@ export default class App extends Component {
           component={() => (
             <Login_page
               handleIsloginState={this.handleIsloginState}
-              isLogin={state.isLogin}
+              isLogin={this.state.isLogin}
             />
           )}
 
