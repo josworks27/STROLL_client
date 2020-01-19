@@ -10,7 +10,11 @@ class Photozone extends Component {
     this.state = {};
   }
   render() {
-    return <Footer className='cl_trailinfo_footer' id="id_trailinfo_photozone">사진이 올 자리 입니다.</Footer>;
+    return (
+      <Footer className="cl_trailinfo_footer" id="id_trailinfo_photozone">
+        <img src={this.props.images} />
+      </Footer>
+    );
   }
 }
 

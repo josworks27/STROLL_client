@@ -7,13 +7,6 @@ import './style.css';
 import Photozone from './Photozone';
 import { Col, Layout } from 'antd';
 const { Header, Content } = Layout;
-let dots = [];
-let default_dots = [
-  [37.503334, 127.051114],
-  [37.503147, 127.051736],
-  [37.503436, 127.050127],
-  [37.502968, 127.050449],
-];
 
 class Info_Map extends Component {
   constructor(props) {
@@ -25,6 +18,7 @@ class Info_Map extends Component {
     };
   }
   componentDidMount() {
+    var location = this.props.fakedata[0].location;
     var container = document.getElementById('id_trailinfo_map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
@@ -36,16 +30,34 @@ class Info_Map extends Component {
 
     //마커 만들기
     var marker;
-    for (let i = 0; i < default_dots.length; i++) {
+    for (let i = 0; i < location.length; i++) {
       marker = new kakao.maps.CustomOverlay({
-        content: '<span class="dot"></span>',
+        content: `<span class="dot${i} dot"></span>`,
         zIndex: 1,
       });
-      marker.setPosition(
-        new kakao.maps.LatLng(default_dots[i][0], default_dots[i][1]),
-      );
+      marker.setPosition(new kakao.maps.LatLng(location[i][0], location[i][1]));
       marker.setMap(map);
     }
+    // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
+    var linePath = [
+      new kakao.maps.LatLng(location[0][0], location[0][1]),
+      new kakao.maps.LatLng(location[1][0], location[1][1]),
+      new kakao.maps.LatLng(location[2][0], location[2][1]),
+      new kakao.maps.LatLng(location[3][0], location[3][1]),
+      new kakao.maps.LatLng(location[4][0], location[4][1]),
+    ];
+
+    // 지도에 표시할 선을 생성합니다
+    var polyline = new kakao.maps.Polyline({
+      path: linePath, // 선을 구성하는 좌표배열 입니다
+      strokeWeight: 5, // 선의 두께 입니다
+      strokeColor: '#8ABC30', // 선의 색깔입니다
+      strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+      strokeStyle: 'solid', // 선의 스타일입니다
+    });
+
+    // 지도에 선을 표시합니다
+    polyline.setMap(map);
   }
   render() {
     let state = this.state;
@@ -62,7 +74,15 @@ class Info_Map extends Component {
             className="cl_trailinfo_content"
             id="id_trailinfo_map"
           ></Content>
-          <Photozone className="cl_contents_in_TrailInfoPage_InfoMap"></Photozone>
+          {this.props.fakedata[0].image.map((el, n) => {
+            return (
+              <Photozone
+                className="cl_contents_in_TrailInfoPage_InfoMap"
+                key={n}
+                images={el}
+              ></Photozone>
+            );
+          })}
         </Layout>
       </Col>
     );

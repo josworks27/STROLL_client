@@ -10,7 +10,11 @@ class RecentReview extends Component {
   }
 
   render() {
-    return <Content className='cl_trailinfo_content' id="id_trialinfo_review">Review</Content>;
+    return (
+      <Content className="cl_trailinfo_content" id="id_trialinfo_review">
+        {this.props.review}
+      </Content>
+    );
   }
 }
 
