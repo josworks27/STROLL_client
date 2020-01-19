@@ -1,3 +1,16 @@
+/*
+body:{
+  "userId": 1,
+  "locationId": 1,
+  "categoryId": 1,
+  "imageId": 1,
+  "title": "my trail",
+  "review": "so good",
+  "adminDistrict": "Seoul",
+}
+*/
+
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Icon, Input, Button, Upload, Rate, Alert } from 'antd';

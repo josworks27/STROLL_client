@@ -10,6 +10,7 @@ import axios from 'axios';
 class LoginInfo extends Component {
   constructor(props) {
     super(props);
+
     this.state = { email: null, password: null };
   }
   // 서브밋 메소드
@@ -44,7 +45,9 @@ class LoginInfo extends Component {
     console.log(e, 'I was closed.');
   };
   render() {
+
     console.log(this.props.isLogin);
+
     const { getFieldDecorator } = this.props.form;
     return (
       <div id="id_wrapper">

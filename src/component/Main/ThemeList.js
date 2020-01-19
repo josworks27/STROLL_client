@@ -32,7 +32,8 @@ export default class ThemeList extends Component {
               <ThemeListElement
                 className="cl_tag"
                 key={'theme' + el}
-                tag={el}
+                theme={el}
+                handleSelectThemeBtn={this.props.handleSelectThemeBtn}
               />
             );
           })}

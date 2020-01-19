@@ -8,18 +8,28 @@ import '../component/AddTrail/AddTrail.css';
 class addTrail_page extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      location:this.props.location,
+      isLogin: this.props.isLogin,
+      currentTheme:this.props.currentTheme
+    };
   }
   handleClose = () => {
     this.setState({ visible: false });
   };
   render() {
+    const {location, isLogin, currentTheme} = this.state;
+    console.log('Addtrail location: ', location);
     return (
       <Row id="id_addTrail_main_row">
         <Link to="/">
           <div className="cl_addTrail_logo">STROLL</div>
         </Link>
-        <Info_Map></Info_Map>
+        <Info_Map
+          location={location}
+          isLogin={isLogin}
+          currentTheme={currentTheme}
+        ></Info_Map>
         <Info_Trail></Info_Trail>
       </Row>
     );

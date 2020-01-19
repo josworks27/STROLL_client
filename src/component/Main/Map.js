@@ -12,8 +12,8 @@ export default class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Lat: 37.502908,
-      Lng: 127.05002,
+      Lat: this.props.location[0],
+      Lng: this.props.location[1]
     };
   }
   componentDidMount() {
@@ -27,41 +27,70 @@ export default class Map extends Component {
     var map = new window.daum.maps.Map(container, options); //지도 생성 및 객체 리턴
 
     //마커 만들기
-    var marker;
-    for (let i = 0; i < default_dots.length; i++) {
-      marker = new kakao.maps.CustomOverlay({
-        content: '<span class="dot"></span>',
-        zIndex: 1,
-      });
-      marker.setPosition(new kakao.maps.LatLng(default_dots[i][0], default_dots[i][1]));
-      marker.setMap(map);
+    var marker1, marker2, marker3, marker4, marker5;
+    var trails = this.props.traillist;
+    for (let i = 0; i < trails.length; i++) {
+      // for(let j=0 ; j<5 ; j++){
+        marker1 = new kakao.maps.CustomOverlay({
+          content: '<span class="dot"></span>',
+          zIndex: 1,
+        });
+        marker2 = new kakao.maps.CustomOverlay({
+          content: '<span class="dot"></span>',
+          zIndex: 1,
+        });
+        marker3 = new kakao.maps.CustomOverlay({
+          content: '<span class="dot"></span>',
+          zIndex: 1,
+        });
+        marker4 = new kakao.maps.CustomOverlay({
+          content: '<span class="dot"></span>',
+          zIndex: 1,
+        });
+        marker5 = new kakao.maps.CustomOverlay({
+          content: '<span class="dot"></span>',
+          zIndex: 1,
+        });
+        marker1.setPosition(new kakao.maps.LatLng(trails[i].location1[0], trails[i].location1[1]));
+        marker2.setPosition(new kakao.maps.LatLng(trails[i].location2[0], trails[i].location2[1]));
+        marker3.setPosition(new kakao.maps.LatLng(trails[i].location3[0], trails[i].location3[1]));
+        marker4.setPosition(new kakao.maps.LatLng(trails[i].location4[0], trails[i].location4[1]));
+        marker5.setPosition(new kakao.maps.LatLng(trails[i].location5[0], trails[i].location5[1]));
+      // }
+      
+
+      marker1.setMap(map);
+      marker2.setMap(map);
+      marker3.setMap(map);
+      marker4.setMap(map);
+      marker5.setMap(map);
     }
     
-    // 마커 추가
-    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-      let clickPosition = mouseEvent.latLng;
-      console.log(1111, clickPosition)
-      var circleOverlay = new kakao.maps.CustomOverlay({
-        content: '<span class="dot"></span>',
-        position: clickPosition,
-        zIndex: 1,
-      });
-      // 지도에 표시합니다
-      circleOverlay.setMap(map);
-      // 배열에 추가합니다
-      dots.push({ circle: circleOverlay });
-    });
+    // // 마커 추가
+    // kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+    //   let clickPosition = mouseEvent.latLng;
+    //   console.log(1111, clickPosition)
+    //   var circleOverlay = new kakao.maps.CustomOverlay({
+    //     content: '<span class="dot"></span>',
+    //     position: clickPosition,
+    //     zIndex: 1,
+    //   });
+    //   // 지도에 표시합니다
+    //   circleOverlay.setMap(map);
+    //   // 배열에 추가합니다
+    //   dots.push({ circle: circleOverlay });
+    // });
 
-    // 마커 전체 제거
-    kakao.maps.event.addListener(map, 'rightclick', function(mouseEvent) {
-      var i;
-      for (i = 0; i < dots.length; i++) {
-        if (dots[i].circle) {
-          dots[i].circle.setMap(null);
-        }
-      }
-      dots = [];
-    });
+    // // 마커 전체 제거
+    // kakao.maps.event.addListener(map, 'rightclick', function(mouseEvent) {
+    //   var i;
+    //   for (i = 0; i < dots.length; i++) {
+    //     if (dots[i].circle) {
+    //       dots[i].circle.setMap(null);
+    //     }
+    //   }
+    //   dots = [];
+    // });
   }
   render() {
     return (
