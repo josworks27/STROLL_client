@@ -38,7 +38,7 @@ class Info_Trail_Input extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      markerList: this.props.markerList,
+      markerList: [],
       isSubmitted: false,
     };
   }
@@ -48,7 +48,15 @@ class Info_Trail_Input extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        console.log(markerList);
+        // console.log(111111111, this.props.markerList);
+        var submitData = {
+          newLocations: this.props.markerList,
+          tag: values.category,
+          imageId: 1,
+          title: values.trailname,
+          review: values.review
+        }
+        console.log(1111111, submitData)
         this.setState({
           isSubmitted: true,
         });
@@ -102,17 +110,6 @@ class Info_Trail_Input extends Component {
                 }}
                 className="cl_addTrail_form"
               >
-                <Form.Item>
-                  {getFieldDecorator('rate', {
-                    rules: [
-                      {
-                        required: true,
-                        message: 'Please input your Trail name!',
-                      },
-                    ],
-                  })(<Rate className="cl_addTrail_rate" />)}
-                </Form.Item>
-
                 {/* <div className="cl_addTRail_head">Create Your Trail !</div> */}
                 <Form.Item className="cl_Trailname">
                   {getFieldDecorator('trailname', {

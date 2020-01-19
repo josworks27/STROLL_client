@@ -8,10 +8,12 @@ import Signup_page from './pages/signup';
 import Mypage_page from './pages/mypage';
 import Trailinfo_page from './pages/trailinfo';
 import AddTrail_page from './pages/addTrail';
-
 import { Route, Switch } from 'react-router-dom';
-
 import './index.css';
+
+
+
+
 
 export default class App extends Component {
   constructor(props) {
@@ -42,7 +44,28 @@ export default class App extends Component {
     };
  
   }
-
+  // componentDidMount(){
+  //   this.setState({
+  //     location : this.props.location
+  //   })
+  // }
+  // componentDidMount(){
+  //   var latitude, longitude;
+  //   async function init() {
+  //     await window.navigator.geolocation.getCurrentPosition(current_position);
+  //   }
+  //   function current_position(position) {
+  //     latitude = position.coords.latitude;
+  //     longitude = position.coords.longitude
+  //     // location.push(position.coords.latitude);
+  //     // location.push(position.coords.longitude);
+  //   }
+  //   init();
+  //   console.log('첫번쨰', latitude)
+  //   this.setState({
+  //     location: [latitude, longitude]
+  //   })
+  // }
   /*login 페이지에 사용되는 method */
   handleIsloginState() {
     this.setState({ isLogin: true });
@@ -90,7 +113,6 @@ export default class App extends Component {
               <Signup_page location={location} isLogin={isLogin} />
             )}
           />
-          {/* <Route path="/trailinfo" component={() => <Trailinfo_page />} /> */}
           <Route path="/trailinfo" component={() => <Trailinfo_page currentTrail={currentTrail} />} />
           <Route
             path="/main"
