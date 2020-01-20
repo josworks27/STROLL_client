@@ -98,11 +98,11 @@ export default class App extends Component {
   }
 
   handleSelectTrail(trail) {
-    console.log('your trail is: ', trail);
     this.setState({
       currentTrail: trail,
     });
   }
+
   /*trailinfo 페이지에 사용되는 method */
 
   /*addTrail 페이지에 사용되는 method */
@@ -139,7 +139,10 @@ export default class App extends Component {
           <Route
             path="/trailinfo"
             component={() => (
-              <Trailinfo_page>currentTrail={currentTrail}</Trailinfo_page>
+              <Trailinfo_page
+                currentTrail={currentTrail}
+                handleSelectTrail={this.handleSelectTrail}
+              ></Trailinfo_page>
             )}
           />
           <Route
