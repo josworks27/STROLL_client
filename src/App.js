@@ -1,8 +1,3 @@
-/* eslint-disable react/jsx-pascal-case */
-// 컴포넌트 파일명 대문자로 수정
-// 컴포넌트 import 시 파일명과 같은 이름 사용하기
-// => merge할 때 다 같이 수정
-
 import React, { Component } from 'react';
 import Login_page from './pages/login';
 import Signup_page from './pages/signup';
@@ -10,8 +5,9 @@ import Mypage_page from './pages/mypage';
 import Trailinfo_page from './pages/trailinfo';
 import AddTrail_page from './pages/addTrail';
 import { Route, Switch } from 'react-router-dom';
-
+import axios from 'axios';
 import './index.css';
+axios.defaults.withCredentials = true;
 
 export default class App extends Component {
   constructor(props) {
@@ -37,6 +33,7 @@ export default class App extends Component {
       /*mypage 페이지에 사용되는 state */
       currentTheme: null,
       currentTrail: null,
+      filteredTrailList: [],
       /*trailinfo 페이지에 사용되는 state */
 
       /*addTrail 페이지에 사용되는 state */
@@ -51,10 +48,53 @@ export default class App extends Component {
 
   /*mypage 페이지에 사용되는 method */
   // mypage에 theme을 전달하는 함수
+  componentDidMount() {
+    let URL = 'http://2c815448.ngrok.io/trails';
+    axios
+      .get(URL, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      })
+      .then(res => {
+        if (res.status === 200) {
+          this.setState({
+            currentTheme: null,
+            filteredTrailList: res.data.trails,
+          });
+        }
+      })
+      .catch(err => {
+        console.log('App.js 에서의 에러 ', err);
+      });
+  }
   handleSelectThemeBtn(theme) {
-    this.setState({
-      currentTheme: theme,
-    });
+    //axio요청 => theme에 따른 요청... state 만들어서 내려줘야함..
+    let URL = !theme
+      ? 'http://2c815448.ngrok.io/trails'
+      : 'http://2c815448.ngrok.io/trails/' + theme;
+
+    axios
+      .get(URL, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      })
+      .then(res => {
+        if (res.status === 200) {
+          console.log('(App.js) 요청 성공', res.data);
+          let resdata = !theme ? res.data.trails : res.data;
+          this.setState({
+            currentTheme: theme,
+            filteredTrailList: resdata,
+          });
+        }
+      })
+      .catch(err => {
+        console.log('App.js 에서의 에러 ', err);
+      });
   }
 
   handleSelectTrail(trail) {
@@ -68,7 +108,13 @@ export default class App extends Component {
   /*addTrail 페이지에 사용되는 method */
 
   render() {
-    let { isLogin, location, currentTheme, currentTrail } = this.state;
+    let {
+      isLogin,
+      location,
+      currentTheme,
+      currentTrail,
+      filteredTrailList,
+    } = this.state;
     console.log('ct: ', this.state.currentTrail);
 
     return (
@@ -105,6 +151,7 @@ export default class App extends Component {
                 currentTheme={currentTheme}
                 handleSelectThemeBtn={this.handleSelectThemeBtn}
                 handleSelectTrail={this.handleSelectTrail}
+                filteredTrailList={filteredTrailList}
               />
             )}
           />

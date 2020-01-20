@@ -21,8 +21,8 @@ export default class ThemeList extends Component {
   makeTag() {
     let arr = [];
     var uniqTag;
-    for (let i = 0; i < this.props.trails.length; i++) {
-      const el = this.props.trails[i];
+    for (let i = 0; i < this.props.wholetrails.length; i++) {
+      const el = this.props.wholetrails[i];
       arr.push(el.category.tag);
       uniqTag = Array.from(new Set(arr));
     }

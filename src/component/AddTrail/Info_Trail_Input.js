@@ -81,10 +81,10 @@ class Info_Trail_Input extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        formData.append('newLocations', this.props.markerList)
-        formData.append('tag', values.category)
-        formData.append('title', values.trailname)
-        formData.append('review', values.review)
+        formData.append('newLocations', this.props.markerList);
+        formData.append('tag', values.category);
+        formData.append('title', values.trailname);
+        formData.append('review', values.review);
         let submitData = {
           newLocations: this.props.markerList,
           tag: values.category,
@@ -234,7 +234,7 @@ class Info_Trail_Input extends Component {
                   )}
                 </Form.Item>
                 {/* 이미지 전송 부분 */}
-                
+
                 <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
                   <Button
                     type="primary"
@@ -246,10 +246,10 @@ class Info_Trail_Input extends Component {
                 </Form.Item>
               </Form>
               <form onSubmit={this.onFormSubmit}>
-                  <h1>File Upload</h1>
-                  <input type="file" name="img" onChange={this.onChangeFile} />
-                  <button type="submit">Upload</button>
-                </form>
+                <h1>File Upload</h1>
+                <input type="file" name="img" onChange={this.onChangeFile} />
+                <button type="submit">Upload</button>
+              </form>
             </Content>
           </Layout>
         </Col>

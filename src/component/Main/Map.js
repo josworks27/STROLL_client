@@ -1,13 +1,7 @@
 /*global daum*/
 /*global kakao*/
 import React, { Component } from 'react';
-let dots = [];
-let default_dots = [
-  [37.503334, 127.051114],
-  [37.503147, 127.051736],
-  [37.503436, 127.050127],
-  [37.502968, 127.050449],
-];
+
 export default class Map extends Component {
   constructor(props) {
     super(props);
@@ -17,123 +11,59 @@ export default class Map extends Component {
     };
   }
   componentDidMount() {
-    console.log(1213123123, this.props.location);
     var container = document.getElementById('id_everyTrails'); //지도를 담을 영역의 DOM 레퍼런스
-    var test = [this.props.location[0], this.props.location[1]];
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
-      // center: new window.daum.maps.LatLng(37.502968, 127.050449), //지도의 중심좌표.
-      center: new window.daum.maps.LatLng(this.props.location[0], this.props.location[1]), //지도의 중심좌표.
-      level: 5, //지도의 레벨(확대, 축소 정도)
+      center: new window.daum.maps.LatLng(
+        this.props.location[0],
+        this.props.location[1],
+      ), //지도의 중심좌표.
+      level: 7, //지도의 레벨(확대, 축소 정도)
     };
 
     var map = new window.daum.maps.Map(container, options); //지도 생성 및 객체 리턴
 
     //마커 만들기
-    var marker1, marker2, marker3, marker4, marker5;
+    var marker;
     var trails = this.props.traillist;
-    console.log(111111, trails)
+    console.log('trails in map', this.props.traillist); //전체보기 했을떄 빈 배열 뜸 
+
+    var imageSrc =
+        'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png',
+      imageSrc_first = 'https://ifh.cc/g/EcSAa.png', // 마커이미지의 주소입니다
+      imageSize = new kakao.maps.Size(10, 10), // 마커이미지의 크기입니다
+      imageOption = { offset: new kakao.maps.Point(0, 0) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+    var markerImage = new kakao.maps.MarkerImage(
+        imageSrc,
+        imageSize,
+        imageOption,
+      ),
+      firstmarkerImage = new kakao.maps.MarkerImage(
+        imageSrc_first,
+        imageSize,
+        imageOption,
+      ),
+      markerPosition; // 마커가 표시될 위치입니다
     for (let i = 0; i < trails.length; i++) {
-      // for(let j=0 ; j<5 ; j++){
-      marker1 = new kakao.maps.CustomOverlay({
-        content: '<span class="dot0"></span>',
-        zIndex: 1,
-      });
-      marker2 = new kakao.maps.CustomOverlay({
-        content: '<span class="dot1"></span>',
-        zIndex: 1,
-      });
-      marker3 = new kakao.maps.CustomOverlay({
-        content: '<span class="dot2"></span>',
-        zIndex: 1,
-      });
-      marker4 = new kakao.maps.CustomOverlay({
-        content: '<span class="dot3"></span>',
-        zIndex: 1,
-      });
-      marker5 = new kakao.maps.CustomOverlay({
-        content: '<span class="dot4"></span>',
-        zIndex: 1,
-      });
-      marker1.setPosition(
-        new kakao.maps.LatLng(trails[i].location[i][0], trails[i].location1[i][1]),
-      );
-      marker2.setPosition(
-        new kakao.maps.LatLng(trails[i].location[i][0], trails[i].location1[i][1]),
-      );
-      marker3.setPosition(
-        new kakao.maps.LatLng(trails[i].location[i][0], trails[i].location1[i][1]),
-      );
-      marker4.setPosition(
-        new kakao.maps.LatLng(trails[i].location[i][0], trails[i].location1[i][1]),
-      );
-      marker5.setPosition(
-        new kakao.maps.LatLng(trails[i].location5[0], trails[i].location5[1]),
-      );
-      // }
-
-      marker1.setMap(map);
-      marker2.setMap(map);
-      marker3.setMap(map);
-      marker4.setMap(map);
-      marker5.setMap(map);
+      for (let j = 0; j < 5; j++) {
+        var LatLng = JSON.parse(trails[i].location[j]);
+        var finalImage = j === 0 ? firstmarkerImage : markerImage;
+        markerPosition = new kakao.maps.LatLng(LatLng[1], LatLng[0]);
+        marker = new kakao.maps.Marker({
+          position: markerPosition,
+          image: finalImage,
+        });
+        marker.setMap(map);
+      }
     }
-
-    // // 마커 추가
-    // kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-    //   let clickPosition = mouseEvent.latLng;
-    //   console.log(1111, clickPosition)
-    //   var circleOverlay = new kakao.maps.CustomOverlay({
-    //     content: '<span class="dot"></span>',
-    //     position: clickPosition,
-    //     zIndex: 1,
-    //   });
-    //   // 지도에 표시합니다
-    //   circleOverlay.setMap(map);
-    //   // 배열에 추가합니다
-    //   dots.push({ circle: circleOverlay });
-    // });
-
-    // // 마커 전체 제거
-    // kakao.maps.event.addListener(map, 'rightclick', function(mouseEvent) {
-    //   var i;
-    //   for (i = 0; i < dots.length; i++) {
-    //     if (dots[i].circle) {
-    //       dots[i].circle.setMap(null);
-    //     }
-    //   }
-    //   dots = [];
-    // });
   }
   render() {
+    console.log('Map.js 렌더링');
     return (
       <div id="id_mapwrapper">
         <div id="id_everyTrails"></div>
-
-        <div>
-          {
-            // dots.map(dot => {console.log(dot.circle.position)})
-          }
-        </div>
       </div>
     );
   }
 }
-
-// 지도 중심좌표 가져오기
-// var position = map.getCenter();
-// 지도 중심좌표 설정
-// map.setCenter(new kakao.maps.LatLng(37.537183, 127.005454));
-
-// //마커 만들기
-// var marker = new kakao.maps.Marker({
-//     map: map,
-//     position: new kakao.maps.LatLng(33.450701, 126.570667)
-// });
-
-// 마커 위치 지정
-// // 지도 혹은 로드뷰에서 마커의 위치를 지정
-// marker.setPosition(new kakao.maps.LatLng(33.450701, 126.570667));
-
-// 마커 좌표 반환
-// marker.getPosition();
