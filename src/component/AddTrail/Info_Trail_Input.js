@@ -52,21 +52,39 @@ const { Option } = Select;
 const { Content } = Layout;
 const { TextArea } = Input;
 const { Dragger } = Upload;
-
+const formData = new FormData();
 class Info_Trail_Input extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // normal tag용
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.onChangeFile = this.onChangeFile.bind(this);
+
     this.state = {
       markerList: [],
       isSubmitted: false,
+      file: null,
     };
   }
-
+  /////////////////////////////////////////////////
+  onFormSubmit(e) {
+    e.preventDefault();
+    formData.append('img', this.state.file);
+    console.log('FormData 완성');
+  }
+  onChangeFile(e) {
+    this.setState({ file: e.target.files[0] });
+  }
+  /////////////////////////////////////////////////
   handleSubmit = (e, markerList) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        formData.append('newLocations', this.props.markerList)
+        formData.append('tag', values.category)
+        formData.append('title', values.trailname)
+        formData.append('review', values.review)
         let submitData = {
           newLocations: this.props.markerList,
           tag: values.category,
@@ -83,9 +101,10 @@ class Info_Trail_Input extends Component {
         console.log('axios 요청 직전 구문');
         // postDataWithoutData(submitData).bind(this);
         axios
-          .post('http://2c815448.ngrok.io/trails', submitData, {
+          .post('http://2c815448.ngrok.io/trails', formData, {
             headers: {
-              accept: 'application/json',
+              'content-type': 'multipart/form-data',
+              // accept: 'application/json',
               Authorization: `Bearer ${localStorage.token}`,
             },
           })
@@ -215,29 +234,7 @@ class Info_Trail_Input extends Component {
                   )}
                 </Form.Item>
                 {/* 이미지 전송 부분 */}
-                <Form.Item className="cl_addTrail_upload">
-                  {getFieldDecorator('image', {
-                    rules: [
-                      {
-                        required: false,
-                        message: 'Please upload image!',
-                      },
-                    ],
-                  })(
-                    <Dragger {...props}>
-                      <p className="ant-upload-drag-icon">
-                        <Icon type="inbox" />
-                      </p>
-                      <p className="ant-upload-text">
-                        Click or drag file to this area to upload
-                      </p>
-                      <p className="ant-upload-hint">
-                        Support for a single or bulk upload. Strictly prohibit
-                        from uploading company data or other band files
-                      </p>
-                    </Dragger>,
-                  )}
-                </Form.Item>
+                
                 <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
                   <Button
                     type="primary"
@@ -248,6 +245,11 @@ class Info_Trail_Input extends Component {
                   </Button>
                 </Form.Item>
               </Form>
+              <form onSubmit={this.onFormSubmit}>
+                  <h1>File Upload</h1>
+                  <input type="file" name="img" onChange={this.onChangeFile} />
+                  <button type="submit">Upload</button>
+                </form>
             </Content>
           </Layout>
         </Col>

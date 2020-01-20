@@ -4,7 +4,7 @@ import { Menu } from 'antd';
 import { Button, Layout } from 'antd';
 
 const { Sider, Content } = Layout;
-let tag = ['With pet', 'Night view', 'Calm', 'Lake'];
+let tag = ['With pet', 'Night View', 'Calm', 'Lake', 'Beach view'];
 export default class ThemeList extends Component {
   constructor(props) {
     super(props);
