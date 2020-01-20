@@ -56,16 +56,16 @@ export default class Map extends Component {
         zIndex: 1,
       });
       marker1.setPosition(
-        new kakao.maps.LatLng(trails[i].location1[0], trails[i].location1[1]),
+        new kakao.maps.LatLng(trails[i].location[i][0], trails[i].location1[i][1]),
       );
       marker2.setPosition(
-        new kakao.maps.LatLng(trails[i].location2[0], trails[i].location2[1]),
+        new kakao.maps.LatLng(trails[i].location[i][0], trails[i].location1[i][1]),
       );
       marker3.setPosition(
-        new kakao.maps.LatLng(trails[i].location3[0], trails[i].location3[1]),
+        new kakao.maps.LatLng(trails[i].location[i][0], trails[i].location1[i][1]),
       );
       marker4.setPosition(
-        new kakao.maps.LatLng(trails[i].location4[0], trails[i].location4[1]),
+        new kakao.maps.LatLng(trails[i].location[i][0], trails[i].location1[i][1]),
       );
       marker5.setPosition(
         new kakao.maps.LatLng(trails[i].location5[0], trails[i].location5[1]),
