@@ -1,25 +1,41 @@
 /*
-body:{
-  "userId": 1,
-  "locationId": 1,
-  "categoryId": 1,
-  "imageId": 1,
-  "title": "my trail",
-  "review": "so good",
-  "adminDistrict": "Seoul",
-}
-*/
-
-// POST요청 body
-/*
-body:{
-  "newLocations": array(5),
-  "tag": "night view",
-  "imageId": 1,
-  "title": "my trail",
-  "review": "so good",
-  "adminDistrict": "Seoul",
-}
+  1. 이미지 포스팅 (POST)
+      endpoint: /trails/:tag/:trailid/image
+      body: body:{
+              "img": 이미지파일
+            }
+      response: es.status(201).json({
+                  "id": 5,
+                  "fileName": "1579413412815.jpg",
+                  "filePath": "uploads/1579413412815.jpg",
+                  "updatedAt": "2020-01-19T05:56:52.841Z",
+                  "createdAt": "2020-01-19T05:56:52.841Z"
+                })
+                res.sendStatus(401)
+  
+  2. 전체 포스팅 (POST)
+      endpoint: /trails
+      body:{
+            "newLocations": array(5),
+            "tag": "night view",
+            "imageId": 1,
+            "title": "my trail",
+            "review": "so good",
+            "adminDistrict": "Seoul",
+          }
+      response: res.status(201).json({
+                  "id": 3,
+                  "userId": 1,
+                  "locationId": 3,
+                  "categoryId": 3,
+                  "imageId": 3,
+                  "title": "test",
+                  "review": "test",
+                  "adminDistrict": "yokohama",
+                  "updatedAt": "2020-01-19T04:06:35.595Z",
+                  "createdAt": "2020-01-19T04:06:35.595Z"
+                })
+                res.sendStatus(401)      
 */
 
 import React, { Component } from 'react';
@@ -27,6 +43,10 @@ import { Link, Redirect } from 'react-router-dom';
 import { Form, Icon, Input, Button, Upload, Rate, Alert, message } from 'antd';
 import { Col, Layout } from 'antd';
 import { Select } from 'antd';
+import axios from 'axios';
+import FormData from 'form-data';
+
+axios.defaults.withCredentials = true;
 
 const { Option } = Select;
 const { Content } = Layout;
@@ -47,19 +67,43 @@ class Info_Trail_Input extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
-        // console.log(111111111, this.props.markerList);
-        var submitData = {
+        let submitData = {
           newLocations: this.props.markerList,
           tag: values.category,
-          imageId: 1,
           title: values.trailname,
-          review: values.review
-        }
-        console.log(1111111, submitData)
-        this.setState({
-          isSubmitted: true,
-        });
+          review: values.review,
+          image: values.image,
+        };
+
+        // // 1. 이미지 axios 포스팅
+        // postDataWithData(submitData);
+        // console.log(1111111, submitData);
+
+        // 2. 전체 포스팅
+        console.log('axios 요청 직전 구문');
+        // postDataWithoutData(submitData).bind(this);
+        axios
+          .post('http://2c815448.ngrok.io/trails', submitData, {
+            headers: {
+              accept: 'application/json',
+              Authorization: `Bearer ${localStorage.token}`,
+            },
+          })
+          .then(res => {
+            if (res.status === 200) {
+              console.log('전체 파일 전송입니다. ');
+              console.log('Trail information is uploaded', res.data);
+              this.setState({
+                isSubmitted: true,
+              });
+            } else {
+              console.log('??????????');
+            }
+          })
+          .catch(err => {
+            console.log('여기 에러요', err);
+          });
+        /****************************전체 포스팅 */
       }
     });
   };
@@ -82,7 +126,7 @@ class Info_Trail_Input extends Component {
   render() {
     const { isSubmitted, markerList } = this.state;
     const { getFieldDecorator } = this.props.form;
-    console.log('info_trail.js 에서의 markerList : ', markerList);
+    // console.log('info_trail.js 에서의 markerList : ', markerList);
     const props = {
       name: 'file',
       multiple: true,
@@ -147,7 +191,7 @@ class Info_Trail_Input extends Component {
                       }
                     >
                       <Option value="With pet">With pet</Option>
-                      <Option value="Night View">Night View</Option>
+                      <Option value="Night view">Night view</Option>
                       <Option value="Calm">Calm</Option>
                       <Option value="Lake">Lake</Option>
                     </Select>,
@@ -170,19 +214,29 @@ class Info_Trail_Input extends Component {
                     />,
                   )}
                 </Form.Item>
+                {/* 이미지 전송 부분 */}
                 <Form.Item className="cl_addTrail_upload">
-                  <Dragger {...props}>
-                    <p className="ant-upload-drag-icon">
-                      <Icon type="inbox" />
-                    </p>
-                    <p className="ant-upload-text">
-                      Click or drag file to this area to upload
-                    </p>
-                    <p className="ant-upload-hint">
-                      Support for a single or bulk upload. Strictly prohibit
-                      from uploading company data or other band files
-                    </p>
-                  </Dragger>
+                  {getFieldDecorator('image', {
+                    rules: [
+                      {
+                        required: false,
+                        message: 'Please upload image!',
+                      },
+                    ],
+                  })(
+                    <Dragger {...props}>
+                      <p className="ant-upload-drag-icon">
+                        <Icon type="inbox" />
+                      </p>
+                      <p className="ant-upload-text">
+                        Click or drag file to this area to upload
+                      </p>
+                      <p className="ant-upload-hint">
+                        Support for a single or bulk upload. Strictly prohibit
+                        from uploading company data or other band files
+                      </p>
+                    </Dragger>,
+                  )}
                 </Form.Item>
                 <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
                   <Button
