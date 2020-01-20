@@ -8,7 +8,6 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
-function getTrails() {}
 class mypage_page extends Component {
   constructor(props) {
     super(props);
@@ -31,8 +30,6 @@ class mypage_page extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          // console.log('@@@@@@', res)
-
           this.setState({
             trails: this.state.trails.concat(res.data.trails),
           });
@@ -43,13 +40,15 @@ class mypage_page extends Component {
         throw err;
       });
   }
+
   render() {
     const { location, trails } = this.state;
-    console.log('?????', trails);
-    console.log('메인 화면에서의 출력', location);
+
     return (
       <Layout className="cl_mypage">
         <ThemeList
+          currentTheme={this.props.currentTheme}
+          trails={trails}
           handleSelectThemeBtn={this.props.handleSelectThemeBtn}
         ></ThemeList>
         <Layout>

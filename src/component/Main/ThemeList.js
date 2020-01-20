@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import ThemeListElement from './ThemeListElement';
 import { Menu } from 'antd';
-import { Button, Layout } from 'antd';
+import { Layout } from 'antd';
 
-const { Sider, Content } = Layout;
-let tag = ['With pet', 'Night View', 'Calm', 'Lake', 'Beach view'];
+const { Sider } = Layout;
+
+
 export default class ThemeList extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,23 @@ export default class ThemeList extends Component {
     console.log(collapsed);
     this.setState({ collapsed });
   };
+  makeTag() {
+    let arr = [];
+    var uniqTag;
+    for (let i = 0; i < this.props.trails.length; i++) {
+      const el = this.props.trails[i];
+      arr.push(el.category.tag);
+      uniqTag = Array.from(new Set(arr));
+    }
+    return uniqTag;
+  }
+
   render() {
+    var tags = this.makeTag();
+    if (!tags) {
+      tags = ['wait for a sec..'];
+    }
+    console.log(tags);
     return (
       <Sider id="id_mypage_sider">
         <Menu
@@ -27,7 +44,7 @@ export default class ThemeList extends Component {
           className="cl_ThemeList"
         >
           <div className="cl_ThemeList_category">#Tag</div>
-          {tag.map(el => {
+          {tags.map(el => {
             return (
               <ThemeListElement
                 className="cl_tag"
