@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 // 컴포넌트 파일명 대문자로 수정
 // 컴포넌트 import 시 파일명과 같은 이름 사용하기
 // => merge할 때 다 같이 수정
@@ -21,6 +22,7 @@ export default class App extends Component {
     /*mypage 페이지에 사용되는 state & method */
     this.handleSelectThemeBtn = this.handleSelectThemeBtn.bind(this);
     this.handleSelectTrail = this.handleSelectTrail.bind(this);
+
     /*trailinfo 페이지에 사용되는 state & method */
     /*addTrail 페이지에 사용되는 state & method */
     this.state = {
@@ -34,34 +36,13 @@ export default class App extends Component {
 
       /*mypage 페이지에 사용되는 state */
       currentTheme: null,
-      currentTrail: null, //선택한 trail에 대한 모든 정보를 가지고 있는 객체
+      currentTrail: null,
       /*trailinfo 페이지에 사용되는 state */
 
       /*addTrail 페이지에 사용되는 state */
     };
   }
-  // componentDidMount(){
-  //   this.setState({
-  //     location : this.props.location
-  //   })
-  // }
-  // componentDidMount(){
-  //   var latitude, longitude;
-  //   async function init() {
-  //     await window.navigator.geolocation.getCurrentPosition(current_position);
-  //   }
-  //   function current_position(position) {
-  //     latitude = position.coords.latitude;
-  //     longitude = position.coords.longitude
-  //     // location.push(position.coords.latitude);
-  //     // location.push(position.coords.longitude);
-  //   }
-  //   init();
-  //   console.log('첫번쨰', latitude)
-  //   this.setState({
-  //     location: [latitude, longitude]
-  //   })
-  // }
+
   /*login 페이지에 사용되는 method */
   handleIsloginState() {
     this.setState({ isLogin: true });
@@ -75,9 +56,12 @@ export default class App extends Component {
       currentTheme: theme,
     });
   }
-  // 선택한 트레일을
+
   handleSelectTrail(trail) {
     console.log('your trail is: ', trail);
+    this.setState({
+      currentTrail: trail,
+    });
   }
   /*trailinfo 페이지에 사용되는 method */
 
@@ -85,7 +69,7 @@ export default class App extends Component {
 
   render() {
     let { isLogin, location, currentTheme, currentTrail } = this.state;
-    console.log('App.js에서의 출력', location);
+    console.log('ct: ', this.state.currentTrail);
 
     return (
       <div id="appjs">
@@ -108,7 +92,9 @@ export default class App extends Component {
           />
           <Route
             path="/trailinfo"
-            component={() => <Trailinfo_page currentTrail={currentTrail} />}
+            component={() => (
+              <Trailinfo_page>currentTrail={currentTrail}</Trailinfo_page>
+            )}
           />
           <Route
             path="/main"
