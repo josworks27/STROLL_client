@@ -14,6 +14,7 @@ class trailinfo_page extends Component {
     this.state = { currentT: [] };
   }
   componentDidMount() {
+    
     var trailInfo = localStorage.currentTrail;
     if (!trailInfo) {
       axios

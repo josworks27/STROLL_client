@@ -47,7 +47,9 @@ export default class Map extends Component {
       markerPosition; // 마커가 표시될 위치입니다
     for (let i = 0; i < trails.length; i++) {
       for (let j = 0; j < 5; j++) {
+        // console.log('!!!!!!!!!!!!!!!!!',trails[i].location)
         var LatLng = JSON.parse(trails[i].location[j]);
+        // console.log('!!!!!!!!!!!!!!!!!',LatLng)
         var finalImage = j === 0 ? firstmarkerImage : markerImage;
         markerPosition = new kakao.maps.LatLng(LatLng[1], LatLng[0]);
         marker = new kakao.maps.Marker({
