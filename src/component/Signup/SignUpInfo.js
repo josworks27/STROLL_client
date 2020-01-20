@@ -1,14 +1,8 @@
-/*
-body:{
-  "email": "blah@gmail.com"
-  "password": "123",
-  "username": "troll"
-}
-*/
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 import 'antd/dist/antd.css';
 import './SignUpInfo.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Input, Tooltip, Icon, Button } from 'antd';
 
@@ -28,56 +22,33 @@ class SignUpInfo extends React.Component {
     };
   }
 
-  componentDidMount() {
-    // To disabled submit button at the beginning.
-    this.props.form.validateFields();
-  }
   handleSubmit = e => {
     e.preventDefault();
-    // let flag = false;
+
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        // flag = true;
         let signUpData = {
           email: values.email,
           password: values.password,
           username: values.username,
         };
         console.log('Received values of form: ', values);
-        // this.setState({
-        //   isSignedUp: true,
-        // });
-        /**************axios post 요청***************** */
+
         axios
-          .post('http://27bd42cc.ngrok.io/signup', signUpData, {
-            headers: { 'Content-Type': 'application/json' },
-          })
+          .post('http://2c815448.ngrok.io/signup', signUpData)
           .then(res => {
-            console.log(res.data)
+            console.log(res.data);
             if (res.status === 201) {
               this.setState({
                 isSignedUp: true,
               });
             }
-            else if (res.status === 409){
-              // console.log('error');
-              alert('Existing information');
-              // this.setState({
-              //   isSignedUp: false
-              // });
-            }
-          }).catch(err =>{
-            throw err;
+          })
+          .catch(err => {
+            alert('Existing information');
           });
-        /*********************************************** */
       }
     });
-
-    // if (flag) {
-    //   this.setState({
-    //     isSignedUp: true,
-    //   });
-    // }
   };
 
   handleConfirmBlur = e => {
@@ -117,7 +88,7 @@ class SignUpInfo extends React.Component {
 
   render() {
     const { getFieldDecorator, getFieldsError } = this.props.form;
-    const { autoCompleteResult, isLogin, location, isSignedUp } = this.state;
+    const { isSignedUp } = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -193,7 +164,7 @@ class SignUpInfo extends React.Component {
             <Form.Item
               label={
                 <span>
-                  Nickname&nbsp;
+                  User name&nbsp;
                   <Tooltip title="What do you want others to call you?">
                     <Icon type="question-circle-o" />
                   </Tooltip>
@@ -212,7 +183,6 @@ class SignUpInfo extends React.Component {
             </Form.Item>
 
             <Form.Item {...tailFormItemLayout}>
-              {/* <Link to="/"> */}
               <Button
                 type="primary"
                 htmlType="submit"
@@ -220,7 +190,6 @@ class SignUpInfo extends React.Component {
               >
                 Register
               </Button>
-              {/* </Link> */}
             </Form.Item>
           </Form>
         </div>

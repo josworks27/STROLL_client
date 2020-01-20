@@ -9,11 +9,8 @@ import Mypage_page from './pages/mypage';
 import Trailinfo_page from './pages/trailinfo';
 import AddTrail_page from './pages/addTrail';
 import { Route, Switch } from 'react-router-dom';
+
 import './index.css';
-
-
-
-
 
 export default class App extends Component {
   constructor(props) {
@@ -37,12 +34,11 @@ export default class App extends Component {
 
       /*mypage 페이지에 사용되는 state */
       currentTheme: null,
-      currentTrail: null   //선택한 trail에 대한 모든 정보를 가지고 있는 객체
+      currentTrail: null, //선택한 trail에 대한 모든 정보를 가지고 있는 객체
       /*trailinfo 페이지에 사용되는 state */
 
       /*addTrail 페이지에 사용되는 state */
     };
- 
   }
   // componentDidMount(){
   //   this.setState({
@@ -79,10 +75,9 @@ export default class App extends Component {
       currentTheme: theme,
     });
   }
-  // 선택한 트레일을 
-  handleSelectTrail(trail){
+  // 선택한 트레일을
+  handleSelectTrail(trail) {
     console.log('your trail is: ', trail);
-
   }
   /*trailinfo 페이지에 사용되는 method */
 
@@ -97,14 +92,12 @@ export default class App extends Component {
         <Route
           exact
           path="/"
-
           component={() => (
             <Login_page
               handleIsloginState={this.handleIsloginState}
               isLogin={this.state.isLogin}
             />
           )}
-
         />
         <Switch>
           <Route
@@ -113,10 +106,12 @@ export default class App extends Component {
               <Signup_page location={location} isLogin={isLogin} />
             )}
           />
-          <Route path="/trailinfo" component={() => <Trailinfo_page currentTrail={currentTrail} />} />
+          <Route
+            path="/trailinfo"
+            component={() => <Trailinfo_page currentTrail={currentTrail} />}
+          />
           <Route
             path="/main"
-
             component={() => (
               <Mypage_page
                 location={location}
@@ -137,7 +132,6 @@ export default class App extends Component {
               />
             )}
           />
-
         </Switch>
       </div>
     );

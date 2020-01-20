@@ -83,11 +83,15 @@ export default class TrailList extends Component {
     const { location, isLogin } = this.state;
     let traillist;
     let currentTheme = this.props.currentTheme;
-    console.log('Current Theme: ', currentTheme);
+    // console.log('Current Theme: ', currentTheme);
+    console.log('Category: ', this.props.trails);
     if (!currentTheme) {
-      traillist = fake_trail;
+      traillist = this.props.trails;
+      // traillist = fake_trail;
     } else {
-      traillist = fake_trail.filter(trail => trail.tag === currentTheme);
+      traillist = this.props.trails.filter(
+        trail => trail.category.tag === currentTheme,
+      );
     }
     return (
       <Content style={{ minHeight: '100vh' }} className="cl_mypage_info">
