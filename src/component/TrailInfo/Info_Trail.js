@@ -6,7 +6,7 @@ import { Col, Layout, Button, Form, Rate, Input } from 'antd';
 import CommentList from './CommentList';
 import axios from 'axios';
 const { Header, Footer, Sider, Content } = Layout;
-const {TextArea} = Input
+const { TextArea } = Input;
 
 class Info_Trail extends Component {
   constructor(props) {
@@ -26,9 +26,7 @@ class Info_Trail extends Component {
         // });
         // let commentData = JSON.stringify({ comment: this.state.newComment });
         // axios.post('/comment', commentData, {
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
+        //
         // });
       }
     });
@@ -39,7 +37,8 @@ class Info_Trail extends Component {
       <Col span={12} id="id_trailinfo_info_trail">
         <Layout>
           <Header className="cl_trailinfo_header">
-            {this.props.fakedata[0].title}
+            {/* {this.props.fakedata[0].title} */}
+            {/* {this.props.trail.title} */}
           </Header>
           <RecentReview review={this.props.fakedata[0].review}></RecentReview>
           <Footer className="cl_trailinfo_footer" id="id_trialinfo_commentBox">
@@ -49,37 +48,34 @@ class Info_Trail extends Component {
               }}
             >
               <Form.Item>
-                {
-                  getFieldDecorator('comment',{
-                    rules: [
-                      {
-                        required: true,
-                        message: 'Please input comment!',
-                      },
-                    ],
-                  })(<Input
+                {getFieldDecorator('comment', {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Please input comment!',
+                    },
+                  ],
+                })(
+                  <Input
                     type="textarea"
                     onChange={e => {
                       let newComment = e.target.value;
                       this.handleInputValue(newComment);
                     }}
-                  />)
-                }
-                
+                  />,
+                )}
               </Form.Item>
 
               <Form.Item>
-              {
-                  getFieldDecorator('rate',{
-                    rules: [
-                      {
-                        required: true,
-                        message: 'Please input rate!',
-                      },
-                    ],
-                  })(<Rate />)
-                }
-                
+                {getFieldDecorator('rate', {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Please input rate!',
+                    },
+                  ],
+                })(<Rate />)}
+
                 {/* {getFieldDecorator('rate', {
                   rules: [
                     {
