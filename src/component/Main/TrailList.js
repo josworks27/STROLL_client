@@ -21,21 +21,10 @@ export default class TrailList extends Component {
   render() {
     // axios요청으로 리스트 받아오기
     const { location } = this.state;
-    let traillist;
-    let cT;
     let currentTheme = this.props.currentTheme;
+    let cT = !currentTheme ? 'Every Trails' : currentTheme;
+    let traillist = this.props.filteredTrailList;
 
-    console.log('Category: ', this.props.trails);
-
-    if (!currentTheme) {
-      traillist = this.props.trails;
-      cT = 'Every Trails';
-    } else {
-      traillist = this.props.trails.filter(
-        trail => trail.category.tag === currentTheme,
-      );
-      cT = currentTheme;
-    }
     return (
       <Content style={{ minHeight: '100vh' }} className="cl_mypage_info">
         <Layout>
@@ -54,8 +43,6 @@ export default class TrailList extends Component {
                 ))}
               </Col>
               <Col span={16} className="cl_Mypage_main_content">
-                {/* 지도가 올 자리 */}
-                {/* 위치 5개 프롭으로 내려주기 */}
                 <Map location={location} traillist={traillist}></Map>
               </Col>
             </Row>

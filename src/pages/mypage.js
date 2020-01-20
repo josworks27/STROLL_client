@@ -13,8 +13,7 @@ class mypage_page extends Component {
     super(props);
 
     this.state = {
-      fiterdlist: null,
-      trails: [],
+      wholetrails: [],
       location: this.props.location,
       isLogin: this.props.isLogin,
     };
@@ -30,8 +29,9 @@ class mypage_page extends Component {
       })
       .then(res => {
         if (res.status === 200) {
+          console.log('trails in mypage.js axios method', res.data.trails)
           this.setState({
-            trails: this.state.trails.concat(res.data.trails),
+            wholetrails: this.state.wholetrails.concat(res.data.trails),
           });
         }
       })
@@ -42,13 +42,13 @@ class mypage_page extends Component {
   }
 
   render() {
-    const { location, trails } = this.state;
-
+    const { location, wholetrails } = this.state;
+    console.log('trails in mypage.js: ', this.props.filteredTrailList)//여기 고쳐야함
     return (
       <Layout className="cl_mypage">
         <ThemeList
           currentTheme={this.props.currentTheme}
-          trails={trails}
+          wholetrails={wholetrails}
           handleSelectThemeBtn={this.props.handleSelectThemeBtn}
         ></ThemeList>
         <Layout>
@@ -70,7 +70,7 @@ class mypage_page extends Component {
             location={location}
             currentTheme={this.props.currentTheme}
             handleSelectTrail={this.props.handleSelectTrail}
-            trails={trails}
+            filteredTrailList={this.props.filteredTrailList}
           ></TrailList>
         </Layout>
       </Layout>
