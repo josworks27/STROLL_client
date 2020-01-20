@@ -1,6 +1,6 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-
 import { Form, Icon, Input, Button, Alert } from 'antd';
 import 'antd/dist/antd.css';
 import './LoginInfo.css';
@@ -13,7 +13,7 @@ class LoginInfo extends Component {
 
     this.state = { email: null, password: null };
   }
-  // 서브밋 메소드
+
   handleSubmit = e => {
     console.log('hello');
     e.preventDefault();
@@ -24,23 +24,13 @@ class LoginInfo extends Component {
           email: values.email,
           password: values.password,
         };
+
         axios
-          .post('http://27bd42cc.ngrok.io/signin', loginData, {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          })
+          .post(`http://2c815448.ngrok.io/signin`, loginData)
           .then(res => {
-            // console.log("TOKEN", res)
             if (res.status === 200) {
-              // 로그인 스테이트 true로 변경
               this.props.handleIsloginState();
               localStorage.setItem('cookie', res.data.token);
-              console.log('local storage: ', localStorage.getItem('cookie'))
-              // isLogin state가 true이면 /main으로 가도록 리디렉션
-            } else if (res.status === 401) {
-              alert('Invaild user !');
-              console.log('Error 401');
             }
           })
           .catch(err => {
@@ -50,17 +40,15 @@ class LoginInfo extends Component {
       }
     });
   };
-  // 인풋값 매소드
+
   handleInputValue = key => e => {
     this.setState({ [key]: e.target.value });
   };
-  // 얼러트 매소드
+
   onClose = e => {
     console.log(e, 'I was closed.');
   };
   render() {
-    console.log(this.props.isLogin);
-
     const { getFieldDecorator } = this.props.form;
     if (!this.props.isLogin) {
       return (
