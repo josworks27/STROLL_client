@@ -26,7 +26,7 @@ export default class Map extends Component {
     //마커 만들기
     var marker;
     var trails = this.props.traillist;
-    console.log('trails in map', this.props.traillist); //전체보기 했을떄 빈 배열 뜸 
+    console.log('trails in map', this.props.traillist); //전체보기 했을떄 빈 배열 뜸
 
     var imageSrc =
         'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png',
@@ -62,10 +62,6 @@ export default class Map extends Component {
   }
   render() {
     console.log('Map.js 렌더링');
-    return (
-      <div id="id_mapwrapper">
-        <div id="id_everyTrails"></div>
-      </div>
-    );
+    return <div id="id_everyTrails"></div>;
   }
 }
