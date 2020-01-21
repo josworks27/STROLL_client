@@ -17,16 +17,16 @@
   
 ## Usage
 
-### Sign up  
+- Sign up  
   If you want to use STROLL. you need to sign up first.  
   You can simply sign up using email.
   
   
-### Sign in  
+- Sign in  
   When membership is complete, you can log in and you can use the STROLL.
   
   
-### STROLL Main  
+- STROLL Main  
   You can Find all the walking trails around you in main page.  
   and you can choose walking trails theme  
   We basically support four themes.
@@ -35,11 +35,11 @@
   - Night view
   - beach view
 
-### Add walking trails  
+- Add walking trails  
   You can add a walking trails.  
   Take five dots, enter the walking trails information, and press the button.  
   That's it! now you can find the walking trails you added.
   
   
-  ###
-# enjoy your stroll with STROLL !
+  #
+**enjoy your stroll with STROLL !
