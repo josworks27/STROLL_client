@@ -14,12 +14,16 @@ import CommentList from './CommentList';
 import axios from 'axios';
 const { Header, Footer, Sider, Content } = Layout;
 const { TextArea } = Input;
+const NGROK_URL = require('../../ngrokurl');
 
 class Info_Trail extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { newComment: null };
+    this.state = {
+      commentList: [],
+      newComment: null
+    };
   }
   handleInputValue(val) {
     this.setState({ newComment: val });
@@ -38,12 +42,18 @@ class Info_Trail extends Component {
         };
         axios
           .post(
-            `http://ba4625d3.ngrok.io/trails/${tag}/:${trailid}/comment`,
+            `${NGROK_URL}/trails/${tag}/${trailid}/comment`,
             commentData,
           )
           .then(res => {
             if (res.status === 200) {
               console.log('코멘트 포스팅 성공');
+              this.setState({
+                commentList : this.state.commentList.concat(res.data.comment)
+              })
+            }
+            else{
+              console.log('????????')
             }
           })
           .catch(err => {
@@ -55,6 +65,8 @@ class Info_Trail extends Component {
   };
   render() {
     const { getFieldDecorator } = this.props.form;
+    // const rateList = this.props.
+    const { commentList } = this.state;
     return (
       <Col span={12} id="id_trailinfo_info_trail">
         <Layout>
@@ -118,7 +130,7 @@ class Info_Trail extends Component {
 
             <CommentList
               // comments={this.props.currentT[0].comments}
-              comments={this.props.fakedata[0].comments}
+              comments={commentList}
             ></CommentList>
           </Footer>
         </Layout>

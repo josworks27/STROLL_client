@@ -5,6 +5,7 @@ import './SignUpInfo.css';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Input, Tooltip, Icon, Button } from 'antd';
+const NGROK_URL = require('../../ngrokurl');
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -35,7 +36,7 @@ class SignUpInfo extends React.Component {
         console.log('Received values of form: ', values);
 
         axios
-          .post('http://ba4625d3.ngrok.io/signup', signUpData)
+          .post(`${NGROK_URL}/signup`, signUpData)
           .then(res => {
             console.log(res.data);
             if (res.status === 201) {

@@ -5,6 +5,7 @@ import { Button, Layout } from 'antd';
 import '../component/Main/mypage.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+const NGROK_URL = require('../ngrokurl');
 
 axios.defaults.withCredentials = true;
 
@@ -24,7 +25,7 @@ class mypage_page extends Component {
   }
   componentDidMount() {
     axios
-      .get(`http://ba4625d3.ngrok.io/trails`, {
+      .get(`${NGROK_URL}/trails`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.token}`,
@@ -36,13 +37,6 @@ class mypage_page extends Component {
           this.setState({
             wholetrails: this.state.wholetrails.concat(res.data.trails),
           });
-          // setTimeout(()=>{
-          //   console.log('trails after setTimeout: ', res.data.trails);
-          //   this.setState({
-          //     isAfterAdded: true,
-          //     wholetrails: this.state.wholetrails.concat(res.data.trails),
-          //   });
-          // }, 1000)
         }
       })
       .catch(err => {

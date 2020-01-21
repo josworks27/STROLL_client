@@ -18,9 +18,11 @@ class Info_Map extends Component {
     };
   }
   componentDidMount() {
-    console.log('&&&&&&&&&&&&&&&', this.props.currentT[0])
-    var location = this.props.currentT[0].trail.location.map(el => JSON.parse(el));
-    
+    console.log('&&&&&&&&&&&&&&&', this.props.currentT[0]);
+    var location = this.props.currentT[0].trail.location.map(el =>
+      JSON.parse(el),
+    );
+
     var container = document.getElementById('id_trailinfo_map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
@@ -63,7 +65,7 @@ class Info_Map extends Component {
   }
   render() {
     let state = this.state;
-
+    console.log('Current data: ', this.props.currentT[0]);
     return (
       <Col span={12} id="id_trailinfo_info_map">
         <Layout>
@@ -76,7 +78,11 @@ class Info_Map extends Component {
             className="cl_trailinfo_content"
             id="id_trailinfo_map"
           ></Content>
-          {this.props.fakedata[0].image.map((el, n) => {
+          <Photozone
+            className="cl_contents_in_TrailInfoPage_InfoMap"
+            images={this.props.currentT[0].trail.image}
+          ></Photozone>
+          {/* {this.props.fakedata[0].image.map((el, n) => {
             return (
               <Photozone
                 className="cl_contents_in_TrailInfoPage_InfoMap"
@@ -84,7 +90,7 @@ class Info_Map extends Component {
                 images={el}
               ></Photozone>
             );
-          })}
+          })} */}
         </Layout>
       </Col>
     );

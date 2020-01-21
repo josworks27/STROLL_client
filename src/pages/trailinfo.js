@@ -6,8 +6,7 @@ import fakedata from '../component/TrailInfo/fakedata';
 import axios from 'axios';
 import { Row } from 'antd';
 import '../component/TrailInfo/style.css';
-
-
+const NGROK_URL = require('../ngrokurl');
 
 //     /trails/:tag/:trailId
 
@@ -18,12 +17,11 @@ class trailinfo_page extends Component {
     this.state = { currentT: [] };
   }
   componentDidMount() {
-    
     var trailInfo = localStorage.currentTrail;
     if (!trailInfo) {
       axios
         .get(
-          `http://ba4625d3.ngrok.io/trails/${this.props.currentTrail.category.tag}/${this.props.currentTrail.id}`,
+          `${NGROK_URL}/trails/${this.props.currentTrail.category.tag}/${this.props.currentTrail.id}`,
 
           {
             headers: {
@@ -56,8 +54,7 @@ class trailinfo_page extends Component {
 
       axios
         .get(
-          `http://ba4625d3.ngrok.io/trails/${parseTrailInfo.category.tag}/${parseTrailInfo.id}`,
-
+          `${NGROK_URL}/trails/${parseTrailInfo.category.tag}/${parseTrailInfo.id}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -89,11 +86,12 @@ class trailinfo_page extends Component {
     } else {
       return (
         <Row id="id_trailinfo_main_row">
-          <Info_Map fakedata={fakedata} location={location} currentT={currentT}></Info_Map>
-          <Info_Trail
+          <Info_Map
             fakedata={fakedata}
+            location={location}
             currentT={currentT}
-          ></Info_Trail>
+          ></Info_Map>
+          <Info_Trail fakedata={fakedata} currentT={currentT}></Info_Trail>
         </Row>
       );
     }

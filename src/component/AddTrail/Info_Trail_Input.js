@@ -45,7 +45,7 @@ import { Col, Layout } from 'antd';
 import { Select } from 'antd';
 import axios from 'axios';
 import FormData from 'form-data';
-
+const NGROK_URL = require('../../ngrokurl');
 axios.defaults.withCredentials = true;
 
 const { Option } = Select;
@@ -104,7 +104,8 @@ class Info_Trail_Input extends Component {
         console.log('axios 요청 직전 구문', formData);
         // postDataWithoutData(submitData).bind(this);
         axios
-          .post('http://ba4625d3.ngrok.io/trails', formData, {
+        .post(`${NGROK_URL}/trails`, formData, {
+          // .post('http://ba4625d3.ngrok.io/trails', formData, {
             headers: {
               'content-type': 'multipart/form-data',
               // accept: 'application/json',
