@@ -1,15 +1,13 @@
 
-
-<center><img width="319" alt="스크린샷 2020-01-22 오전 1 32 23" src="https://user-images.githubusercontent.com/54742523/72823532-34c18180-3cb7-11ea-944d-c7a32e179511.png"></center>
-
-
-**Enjoy your stroll with STROLL !**  
-
+<p align="center"> 
+  <img width="319" alt="스크린샷 2020-01-22 오전 1 32 23" src="https://user-images.githubusercontent.com/54742523/72823532-34c18180-3cb7-11ea-944d-c7a32e179511.png">
   
   
   
   
   
+  
+ 
   
 
 ## Contents
@@ -46,3 +44,7 @@
   You can add a walking trails.  
   Take five dots, enter the walking trails information, and press the button.  
   That's it! now you can find the walking trails you added.
+  
+  # 
+  
+  **enjoy your stroll with STROLL !**  
