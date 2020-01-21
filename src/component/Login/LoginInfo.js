@@ -4,8 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { Form, Icon, Input, Button, Alert } from 'antd';
 import 'antd/dist/antd.css';
 import './LoginInfo.css';
-
 import axios from 'axios';
+const NGROK_URL = require('../../ngrokurl');
 
 class LoginInfo extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class LoginInfo extends Component {
         };
 
         axios
-          .post(`http://2c815448.ngrok.io/signin`, loginData)
+        .post(`${NGROK_URL}/signin`, loginData)
           .then(res => {
             if (res.status === 200) {
               this.props.handleIsloginState();

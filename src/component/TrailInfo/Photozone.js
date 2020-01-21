@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.css';
 import { Layout } from 'antd';
 const { Footer } = Layout;
-// import { Row, Col } from 'antd';
+const NGROK_URL = require('../../ngrokurl');
 
 class Photozone extends Component {
   constructor(props) {
@@ -10,9 +10,10 @@ class Photozone extends Component {
     this.state = {};
   }
   render() {
+    console.log('######################', NGROK_URL+'/'+this.props.images.filePath)
     return (
       <Footer className="cl_trailinfo_footer" id="id_trailinfo_photozone">
-        <img src={this.props.images} />
+        <img src={NGROK_URL+'/'+this.props.images.filePath} alt=''/>
       </Footer>
     );
   }

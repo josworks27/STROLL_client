@@ -5,6 +5,7 @@ import { Button, Layout } from 'antd';
 import '../component/Main/mypage.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+const NGROK_URL = require('../ngrokurl');
 
 axios.defaults.withCredentials = true;
 
@@ -18,10 +19,13 @@ class mypage_page extends Component {
       isLogin: this.props.isLogin,
     };
   }
+  // componentDidUpdate(prevProps, prevState, snapshot)
+  componentDidUpdate(){
 
+  }
   componentDidMount() {
     axios
-      .get(`http://2c815448.ngrok.io/trails`, {
+      .get(`${NGROK_URL}/trails`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.token}`,
@@ -29,7 +33,7 @@ class mypage_page extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          console.log('trails in mypage.js axios method', res.data.trails)
+          console.log('trails in mypage.js axios method', res.data.trails);
           this.setState({
             wholetrails: this.state.wholetrails.concat(res.data.trails),
           });
@@ -43,7 +47,8 @@ class mypage_page extends Component {
 
   render() {
     const { location, wholetrails } = this.state;
-    console.log('trails in mypage.js: ', this.props.filteredTrailList)//여기 고쳐야함
+
+    console.log('trails in mypage.js: ', this.props.filteredTrailList); //여기 고쳐야함
     return (
       <Layout className="cl_mypage">
         <ThemeList
