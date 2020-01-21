@@ -10,10 +10,9 @@ class Photozone extends Component {
     this.state = {};
   }
   render() {
-    console.log('######################', NGROK_URL+'/'+this.props.images.filePath)
     return (
       <Footer className="cl_trailinfo_footer" id="id_trailinfo_photozone">
-        <img src={NGROK_URL+'/'+this.props.images.filePath} alt=''/>
+        <img src={NGROK_URL+'/'+this.props.images.fileName} alt=''/>
       </Footer>
     );
   }
