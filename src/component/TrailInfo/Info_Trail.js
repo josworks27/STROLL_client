@@ -20,7 +20,7 @@ class Info_Trail extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      commentList: JSON.parse(localStorage.currentTrail).comments, ///%^%%^%^
+      commentList: JSON.parse(localStorage.currentTrail).comments,
       newComment: null,
     };
   }
@@ -108,11 +108,7 @@ class Info_Trail extends Component {
                 </Button>
               </Form.Item>
             </Form>
-
-            <CommentList
-              comments={this.state.commentList}
-              // comments={this.props.currentT[0].comments}
-            ></CommentList>
+            <CommentList comments={this.state.commentList}></CommentList>
           </Footer>
         </Layout>
         <Link to="/main">

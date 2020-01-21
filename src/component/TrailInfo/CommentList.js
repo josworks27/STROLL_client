@@ -7,12 +7,10 @@ class CommentList extends React.Component {
     this.state = {};
   }
   render() {
-    let comments = this.props.comments;
-    console.log('COMMENTS', comments)
     return (
       <div id="id_trailinfo_commentlist">
-        {comments.map((element, i) => (
-          <CommentListElement key={i} item={element}>
+        {this.props.comments.map((item, i) => (
+          <CommentListElement key={i} item={item}>
             comment
           </CommentListElement>
         ))}
