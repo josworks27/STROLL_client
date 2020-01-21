@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Form, Icon, Input, Button, Alert } from 'antd';
+import { Form, Icon, Input, Button, message } from 'antd';
 import 'antd/dist/antd.css';
 import './LoginInfo.css';
 import axios from 'axios';
@@ -26,7 +26,7 @@ class LoginInfo extends Component {
         };
 
         axios
-        .post(`${NGROK_URL}/signin`, loginData)
+          .post(`${NGROK_URL}/signin`, loginData)
           .then(res => {
             if (res.status === 200) {
               this.props.handleIsloginState();
@@ -34,7 +34,7 @@ class LoginInfo extends Component {
             }
           })
           .catch(err => {
-            alert('Invaild user !');
+            this.error();
             throw err;
           });
       }
@@ -48,7 +48,11 @@ class LoginInfo extends Component {
   onClose = e => {
     console.log(e, 'I was closed.');
   };
+  error = () => {
+    message.error('Incorrct email or password !');
+  };
   render() {
+    console.log(this.props.isLogin);
     const { getFieldDecorator } = this.props.form;
     if (!this.props.isLogin) {
       return (
@@ -94,12 +98,6 @@ class LoginInfo extends Component {
               >
                 Log in
               </Button>
-              <Alert
-                message="Invaild user !"
-                type="error"
-                closable
-                onClose={this.onClose}
-              />
               Or
               <Link to="/signup"> register now!</Link>
             </Form.Item>
