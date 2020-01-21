@@ -43,7 +43,8 @@ class Info_Trail extends Component {
           .post(`${NGROK_URL}/trails/${tag}/${trailid}/comment`, commentData)
           .then(res => {
             if (res.status === 200) {
-              console.log('코멘트 포스팅 성공');
+              console.log('코멘트 포스팅 성공', res.data);
+              
               this.setState({
                 commentList: this.state.commentList.concat(res.data),
               });
@@ -107,7 +108,6 @@ class Info_Trail extends Component {
                 </Button>
               </Form.Item>
             </Form>
-
             <CommentList comments={this.state.commentList}></CommentList>
           </Footer>
         </Layout>
