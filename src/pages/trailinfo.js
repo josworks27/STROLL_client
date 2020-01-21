@@ -17,12 +17,14 @@ class trailinfo_page extends Component {
     this.state = { currentT: [] };
   }
   componentDidMount() {
+
     var trailInfo = localStorage.currentTrail;
+    // 로컬스토리지에 저장된 산책로 정보가 없을 때 => 처음 이 페이지로 넘어왔을 때
     if (!trailInfo) {
+      // get 요청을 보낸다
       axios
         .get(
           `${NGROK_URL}/trails/${this.props.currentTrail.category.tag}/${this.props.currentTrail.id}`,
-
           {
             headers: {
               'Content-Type': 'application/json',
@@ -32,26 +34,26 @@ class trailinfo_page extends Component {
         )
         .then(res => {
           if (res.status === 200) {
-            console.log(1099999999999999, res.data);
+            
             this.setState({
               currentT: this.state.currentT.concat(res.data),
             });
+            localStorage.currentTrail = JSON.stringify(res.data);
           }
         })
         .catch(err => {
           console.log('Invaild token');
           throw err;
         });
-      localStorage.currentTrail = JSON.stringify(this.props.currentTrail);
+      
     } else {
       var parseTrailInfo;
       if (!this.props.currentTrail) {
-        parseTrailInfo = JSON.parse(trailInfo);
-      } else {
-        localStorage.currentTrail = JSON.stringify(this.props.currentTrail);
+        
+        parseTrailInfo = JSON.parse(trailInfo).trail;
+      } else{
         parseTrailInfo = this.props.currentTrail;
       }
-
       axios
         .get(
           `${NGROK_URL}/trails/${parseTrailInfo.category.tag}/${parseTrailInfo.id}`,
@@ -64,10 +66,10 @@ class trailinfo_page extends Component {
         )
         .then(res => {
           if (res.status === 200) {
-            console.log('AAAAAAAAAAAAAAAAAAAAA', res);
             this.setState({
               currentT: this.state.currentT.concat(res.data),
             });
+            localStorage.currentTrail = JSON.stringify(res.data);
           }
         })
         .catch(err => {
