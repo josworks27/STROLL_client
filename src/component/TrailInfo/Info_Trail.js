@@ -1,3 +1,10 @@
+//  Comment Post : /trails/:tag/:trailid/comment
+//  Comment Post Body
+//      body:{
+//        "trailId": 2,
+//        "comment": "걍 그래요",
+//        "rating": 3
+//      }
 import React, { Component } from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
@@ -19,15 +26,30 @@ class Info_Trail extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
+    var trailid = this.props.currentT[0].trail.id;
+    var tag = this.props.currentT[0].trail.category.tag;
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        // this.setState({
-        // });
-        // let commentData = JSON.stringify({ comment: this.state.newComment });
-        // axios.post('/comment', commentData, {
-        //
-        // });
+        let commentData = {
+          trailId: trailid,
+          comment: values.comment,
+          rating: values.rate,
+        };
+        axios
+          .post(
+            `http://ba4625d3.ngrok.io/trails/${tag}/:${trailid}/comment`,
+            commentData,
+          )
+          .then(res => {
+            if (res.status === 200) {
+              console.log('코멘트 포스팅 성공');
+            }
+          })
+          .catch(err => {
+            console.log('코멘트 포스팅 실패', err);
+          });
+        
       }
     });
   };
@@ -37,10 +59,13 @@ class Info_Trail extends Component {
       <Col span={12} id="id_trailinfo_info_trail">
         <Layout>
           <Header className="cl_trailinfo_header">
+            REVIEW
             {/* {this.props.fakedata[0].title} */}
             {/* {this.props.trail.title} */}
           </Header>
-          <RecentReview review={this.props.fakedata[0].review}></RecentReview>
+          <RecentReview
+            review={this.props.currentT[0].trail.review}
+          ></RecentReview>
           <Footer className="cl_trailinfo_footer" id="id_trialinfo_commentBox">
             <Form
               onSubmit={e => {
@@ -65,7 +90,6 @@ class Info_Trail extends Component {
                   />,
                 )}
               </Form.Item>
-
               <Form.Item>
                 {getFieldDecorator('rate', {
                   rules: [
@@ -93,6 +117,7 @@ class Info_Trail extends Component {
             </Form>
 
             <CommentList
+              // comments={this.props.currentT[0].comments}
               comments={this.props.fakedata[0].comments}
             ></CommentList>
           </Footer>

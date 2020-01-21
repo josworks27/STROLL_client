@@ -35,7 +35,7 @@ class SignUpInfo extends React.Component {
         console.log('Received values of form: ', values);
 
         axios
-          .post('http://2c815448.ngrok.io/signup', signUpData)
+          .post('http://ba4625d3.ngrok.io/signup', signUpData)
           .then(res => {
             console.log(res.data);
             if (res.status === 201) {

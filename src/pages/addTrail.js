@@ -83,7 +83,7 @@ class addTrail_page extends Component {
           currentTheme={currentTheme}
           handleLastMarkerAdded={this.handleLastMarkerAdded}
         ></Info_Map>
-        <Info_Trail markerList={markerList}></Info_Trail>
+        <Info_Trail markerList={markerList} handleSelectThemeBtn={this.props.handleSelectThemeBtn}></Info_Trail>
       </Row>
     );
   }

@@ -104,7 +104,7 @@ class Info_Trail_Input extends Component {
         console.log('axios 요청 직전 구문', formData);
         // postDataWithoutData(submitData).bind(this);
         axios
-          .post('http://2c815448.ngrok.io/trails', formData, {
+          .post('http://ba4625d3.ngrok.io/trails', formData, {
             headers: {
               'content-type': 'multipart/form-data',
               // accept: 'application/json',
@@ -115,6 +115,7 @@ class Info_Trail_Input extends Component {
             if (res.status === 200) {
               console.log('전체 파일 전송입니다. ');
               console.log('Trail information is uploaded', res.data);
+              this.props.handleSelectThemeBtn(null);
               this.setState({
                 isSubmitted: true,
               });
@@ -324,6 +325,7 @@ class Info_Trail_Input extends Component {
         </Col>
       );
     } else {
+      // return setTimeout(() => <Redirect to="/main"> </Redirect>, 1000)
       return <Redirect to="/main"> </Redirect>;
     }
   }

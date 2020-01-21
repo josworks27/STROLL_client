@@ -18,10 +18,13 @@ class mypage_page extends Component {
       isLogin: this.props.isLogin,
     };
   }
+  // componentDidUpdate(prevProps, prevState, snapshot)
+  componentDidUpdate(){
 
+  }
   componentDidMount() {
     axios
-      .get(`http://2c815448.ngrok.io/trails`, {
+      .get(`http://ba4625d3.ngrok.io/trails`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.token}`,
@@ -29,10 +32,17 @@ class mypage_page extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          console.log('trails in mypage.js axios method', res.data.trails)
+          console.log('trails in mypage.js axios method', res.data.trails);
           this.setState({
             wholetrails: this.state.wholetrails.concat(res.data.trails),
           });
+          // setTimeout(()=>{
+          //   console.log('trails after setTimeout: ', res.data.trails);
+          //   this.setState({
+          //     isAfterAdded: true,
+          //     wholetrails: this.state.wholetrails.concat(res.data.trails),
+          //   });
+          // }, 1000)
         }
       })
       .catch(err => {
@@ -43,7 +53,8 @@ class mypage_page extends Component {
 
   render() {
     const { location, wholetrails } = this.state;
-    console.log('trails in mypage.js: ', this.props.filteredTrailList)//여기 고쳐야함
+
+    console.log('trails in mypage.js: ', this.props.filteredTrailList); //여기 고쳐야함
     return (
       <Layout className="cl_mypage">
         <ThemeList

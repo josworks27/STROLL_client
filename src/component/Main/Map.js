@@ -18,7 +18,7 @@ export default class Map extends Component {
         this.props.location[0],
         this.props.location[1],
       ), //지도의 중심좌표.
-      level: 7, //지도의 레벨(확대, 축소 정도)
+      level: 5, //지도의 레벨(확대, 축소 정도)
     };
 
     var map = new window.daum.maps.Map(container, options); //지도 생성 및 객체 리턴
