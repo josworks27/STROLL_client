@@ -30,10 +30,10 @@ export default class TrailList extends Component {
         <Layout>
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '20px 0' }}>
-              <Breadcrumb.Item className="cl_trailTag">{cT}</Breadcrumb.Item>
+              <Breadcrumb.Item className="cl_trailTag ">{cT}</Breadcrumb.Item>
             </Breadcrumb>
             <Row id="id_Mypage_main_row">
-              <Col span={8} className="cl_Mypage_main_content">
+              <Col span={8} className="cl_Mypage_main_content ">
                 {traillist.map((trail, index) => (
                   <TrailListElement
                     key={'trail' + trail + index}
@@ -42,7 +42,8 @@ export default class TrailList extends Component {
                   />
                 ))}
               </Col>
-              <Col span={16} className="cl_Mypage_main_content">
+
+              <Col span={16} className="cl_Mypage_main_map">
                 <Map location={location} traillist={traillist}></Map>
               </Col>
             </Row>

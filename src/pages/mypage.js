@@ -20,9 +20,7 @@ class mypage_page extends Component {
     };
   }
   // componentDidUpdate(prevProps, prevState, snapshot)
-  componentDidUpdate(){
-
-  }
+  componentDidUpdate() {}
   componentDidMount() {
     axios
       .get(`${NGROK_URL}/trails`, {
@@ -51,25 +49,28 @@ class mypage_page extends Component {
     console.log('trails in mypage.js: ', this.props.filteredTrailList); //여기 고쳐야함
     return (
       <Layout className="cl_mypage">
+        <div className="cl_mypage_header"> STROLL </div>
         <ThemeList
           currentTheme={this.props.currentTheme}
           wholetrails={wholetrails}
           handleSelectThemeBtn={this.props.handleSelectThemeBtn}
         ></ThemeList>
         <Layout>
-          <Button
-            type="primary"
-            className="cl_addTrailBtn"
-            onClick={() => this.props.handleSelectThemeBtn(null)}
-          >
-            모든 trail 보기
-          </Button>
-          <Button type="primary" className="cl_addTrailBtn">
-            <Link to="/addtrail">Add Trail</Link>
-          </Button>
-          <Button type="primary" className="cl_addTrailBtn">
-            <Link to="/">로그아웃</Link>
-          </Button>
+          <div className="cl_temperary">
+            <Button
+              type="primary"
+              className="cl_addTrailBtn"
+              onClick={() => this.props.handleSelectThemeBtn(null)}
+            >
+              모든 trail 보기
+            </Button>
+            <Button type="primary" className="cl_addTrailBtn">
+              <Link to="/addtrail">Add Trail</Link>
+            </Button>
+            <Button type="primary" className="cl_addTrailBtn">
+              <Link to="/">로그아웃</Link>
+            </Button>
+          </div>
 
           <TrailList
             location={location}

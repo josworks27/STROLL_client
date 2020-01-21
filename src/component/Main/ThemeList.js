@@ -5,7 +5,6 @@ import { Layout } from 'antd';
 
 const { Sider } = Layout;
 
-
 export default class ThemeList extends Component {
   constructor(props) {
     super(props);
@@ -43,17 +42,18 @@ export default class ThemeList extends Component {
           mode="inline"
           className="cl_ThemeList"
         >
-          <div className="cl_ThemeList_category">#Tag</div>
-          {tags.map(el => {
-            return (
-              <ThemeListElement
-                className="cl_tag"
-                key={'theme' + el}
-                theme={el}
-                handleSelectThemeBtn={this.props.handleSelectThemeBtn}
-              />
-            );
-          })}
+          <div className="cl_ThemeList_category">
+            #Tag
+            {tags.map(el => {
+              return (
+                <ThemeListElement
+                  key={'theme' + el}
+                  theme={el}
+                  handleSelectThemeBtn={this.props.handleSelectThemeBtn}
+                />
+              );
+            })}
+          </div>
         </Menu>
       </Sider>
     );

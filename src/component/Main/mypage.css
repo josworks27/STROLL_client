@@ -5,45 +5,33 @@
   margin-top: 64px;
 }
 .cl_ThemeList {
-  height: 90%;
+  height: 100%;
   width: 100%;
   background-color: rgb(138, 188, 48);
 }
 .cl_tag {
-  position: relative;
+  top: 13%;
   color: white;
-  height: 100px;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: space-evenly;
+  height: 13%;
   font-size: x-large;
-  font-weight: 700;
-  top: 124px;
+  position: relative;
 }
-.cl_tag:hover{
+.cl_tag:hover {
   cursor: pointer;
   opacity: 0.5;
   background-color: rgb(172, 199, 121);
 }
 .cl_ThemeList_category {
-  margin-bottom: 25%;
+  margin-left: 8%;
+  height: 80%;
   font-style: italic;
   color: white;
-  position: relative;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: space-evenly;
+  position: absolute;
   font-size: xx-large;
   font-weight: 700;
-  top: 15%;
+  top: 16%;
 }
-.cl_trailTag {
-  font-weight: 700;
-  color: rgb(138, 188, 48);
-  font-size: xx-large;
-}
+
 .cl_trails {
   height: 460px;
   border-right: 3px solid rgb(138, 188, 48);
@@ -54,55 +42,44 @@
   font-weight: 700;
   flex-direction: column;
 }
-#id_mapwrapper{
-  margin: auto;
 
+#id_everyTrails {
   width: 100%;
   height: 100%;
-}
-#id_everyTrails {
-  margin: auto;
-  margin-top:5%;
-  width: 80%;
-  height: 70%;
-  border: 1px solid rgb(138, 188, 48);
+  border: 3px solid rgb(138, 188, 48);
 }
 .cl_addTrailBtn {
   float: right;
-  width:10%;
+  width: 10%;
   color: white;
-  /* border: rgb(62, 95, 0) solid 5px; */
   margin-top: 1%;
-/*   left: 92%;
-  display: flex;
-  position: absolute;
-  top: 15%;
-  font-weight: 500;
-  font-size: larger; */
 }
 
-#id_mypage_header {
+.cl_mypage_header {
+  padding-left: 0.5%;
+  font-size: -webkit-xxx-large;
+  display: flex;
+  justify-content: left;
+  color: rgb(138, 188, 48);
+  font-weight: 800;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
   background-color: white;
+  height: 10%;
 }
 #id_mypage_sider {
   background-color: rgb(138, 188, 48);
 }
 
-.cl_Mypage_main_content{
-  /* border: 3px solid rgb(138, 188, 48); */
-
-  height: 100%;
-}
 #id_Mypage_main_row {
-  height: 80%;
+  height: 78%;
 }
-#id_Mypage_traillistElement{
-  /* color: white; */
-  padding: 5%;
-
+#id_Mypage_traillistElement {
+  text-align: center;
   width: 90%;
   height: 10%;
-  margin: 5%;
+  margin-bottom: 5%;
   background-color: rgb(138, 188, 48);
 }
 .cl_trail {
@@ -130,3 +107,33 @@
   height: 72px;
   width: 200px;
 }
+.cl_temperary {
+  left: 77%;
+  top: 2%;
+  position: absolute;
+  z-index: 2;
+}
+
+/* ! Mypage Contents */
+.cl_trailTag {
+  left: 3%;
+  position: relative;
+  font-weight: 700;
+  color: rgb(138, 188, 48);
+  font-size: xx-large;
+}
+.cl_Mypage_main_content {
+  left: 3%;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 80%;
+}
+.cl_Mypage_main_map {
+  height: 77%;
+  width: 48%;
+  left: 7%;
+}
+.cl_Mypage_TrailList_border {
+  border: 1px solid;
+}
+/* ! Mypage Contents */
