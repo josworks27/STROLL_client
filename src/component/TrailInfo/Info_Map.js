@@ -18,7 +18,6 @@ class Info_Map extends Component {
     };
   }
   componentDidMount() {
-    console.log('&&&&&&&&&&&&&&&', this.props.currentT[0]);
     var location = this.props.currentT[0].trail.location.map(el =>
       JSON.parse(el),
     );
@@ -64,15 +63,11 @@ class Info_Map extends Component {
     polyline.setMap(map);
   }
   render() {
-    let state = this.state;
-    console.log('Current data: ', this.props.currentT[0]);
     return (
       <Col span={12} id="id_trailinfo_info_map">
         <Layout>
           <Header className="cl_trailinfo_header">
             {this.props.currentT[0].trail.title}
-            {/* <button> 홈으로 </button>
-            <button> 이 주변의 모든 산책로는? </button> */}
           </Header>
           <Content
             className="cl_trailinfo_content"
@@ -82,15 +77,6 @@ class Info_Map extends Component {
             className="cl_contents_in_TrailInfoPage_InfoMap"
             images={this.props.currentT[0].trail.image}
           ></Photozone>
-          {/* {this.props.fakedata[0].image.map((el, n) => {
-            return (
-              <Photozone
-                className="cl_contents_in_TrailInfoPage_InfoMap"
-                key={n}
-                images={el}
-              ></Photozone>
-            );
-          })} */}
         </Layout>
       </Col>
     );

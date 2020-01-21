@@ -12,8 +12,7 @@ import RecentReview from './RecentReview.js';
 import { Col, Layout, Button, Form, Rate, Input } from 'antd';
 import CommentList from './CommentList';
 import axios from 'axios';
-const { Header, Footer, Sider, Content } = Layout;
-const { TextArea } = Input;
+const { Header, Footer } = Layout;
 const NGROK_URL = require('../../ngrokurl');
 
 class Info_Trail extends Component {
@@ -66,14 +65,11 @@ class Info_Trail extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     // const rateList = this.props.
-    const { commentList } = this.state;
     return (
       <Col span={12} id="id_trailinfo_info_trail">
         <Layout>
           <Header className="cl_trailinfo_header">
             REVIEW
-            {/* {this.props.fakedata[0].title} */}
-            {/* {this.props.trail.title} */}
           </Header>
           <RecentReview
             review={this.props.currentT[0].trail.review}
@@ -111,15 +107,6 @@ class Info_Trail extends Component {
                     },
                   ],
                 })(<Rate />)}
-
-                {/* {getFieldDecorator('rate', {
-                  rules: [
-                    {
-                      required: true,
-                      message: 'Please input your Trail name!',
-                    }
-                  ],
-                })(<Rate />)} */}
               </Form.Item>
               <Form.Item>
                 <Button type="primary" htmlType="submit">
@@ -129,8 +116,7 @@ class Info_Trail extends Component {
             </Form>
 
             <CommentList
-              // comments={this.props.currentT[0].comments}
-              comments={commentList}
+              comments={this.props.currentT[0].comments}
             ></CommentList>
           </Footer>
         </Layout>
