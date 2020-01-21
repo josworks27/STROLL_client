@@ -6,6 +6,9 @@ import fakedata from '../component/TrailInfo/fakedata';
 import axios from 'axios';
 import { Row } from 'antd';
 import '../component/TrailInfo/style.css';
+const NGROK_URL = require('../ngrokurl');
+
+//     /trails/:tag/:trailId
 
 class trailinfo_page extends Component {
   constructor(props) {
@@ -18,7 +21,7 @@ class trailinfo_page extends Component {
     if (!trailInfo) {
       axios
         .get(
-          `http://2c815448.ngrok.io/trails/${this.props.currentTrail.category.tag}/${this.props.currentTrail.id}`,
+          `${NGROK_URL}/trails/${this.props.currentTrail.category.tag}/${this.props.currentTrail.id}`,
 
           {
             headers: {
@@ -29,7 +32,7 @@ class trailinfo_page extends Component {
         )
         .then(res => {
           if (res.status === 200) {
-            console.log(res);
+            console.log(1099999999999999, res.data);
             this.setState({
               currentT: this.state.currentT.concat(res.data),
             });
@@ -51,8 +54,7 @@ class trailinfo_page extends Component {
 
       axios
         .get(
-          `http://2c815448.ngrok.io/trails/${parseTrailInfo.category.tag}/${parseTrailInfo.id}`,
-
+          `${NGROK_URL}/trails/${parseTrailInfo.category.tag}/${parseTrailInfo.id}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -62,7 +64,7 @@ class trailinfo_page extends Component {
         )
         .then(res => {
           if (res.status === 200) {
-            console.log(res);
+            console.log('AAAAAAAAAAAAAAAAAAAAA', res);
             this.setState({
               currentT: this.state.currentT.concat(res.data),
             });
@@ -79,17 +81,17 @@ class trailinfo_page extends Component {
     let { currentT } = this.state;
     let location = currentT.trail;
 
-    if (!this.state.currentT.length) {
+    if (!currentT.length) {
       return <div>wait for a sec..</div>;
     } else {
       return (
         <Row id="id_trailinfo_main_row">
-          <Info_Map fakedata={fakedata} location={location}></Info_Map>
-          <Info_Trail
+          <Info_Map
             fakedata={fakedata}
-            // trail={currentT[0].trail}
-            // comment={currentT[0].comment}
-          ></Info_Trail>
+            location={location}
+            currentT={currentT}
+          ></Info_Map>
+          <Info_Trail fakedata={fakedata} currentT={currentT}></Info_Trail>
         </Row>
       );
     }

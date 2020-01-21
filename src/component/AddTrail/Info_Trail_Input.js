@@ -45,7 +45,7 @@ import { Col, Layout } from 'antd';
 import { Select } from 'antd';
 import axios from 'axios';
 import FormData from 'form-data';
-
+const NGROK_URL = require('../../ngrokurl');
 axios.defaults.withCredentials = true;
 
 const { Option } = Select;
@@ -53,6 +53,7 @@ const { Content } = Layout;
 const { TextArea } = Input;
 const { Dragger } = Upload;
 const formData = new FormData();
+
 class Info_Trail_Input extends Component {
   constructor(props) {
     super(props);
@@ -79,9 +80,11 @@ class Info_Trail_Input extends Component {
   /////////////////////////////////////////////////
   handleSubmit = (e, markerList) => {
     e.preventDefault();
+
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        formData.append('newLocations', this.props.markerList);
+        console.log('@@@@@@@@@@@@@@@@@@@@@@@@', this.props.markerList);
+        formData.append('newLocations', JSON.stringify(this.props.markerList));
         formData.append('tag', values.category);
         formData.append('title', values.trailname);
         formData.append('review', values.review);
@@ -98,10 +101,11 @@ class Info_Trail_Input extends Component {
         // console.log(1111111, submitData);
 
         // 2. 전체 포스팅
-        console.log('axios 요청 직전 구문');
+        console.log('axios 요청 직전 구문', formData);
         // postDataWithoutData(submitData).bind(this);
         axios
-          .post('http://2c815448.ngrok.io/trails', formData, {
+        .post(`${NGROK_URL}/trails`, formData, {
+          // .post('http://ba4625d3.ngrok.io/trails', formData, {
             headers: {
               'content-type': 'multipart/form-data',
               // accept: 'application/json',
@@ -112,6 +116,7 @@ class Info_Trail_Input extends Component {
             if (res.status === 200) {
               console.log('전체 파일 전송입니다. ');
               console.log('Trail information is uploaded', res.data);
+              this.props.handleSelectThemeBtn(null);
               this.setState({
                 isSubmitted: true,
               });
@@ -126,6 +131,72 @@ class Info_Trail_Input extends Component {
       }
     });
   };
+  //////////////////////////////////////////////////////////////////////////////////////
+  // handleSubmit = (e, markerList) => {
+  //   e.preventDefault();
+  //   let flag = false;
+
+  //   function makeForm (){
+  //     if(!flag){
+  //       this.props.form.validateFields((err, values) => {
+  //         if (!err) {
+  //           flag=true;
+  //           console.log('@@@@@@@@@@@@@@@@@@@@@@@@', this.props.markerList)
+  //           formData.append('newLocations', JSON.stringify(this.props.markerList));
+  //           formData.append('tag', values.category);
+  //           formData.append('title', values.trailname);
+  //           formData.append('review', values.review);
+  //           let submitData = {
+  //             newLocations: this.props.markerList,
+  //             tag: values.category,
+  //             title: values.trailname,
+  //             review: values.review,
+  //             image: values.image,
+  //           };
+
+  //           // // 1. 이미지 axios 포스팅
+  //           // postDataWithData(submitData);
+  //           // console.log(1111111, submitData);
+
+  //           // 2. 전체 포스팅
+  //           console.log('axios 요청 직전 구문', formData);
+  //           // postDataWithoutData(submitData).bind(this);
+  //           axios
+  //             .post('http://2c815448.ngrok.io/trails', formData, {
+  //               headers: {
+  //                 'content-type': 'multipart/form-data',
+  //                 // accept: 'application/json',
+  //                 Authorization: `Bearer ${localStorage.token}`,
+  //               },
+  //             })
+  //             .then(res => {
+  //               if (res.status === 200) {
+  //                 console.log('전체 파일 전송입니다. ');
+  //                 console.log('Trail information is uploaded', res.data);
+  //                 this.setState({
+  //                   isSubmitted: true,
+  //                 });
+  //               } else {
+  //                 console.log('??????????');
+  //               }
+  //             })
+  //             .catch(err => {
+  //               console.log('여기 에러요', err);
+  //             });
+  //           /****************************전체 포스팅 */
+  //         }
+  //         setTimeout(()=>{
+
+  //           flag = false;
+  //           console.log(flag);
+  //         },1000)
+  //       });
+
+  //     }
+  //   }
+  //   makeForm.bind(this);
+  // };
+  //////////////////////////////////////////////////////////////////////////////////////
   onChange(value) {
     console.log(`selected ${value}`);
   }
@@ -255,7 +326,8 @@ class Info_Trail_Input extends Component {
         </Col>
       );
     } else {
-      return <Redirect to="/trailinfo"> </Redirect>;
+      // return setTimeout(() => <Redirect to="/main"> </Redirect>, 1000)
+      return <Redirect to="/main"> </Redirect>;
     }
   }
 }

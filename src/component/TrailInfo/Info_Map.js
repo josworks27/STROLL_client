@@ -18,12 +18,16 @@ class Info_Map extends Component {
     };
   }
   componentDidMount() {
-    var location = this.props.fakedata[0].location;
+    console.log('&&&&&&&&&&&&&&&', this.props.currentT[0]);
+    var location = this.props.currentT[0].trail.location.map(el =>
+      JSON.parse(el),
+    );
+
     var container = document.getElementById('id_trailinfo_map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
-      center: new window.daum.maps.LatLng(this.state.Lat, this.state.Lng), //지도의 중심좌표.
-      level: 5, //지도의 레벨(확대, 축소 정도)
+      center: new window.daum.maps.LatLng(location[0][1], location[0][0]), //지도의 중심좌표.
+      level: 3, //지도의 레벨(확대, 축소 정도)
     };
 
     var map = new window.daum.maps.Map(container, options); //지도 생성 및 객체 리턴
@@ -35,16 +39,16 @@ class Info_Map extends Component {
         content: `<span class="dot${i} dot"></span>`,
         zIndex: 1,
       });
-      marker.setPosition(new kakao.maps.LatLng(location[i][0], location[i][1]));
+      marker.setPosition(new kakao.maps.LatLng(location[i][1], location[i][0]));
       marker.setMap(map);
     }
     // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
     var linePath = [
-      new kakao.maps.LatLng(location[0][0], location[0][1]),
-      new kakao.maps.LatLng(location[1][0], location[1][1]),
-      new kakao.maps.LatLng(location[2][0], location[2][1]),
-      new kakao.maps.LatLng(location[3][0], location[3][1]),
-      new kakao.maps.LatLng(location[4][0], location[4][1]),
+      new kakao.maps.LatLng(location[0][1], location[0][0]),
+      new kakao.maps.LatLng(location[1][1], location[1][0]),
+      new kakao.maps.LatLng(location[2][1], location[2][0]),
+      new kakao.maps.LatLng(location[3][1], location[3][0]),
+      new kakao.maps.LatLng(location[4][1], location[4][0]),
     ];
 
     // 지도에 표시할 선을 생성합니다
@@ -61,12 +65,12 @@ class Info_Map extends Component {
   }
   render() {
     let state = this.state;
-
+    console.log('Current data: ', this.props.currentT[0]);
     return (
       <Col span={12} id="id_trailinfo_info_map">
         <Layout>
           <Header className="cl_trailinfo_header">
-            Header
+            {this.props.currentT[0].trail.title}
             {/* <button> 홈으로 </button>
             <button> 이 주변의 모든 산책로는? </button> */}
           </Header>
@@ -74,7 +78,11 @@ class Info_Map extends Component {
             className="cl_trailinfo_content"
             id="id_trailinfo_map"
           ></Content>
-          {this.props.fakedata[0].image.map((el, n) => {
+          <Photozone
+            className="cl_contents_in_TrailInfoPage_InfoMap"
+            images={this.props.currentT[0].trail.image}
+          ></Photozone>
+          {/* {this.props.fakedata[0].image.map((el, n) => {
             return (
               <Photozone
                 className="cl_contents_in_TrailInfoPage_InfoMap"
@@ -82,7 +90,7 @@ class Info_Map extends Component {
                 images={el}
               ></Photozone>
             );
-          })}
+          })} */}
         </Layout>
       </Col>
     );

@@ -8,6 +8,7 @@ import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import './index.css';
 axios.defaults.withCredentials = true;
+const NGROK_URL = require('./ngrokurl');
 
 export default class App extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ export default class App extends Component {
   /*mypage 페이지에 사용되는 method */
   // mypage에 theme을 전달하는 함수
   componentDidMount() {
-    let URL = 'http://2c815448.ngrok.io/trails';
+    let URL = `${NGROK_URL}/trails`;
     axios
       .get(URL, {
         headers: {
@@ -71,9 +72,7 @@ export default class App extends Component {
   }
   handleSelectThemeBtn(theme) {
     //axio요청 => theme에 따른 요청... state 만들어서 내려줘야함..
-    let URL = !theme
-      ? 'http://2c815448.ngrok.io/trails'
-      : 'http://2c815448.ngrok.io/trails/' + theme;
+    let URL = !theme ? `${NGROK_URL}/trails` : `${NGROK_URL}/trails/` + theme;
 
     axios
       .get(URL, {
@@ -165,6 +164,7 @@ export default class App extends Component {
                 location={location}
                 isLogin={isLogin}
                 currentTheme={currentTheme}
+                handleSelectThemeBtn={this.handleSelectThemeBtn}
               />
             )}
           />

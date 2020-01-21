@@ -18,7 +18,7 @@ export default class Map extends Component {
         this.props.location[0],
         this.props.location[1],
       ), //지도의 중심좌표.
-      level: 7, //지도의 레벨(확대, 축소 정도)
+      level: 5, //지도의 레벨(확대, 축소 정도)
     };
 
     var map = new window.daum.maps.Map(container, options); //지도 생성 및 객체 리턴
@@ -47,7 +47,9 @@ export default class Map extends Component {
       markerPosition; // 마커가 표시될 위치입니다
     for (let i = 0; i < trails.length; i++) {
       for (let j = 0; j < 5; j++) {
+        // console.log('!!!!!!!!!!!!!!!!!',trails[i].location)
         var LatLng = JSON.parse(trails[i].location[j]);
+        // console.log('!!!!!!!!!!!!!!!!!',LatLng)
         var finalImage = j === 0 ? firstmarkerImage : markerImage;
         markerPosition = new kakao.maps.LatLng(LatLng[1], LatLng[0]);
         marker = new kakao.maps.Marker({

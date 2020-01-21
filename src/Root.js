@@ -14,15 +14,6 @@ function current_position(position) {
 
 window.addEventListener('load', init);
 
-
-// const Root = function() {
-//   console.log('Root에서 location: ', location);  
-//   return (
-//     <BrowserRouter>
-//       <App location={location} />
-//     </BrowserRouter>
-//   );
-// };
 const Root = () => (
   <BrowserRouter>
     <App location={location} />
