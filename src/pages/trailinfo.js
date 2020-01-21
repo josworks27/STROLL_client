@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import Info_Map from '../component/TrailInfo/Info_Map';
 import Info_Trail from '../component/TrailInfo/Info_Trail';
-import fakedata from '../component/TrailInfo/fakedata';
 import axios from 'axios';
 import { Row } from 'antd';
 import '../component/TrailInfo/style.css';
@@ -14,7 +13,7 @@ class trailinfo_page extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { currentT: [] };
+    this.state = { currentT: [] }; // 메인에서 선택한 산책로 하나의 정보
   }
   componentDidMount() {
 
@@ -81,7 +80,7 @@ class trailinfo_page extends Component {
 
   render() {
     let { currentT } = this.state;
-    let location = currentT.trail;
+    let location = currentT.trail; // 점 5개 좌표
 
     if (!currentT.length) {
       return <div>wait for a sec..</div>;
@@ -89,11 +88,10 @@ class trailinfo_page extends Component {
       return (
         <Row id="id_trailinfo_main_row">
           <Info_Map
-            fakedata={fakedata}
             location={location}
             currentT={currentT}
           ></Info_Map>
-          <Info_Trail fakedata={fakedata} currentT={currentT}></Info_Trail>
+          <Info_Trail currentT={currentT}></Info_Trail>
         </Row>
       );
     }
