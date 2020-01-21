@@ -9,8 +9,8 @@ class CommentListElement extends React.Component {
   render() {
     return (
       <div>
-        {this.props.comment}
-        <Rate disabled defaultValue={2.5}></Rate>
+        {this.props.item.comment}
+        <Rate disabled defaultValue={this.props.item.rating}></Rate>
       </div>
     );
   }

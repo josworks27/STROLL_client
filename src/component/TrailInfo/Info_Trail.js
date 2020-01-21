@@ -20,8 +20,8 @@ class Info_Trail extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      commentList: [],
-      newComment: null
+      commentList: JSON.parse(localStorage.currentTrail).comments,
+      newComment: null,
     };
   }
   handleInputValue(val) {
@@ -40,25 +40,20 @@ class Info_Trail extends Component {
           rating: values.rate,
         };
         axios
-          .post(
-            `${NGROK_URL}/trails/${tag}/${trailid}/comment`,
-            commentData,
-          )
+          .post(`${NGROK_URL}/trails/${tag}/${trailid}/comment`, commentData)
           .then(res => {
             if (res.status === 200) {
               console.log('코멘트 포스팅 성공');
               this.setState({
-                commentList : this.state.commentList.concat(res.data.comment)
-              })
-            }
-            else{
-              console.log('????????')
+                commentList: this.state.commentList.concat(res.data),
+              });
+            } else {
+              console.log('????????');
             }
           })
           .catch(err => {
             console.log('코멘트 포스팅 실패', err);
           });
-        
       }
     });
   };
@@ -68,9 +63,7 @@ class Info_Trail extends Component {
     return (
       <Col span={12} id="id_trailinfo_info_trail">
         <Layout>
-          <Header className="cl_trailinfo_header">
-            REVIEW
-          </Header>
+          <Header className="cl_trailinfo_header">REVIEW</Header>
           <RecentReview
             review={this.props.currentT[0].trail.review}
           ></RecentReview>
@@ -115,9 +108,7 @@ class Info_Trail extends Component {
               </Form.Item>
             </Form>
 
-            <CommentList
-              comments={this.props.currentT[0].comments}
-            ></CommentList>
+            <CommentList comments={this.state.commentList}></CommentList>
           </Footer>
         </Layout>
         <Link to="/main">
