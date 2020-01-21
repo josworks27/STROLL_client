@@ -1,8 +1,21 @@
+.cl_STROLL_Signup {
+  font-size: -webkit-xxx-large;
+  color: rgb(138, 188, 48);
+  font-weight: 800;
+  position: absolute;
+  top: 17%;
+  left: 44%;
+}
 .cl_SignUpInfo {
-  top: 200px;
-  left: 430px;
-  width: 400px;
+  top: 32%;
+  left: 30%;
+  width: 450px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: absolute;
+}
+.cl_Signup_btn {
+  width: 100%;
+  font-size: initial;
+  font-weight: 500;
 }

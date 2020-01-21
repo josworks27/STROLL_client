@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import './SignUpInfo.css';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import { Form, Input, Tooltip, Icon, Button } from 'antd';
+import { Form, Input, Tooltip, Icon, Button, message } from 'antd';
 const NGROK_URL = require('../../ngrokurl');
 
 function hasErrors(fieldsError) {
@@ -46,7 +46,8 @@ class SignUpInfo extends React.Component {
             }
           })
           .catch(err => {
-            alert('Existing information');
+            this.error();
+            throw err;
           });
       }
     });
@@ -86,7 +87,9 @@ class SignUpInfo extends React.Component {
     }
     this.setState({ autoCompleteResult });
   };
-
+  error = () => {
+    message.error('exist email. please enter other email.');
+  };
   render() {
     const { getFieldDecorator, getFieldsError } = this.props.form;
     const { isSignedUp } = this.state;
@@ -116,7 +119,7 @@ class SignUpInfo extends React.Component {
     if (!isSignedUp) {
       return (
         <div>
-          <div className="cl_STROLL">STROLL 🍃</div>
+          <div className="cl_STROLL_Signup">Sign up</div>
           <Form
             {...formItemLayout}
             onSubmit={this.handleSubmit}
@@ -185,6 +188,7 @@ class SignUpInfo extends React.Component {
 
             <Form.Item {...tailFormItemLayout}>
               <Button
+                className="cl_Signup_btn"
                 type="primary"
                 htmlType="submit"
                 disabled={hasErrors(getFieldsError())}
