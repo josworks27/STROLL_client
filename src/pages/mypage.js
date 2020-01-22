@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ThemeList from '../component/Main/ThemeList';
 import TrailList from '../component/Main/TrailList';
-import { Button, Layout, Icon } from 'antd';
-import '../component/Main/mypage.css';
+import { Layout, Icon } from 'antd';
+import '../component/Main/Main.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 const NGROK_URL = require('../ngrokurl');
@@ -56,19 +56,18 @@ class mypage_page extends Component {
         ></ThemeList>
         <Layout>
           <div className="cl_temperary ">
-            <div className="a">
-              <Icon
-                type="filter"
-                className="cl_allTrail"
-                onClick={() => this.props.handleSelectThemeBtn(null)}
-              />
+            <div
+              className="a"
+              onClick={() => this.props.handleSelectThemeBtn(null)}
+            >
+              <Icon type="filter" className="cl_allTrail" />
               Every trail
             </div>
-            <di className="b">
+            <div className="b">
               <Link to="/addtrail">
                 <Icon type="plus-circle" className="cl_addTrailBtn" /> Add trail
               </Link>
-            </di>
+            </div>
 
             <div
               className="c"

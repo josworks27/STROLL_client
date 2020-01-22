@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import Info_Map from '../component/TrailInfo/Info_Map';
 import Info_Trail from '../component/TrailInfo/Info_Trail';
 import axios from 'axios';
-import { Row } from 'antd';
-import '../component/TrailInfo/style.css';
+import { Row, Icon } from 'antd';
+import '../component/TrailInfo/TrailInfo.css';
 const NGROK_URL = require('../ngrokurl');
 
 //     /trails/:tag/:trailId
@@ -85,7 +85,18 @@ class trailinfo_page extends Component {
     let location = currentT.trail; // 점 5개 좌표
 
     if (!currentT.length) {
-      return <div>wait for a sec..</div>;
+      return (
+        <div className="cl_trailInfo_loading">
+          {' '}
+          STR
+          <img
+            className="cl_trailInfo_img_loading"
+            src="https://ifh.cc/g/Y9sym.png"
+          ></img>
+          <Icon type="loading" className="cl_trailInfo_icon_loading" />
+          LL
+        </div>
+      );
     } else {
       return (
         <Row id="id_trailinfo_main_row">

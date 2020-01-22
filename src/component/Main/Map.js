@@ -30,8 +30,8 @@ export default class Map extends Component {
 
     var imageSrc =
         'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png',
-      imageSrc_first = 'https://ifh.cc/g/EcSAa.png', // 마커이미지의 주소입니다
-      imageSize = new kakao.maps.Size(10, 10), // 마커이미지의 크기입니다
+      imageSrc_first = 'https://ifh.cc/g/6u0Dc.png', // 마커이미지의 주소입니다
+      imageSize = new kakao.maps.Size(44, 57), // 마커이미지의 크기입니다
       imageOption = { offset: new kakao.maps.Point(0, 0) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
     var markerImage = new kakao.maps.MarkerImage(
@@ -46,7 +46,7 @@ export default class Map extends Component {
       ),
       markerPosition; // 마커가 표시될 위치입니다
     for (let i = 0; i < trails.length; i++) {
-      for (let j = 0; j < 5; j++) {
+      for (let j = 0; j < 1; j++) {
         // console.log('!!!!!!!!!!!!!!!!!',trails[i].location)
         var LatLng = JSON.parse(trails[i].location[j]);
         // console.log('!!!!!!!!!!!!!!!!!',LatLng)

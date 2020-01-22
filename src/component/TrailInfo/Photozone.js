@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './style.css';
 import { Layout } from 'antd';
 const { Footer } = Layout;
 const NGROK_URL = require('../../ngrokurl');
@@ -12,7 +11,7 @@ class Photozone extends Component {
   render() {
     return (
       <Footer className="cl_trailinfo_footer" id="id_trailinfo_photozone">
-        <img src={NGROK_URL+'/'+this.props.images.fileName} alt=''/>
+        <img src={NGROK_URL + '/' + this.props.images.fileName} alt="" />
       </Footer>
     );
   }

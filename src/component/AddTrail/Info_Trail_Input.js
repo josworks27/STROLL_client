@@ -241,8 +241,8 @@ class Info_Trail_Input extends Component {
                     >
                       <Option value="With pet">With pet</Option>
                       <Option value="Night view">Night view</Option>
-                      <Option value="Calm">Calm</Option>
-                      <Option value="Lake">Lake</Option>
+                      <Option value="Calm">Lake view</Option>
+                      <Option value="Lake">beach view</Option>
                     </Select>,
                   )}
                 </Form.Item>

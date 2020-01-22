@@ -1,6 +1,5 @@
-
 import React, { Component } from 'react';
-import './style.css';
+// import './trailInfo.css';
 import { Link } from 'react-router-dom';
 import RecentReview from './RecentReview.js';
 import { Col, Layout, Button, Form, Rate, Input } from 'antd';
