@@ -20,12 +20,13 @@ export default class App extends Component {
     /*mypage 페이지에 사용되는 state & method */
     this.handleSelectThemeBtn = this.handleSelectThemeBtn.bind(this);
     this.handleSelectTrail = this.handleSelectTrail.bind(this);
+    this.handleLogOutBtn = this.handleLogOutBtn.bind(this);
 
     /*trailinfo 페이지에 사용되는 state & method */
     /*addTrail 페이지에 사용되는 state & method */
     this.state = {
       /*모든 페이지에 사용되는 state */
-      isLogin: false,
+      isLogin: localStorage.cookie ? true : false,
       location: this.props.location,
 
       /*login 페이지에 사용되는 state */
@@ -49,6 +50,9 @@ export default class App extends Component {
   /*signup 페이지에 사용되는 method */
 
   /*mypage 페이지에 사용되는 method */
+  handleLogOutBtn() {
+    this.setState({ isLogin: false });
+  }
   // mypage에 theme을 전달하는 함수
   componentDidMount() {
     let URL = `${NGROK_URL}/trails`;
@@ -155,6 +159,7 @@ export default class App extends Component {
                 currentTheme={currentTheme}
                 handleSelectThemeBtn={this.handleSelectThemeBtn}
                 handleSelectTrail={this.handleSelectTrail}
+                handleLogOutBtn={this.handleLogOutBtn}
                 filteredTrailList={filteredTrailList}
               />
             )}

@@ -2,7 +2,6 @@
 .ant-layout {
   height: 100%;
 }
-
 /* 공통 */
 #id_trailinfo_main_row {
   width: 90%;
@@ -48,22 +47,44 @@
   height: 100%;
 }
 #id_trialinfo_review {
-  height: 40%;
+  height: 20%;
 }
-
+#id_infoTrail_textarea {
+  margin: 0;
+  width: 100%;
+}
+#id_infoTrail_rating {
+  float: right;
+  /* width: 50%; */
+  margin: 0;
+}
+#id_infoTrail_commetbtn {
+  float: left;
+  /* width:50%; */
+  margin: 0;
+  background-color: rgb(0, 110, 0);
+}
+/* .ant-form-item{
+  margin:0;
+} */
 /* Photozone */
+#id_Photozone_image {
+  height: 100%;
+}
 #id_trailinfo_photozone {
+  width: 100%;
   height: 30%;
 }
-
 /* RecentReview */
 #id_trialinfo_commentBox {
   height: 50%;
 }
 #id_trailinfo_commentlist {
-  height: 80%;
+  height: 40%;
   background-color: grey;
+  overflow: scroll;
 }
+/* ! loading */
 .cl_trailInfo_loading {
   font-weight: 500;
   margin-top: 18%;
@@ -77,6 +98,4 @@
   position: absolute;
   left: 50.3%;
   width: 5%;
-}
-.cl_trailInfo_icon_loading {
 }
