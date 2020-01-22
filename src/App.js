@@ -88,7 +88,6 @@ export default class App extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          console.log('(App.js) 요청 성공', res.data);
           let resdata = !theme ? res.data.trails : res.data;
           this.setState({
             currentTheme: theme,
@@ -112,7 +111,6 @@ export default class App extends Component {
   /*addTrail 페이지에 사용되는 method */
 
   render() {
-    // ! localStorage.setItem('currentTrail', JSON.stringify({}));
     let {
       isLogin,
       location,
@@ -120,7 +118,6 @@ export default class App extends Component {
       currentTrail,
       filteredTrailList,
     } = this.state;
-    // !console.log('앱에서 커렌트트레일 스테이트: ', this.state.currentTrail);
 
     return (
       <div id="appjs">

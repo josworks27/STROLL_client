@@ -37,7 +37,6 @@ class Info_Trail extends Component {
     var tag = this.props.currentT[0].trail.category.tag;
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         let commentData = {
           trailId: trailid,
           comment: values.comment,

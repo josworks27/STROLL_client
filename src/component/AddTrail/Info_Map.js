@@ -211,9 +211,7 @@ export default class Info_Map extends Component {
     // 클릭 지점에 대한 정보 (동그라미와 클릭 지점까지의 총거리)를 표출하는 함수입니다
     function displayCircleDot(position, distance) {
       // 클릭 지점을 표시할 빨간 동그라미 커스텀오버레이를 생성합니다
-      // console.log('dots 갯수: ',dots.length)
       if (dots.length < 5) {
-        console.log(`${dots.length + 1}번째 마커 생성: `, position);
         markerPosition.push([position.Ga, position.Ha]);
         var circleOverlay = new kakao.maps.CustomOverlay({
           content: '<span class="dot"></span>',

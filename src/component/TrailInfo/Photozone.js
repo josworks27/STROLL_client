@@ -8,7 +8,6 @@ class Photozone extends Component {
     this.state = {};
   }
   render() {
-    console.log('IMAGE:S', this.props);
     let imagehtml = !this.props.images.fileName ? (
       ''
     ) : (
