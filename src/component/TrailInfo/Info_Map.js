@@ -66,9 +66,6 @@ class Info_Map extends Component {
     return (
       <Col span={12} id="id_trailinfo_info_map">
         <Layout>
-          <Header className="cl_trailinfo_header">
-            {this.props.currentT[0].title}
-          </Header>
           <Content
             className="cl_trailinfo_content"
             id="id_trailinfo_map"
