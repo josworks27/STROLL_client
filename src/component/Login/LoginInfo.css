@@ -45,3 +45,6 @@ a:hover {
 a:focus {
   color: rgb(138, 188, 48);
 }
+.ant-input-affix-wrapper .ant-input:not(:first-child):hover {
+  border-color: rgb(217, 217, 217);
+}
