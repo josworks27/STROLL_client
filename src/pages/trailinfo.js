@@ -18,8 +18,8 @@ class trailinfo_page extends Component {
   componentDidMount() {
     var trailInfo = localStorage.currentTrail;
     // 로컬스토리지에 저장된 산책로 정보가 없을 때 => 처음 이 페이지로 넘어왔을 때
+
     if (!trailInfo) {
-      // get 요청을 보낸다
       axios
         .get(
           `${NGROK_URL}/trails/${this.props.currentTrail.category.tag}/${this.props.currentTrail.id}`,
@@ -32,10 +32,10 @@ class trailinfo_page extends Component {
         )
         .then(res => {
           if (res.status === 200) {
+            localStorage.setItem('currentTrail', JSON.stringify(res.data));
             this.setState({
               currentT: this.state.currentT.concat(res.data),
             });
-            localStorage.currentTrail = JSON.stringify(res.data);
           }
         })
         .catch(err => {
@@ -49,6 +49,8 @@ class trailinfo_page extends Component {
       } else {
         parseTrailInfo = this.props.currentTrail;
       }
+      // console.log('>>>>>>새로고침 또는 다른 산책로', parseTrailInfo);
+
       axios
         .get(
           `${NGROK_URL}/trails/${parseTrailInfo.category.tag}/${parseTrailInfo.id}`,
@@ -61,10 +63,12 @@ class trailinfo_page extends Component {
         )
         .then(res => {
           if (res.status === 200) {
+            // console.log('새로운 산책로>>>>>>', res.data);
+            localStorage.setItem('currentTrail', JSON.stringify(res.data));
+            // console.log('새로운 바뀐 산책로>>>>>>', localStorage.currentTrail);
             this.setState({
               currentT: this.state.currentT.concat(res.data),
             });
-            localStorage.currentTrail = JSON.stringify(res.data);
           }
         })
         .catch(err => {
@@ -75,6 +79,8 @@ class trailinfo_page extends Component {
   }
 
   render() {
+    // console.log('this.props.currentTrail in TRAILINFO>>>>>', this.props.currentTrail);
+    console.log('this.state.currentT in TRAILINFO>>>>>', this.state.currentT);
     let { currentT } = this.state;
     let location = currentT.trail; // 점 5개 좌표
 

@@ -1,10 +1,4 @@
-//  Comment Post : /trails/:tag/:trailid/comment
-//  Comment Post Body
-//      body:{
-//        "trailId": 2,
-//        "comment": "걍 그래요",
-//        "rating": 3
-//      }
+
 import React, { Component } from 'react';
 import './style.css';
 import { Link } from 'react-router-dom';
@@ -43,8 +37,6 @@ class Info_Trail extends Component {
           .post(`${NGROK_URL}/trails/${tag}/${trailid}/comment`, commentData)
           .then(res => {
             if (res.status === 200) {
-              console.log('코멘트 포스팅 성공', res.data);
-              
               this.setState({
                 commentList: this.state.commentList.concat(res.data),
               });
@@ -59,6 +51,7 @@ class Info_Trail extends Component {
     });
   };
   render() {
+    console.log('인포트레일의 코멘트리스트', this.state.commentList);
     const { getFieldDecorator } = this.props.form;
     // const rateList = this.props.
     return (

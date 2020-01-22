@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from 'react';
 import Login_page from './pages/login';
 import Signup_page from './pages/signup';
@@ -107,6 +108,7 @@ export default class App extends Component {
   /*addTrail 페이지에 사용되는 method */
 
   render() {
+    // ! localStorage.setItem('currentTrail', JSON.stringify({}));
     let {
       isLogin,
       location,
@@ -114,7 +116,7 @@ export default class App extends Component {
       currentTrail,
       filteredTrailList,
     } = this.state;
-    console.log('ct: ', this.state.currentTrail);
+    // !console.log('앱에서 커렌트트레일 스테이트: ', this.state.currentTrail);
 
     return (
       <div id="appjs">

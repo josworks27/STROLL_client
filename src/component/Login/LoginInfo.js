@@ -57,7 +57,10 @@ class LoginInfo extends Component {
     if (!this.props.isLogin) {
       return (
         <div id="id_wrapper">
-          <div className="cl_STROLL">STROLL 🍃</div>
+          <div className="cl_STROLL">
+            <img className="cl_logo_img" src="https://ifh.cc/g/Tkbhj.png"></img>
+            STROLL
+          </div>
           <Form onSubmit={this.handleSubmit} className="login-form">
             <Form.Item>
               {getFieldDecorator('email', {
