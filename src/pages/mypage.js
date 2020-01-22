@@ -30,7 +30,6 @@ class mypage_page extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          console.log('trails in mypage.js axios method', res.data.trails);
           this.setState({
             wholetrails: this.state.wholetrails.concat(res.data.trails),
           });
@@ -45,7 +44,6 @@ class mypage_page extends Component {
   render() {
     const { location, wholetrails } = this.state;
 
-    console.log('trails in mypage.js: ', this.props.filteredTrailList); //여기 고쳐야함
     if (this.props.isLogin) {
       return (
         <Layout className="cl_mypage">

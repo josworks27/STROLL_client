@@ -18,7 +18,6 @@ class addTrail_page extends Component {
     };
   }
   handleLastMarkerAdded = markerList => {
-    console.log('5개 모두 추가 완료. 좌표: ', markerList);
     this.setState({
       markerList: markerList,
     });
@@ -28,8 +27,6 @@ class addTrail_page extends Component {
   };
   render() {
     const { location, isLogin, currentTheme, markerList } = this.state;
-    console.log('Addtrail location: ', location);
-    console.log('addtrails에서의  markerList: ', markerList);
     return (
       <Row id="id_addTrail_main_row">
         <Link to="/">

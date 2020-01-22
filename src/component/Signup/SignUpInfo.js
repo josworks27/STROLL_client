@@ -32,12 +32,10 @@ class SignUpInfo extends React.Component {
           password: values.password,
           username: values.username,
         };
-        console.log('Received values of form: ', values);
 
         axios
           .post(`${NGROK_URL}/signup`, signUpData)
           .then(res => {
-            console.log(res.data);
             if (res.status === 201) {
               this.setState({
                 isSignedUp: true,

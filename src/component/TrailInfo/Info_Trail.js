@@ -26,7 +26,6 @@ class Info_Trail extends Component {
     var tag = this.props.currentT[0].trail.category.tag;
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         let commentData = {
           trailId: trailid,
           comment: values.comment,
@@ -50,9 +49,7 @@ class Info_Trail extends Component {
     });
   };
   render() {
-    console.log('인포트레일의 코멘트리스트', this.state.commentList);
     const { getFieldDecorator } = this.props.form;
-    // const rateList = this.props.
     return (
       <Col span={12} id="id_trailinfo_info_trail">
         <Layout>

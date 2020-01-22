@@ -52,9 +52,7 @@ export default class ThemeList extends Component {
           </Menu>
         </Sider>
       );
-      // tags = ['wait for a sec..'];
     }
-    console.log(tags);
     return (
       <Sider id="id_mypage_sider">
         <Menu
