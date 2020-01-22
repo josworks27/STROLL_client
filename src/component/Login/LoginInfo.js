@@ -14,11 +14,9 @@ class LoginInfo extends Component {
   }
 
   handleSubmit = e => {
-    console.log('hello');
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         var loginData = {
           email: values.email,
           password: values.password,
@@ -51,7 +49,6 @@ class LoginInfo extends Component {
     message.error('Incorrct email or password !');
   };
   render() {
-    console.log(this.props.isLogin);
     const { getFieldDecorator } = this.props.form;
     if (!this.props.isLogin) {
       return (

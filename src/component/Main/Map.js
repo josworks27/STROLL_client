@@ -26,7 +26,6 @@ export default class Map extends Component {
     //마커 만들기
     var marker;
     var trails = this.props.traillist;
-    console.log('trails in map', this.props.traillist); //전체보기 했을떄 빈 배열 뜸
 
     var imageSrc =
         'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png',
@@ -47,9 +46,7 @@ export default class Map extends Component {
       markerPosition; // 마커가 표시될 위치입니다
     for (let i = 0; i < trails.length; i++) {
       for (let j = 0; j < 1; j++) {
-        // console.log('!!!!!!!!!!!!!!!!!',trails[i].location)
         var LatLng = JSON.parse(trails[i].location[j]);
-        // console.log('!!!!!!!!!!!!!!!!!',LatLng)
         var finalImage = j === 0 ? firstmarkerImage : markerImage;
         markerPosition = new kakao.maps.LatLng(LatLng[1], LatLng[0]);
         marker = new kakao.maps.Marker({
@@ -61,7 +58,6 @@ export default class Map extends Component {
     }
   }
   render() {
-    console.log('Map.js 렌더링');
     return <div id="id_everyTrails"></div>;
   }
 }
