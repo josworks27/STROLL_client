@@ -13,9 +13,8 @@
   margin-top: 10%;
 }
 .cl_addTrail_form {
-  padding-left:15%;
+  padding-left: 10%;
   padding-top: 7%;
-  
   border: 2px solid rgb(138, 188, 48);
   width: 90%;
   height: 80%;
@@ -36,36 +35,129 @@
   font-weight: 800;
 }
 
-.cl_addTrail_rate {
-  width: 100%;
+/* ! Trail Create Form */
+.cl_addTRail_head {
+  padding-left: 1%;
+  background: rgb(241, 242, 245);
+  width: 73%;
+  font-size: -webkit-xxx-large;
+  color: rgb(138, 188, 48);
+  font-weight: 800;
+  position: absolute;
+  top: 6%;
+  left: 14%;
+}
+
+.cl_Trailname {
+  border-color: rgb(217, 217, 217);
+  width: 44%;
+  top: 5%;
 }
 .cl_Trailname {
-  width: 33%;
+  border-color: rgb(217, 217, 217);
+  outline: none;
 }
 .cl_tagSelector {
-  width: 40%;
+  border-color: rgb(217, 217, 217);
+  margin-top: 2.8%;
+}
+.ant-select-selection:focus,
+.ant-select-selection:active,
+.ant-select-selection:hover {
+  border-color: rgb(217, 217, 217);
+  outline: 0 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ant-input:hover,
+.cl_Trailname:hover {
+  border-color: rgb(217, 217, 217);
+  outline: 0 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ant-input:focus,
+.cl_Trailname:focus {
+  border-color: rgb(217, 217, 217);
+  outline: 0 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ant-select-open .ant-select-selection {
+  border-color: rgb(217, 217, 217);
+  outline: 0 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .cl_addTrail_text {
+  resize: none;
   width: 80%;
-  margin-top: 5%
+  margin-top: -2%;
 }
+
+/*  Upload  */
+
 .cl_addTrail_upload {
-  width: 80%;
-  margin-top: 5%
-
+  height: 15%;
+  left: 16%;
+  position: absolute;
+  top: 66%;
+  width: 63%;
 }
-.cl_addTrail_btn {
-  float: right;
-
-}
-
-.cl_addTRail_head {
-
-}
-.ant-alert {
-  width: 60%;
-  z-index: 3;
+.filebox label {
+  margin-top: -7%;
   text-align: center;
-  margin:30%;
-  font-weight: 600;
+  width: 73%;
+  display: inline-block;
+  padding: 0.5em 0.75em;
+  color: #999;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid rgb(217, 217, 217);
+  border-bottom-color: #e2e2e2;
+  border-radius: 0.25em;
 }
+.filebox input[type='file'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.cl_inbox_icon {
+  color: rgb(138, 188, 48);
+  font-size: x-large;
+}
+.cl_upload_btn {
+  cursor: pointer;
+  outline: none;
+  margin-top: -6%;
+  font-size: large;
+  top: 1%;
+  position: absolute;
+  width: 25%;
+  background: white;
+  color: rgb(138, 188, 48);
+  left: 75%;
+  height: 40%;
+  border: 1px solid rgb(217, 217, 217);
+  border-radius: 3px;
+}
+/*  Upload  */
+
+.cl_addTrail_btn {
+  z-index: 3;
+  margin-top: 3.6%;
+  left: 83.4%;
+  position: fixed;
+  font-weight: 500;
+  font-size: large;
+}
+
+/* ! Trail Create Form */

@@ -19,3 +19,7 @@
   font-size: initial;
   font-weight: 500;
 }
+
+.ant-input-affix-wrapper .ant-input:not(:last-child):hover {
+  border-color: rgb(217, 217, 217);
+}

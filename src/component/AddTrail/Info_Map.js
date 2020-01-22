@@ -1,7 +1,7 @@
 /*global daum*/
 /*global kakao*/
 import React, { Component } from 'react';
-import { Col, Layout, Alert } from 'antd';
+import { Col, Layout, Alert, message } from 'antd';
 
 const { Content } = Layout;
 export default class Info_Map extends Component {
@@ -13,14 +13,14 @@ export default class Info_Map extends Component {
       isLogin: this.props.isLogin,
       currentTheme: this.props.currentTheme,
       markercnt: 0,
-      handleLastMarkerAdded: this.props.handleLastMarkerAdded
+      handleLastMarkerAdded: this.props.handleLastMarkerAdded,
     };
   }
   handleClose = () => {
     this.setState({ visible: false });
   };
   componentDidMount() {
-    var {handleLastMarkerAdded} = this.state;
+    var { handleLastMarkerAdded } = this.state;
     var container = document.getElementById('id_addTrail_Map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
@@ -38,7 +38,7 @@ export default class Info_Map extends Component {
     var distanceOverlay; // 선의 거리정보를 표시할 커스텀오버레이 입니다
     var dots = {}; // 선이 그려지고 있을때 클릭할 때마다 클릭 지점과 거리를 표시하는 커스텀 오버레이 배열입니다.
     var markerPosition = []; // 앞으로 사용할 좌표 변수
-    
+
     // 지도에 클릭 이벤트를 등록합니다
     // 지도를 클릭하면 선 그리기가 시작됩니다 그려진 선이 있으면 지우고 다시 그립니다
     kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
@@ -244,7 +244,7 @@ export default class Info_Map extends Component {
 
         // 배열에 추가합니다
         dots.push({ circle: circleOverlay, distance: distanceOverlay });
-        if(dots.length === 5){
+        if (dots.length === 5) {
           handleLastMarkerAdded(markerPosition);
         }
       }
@@ -317,23 +317,15 @@ export default class Info_Map extends Component {
       return content;
     }
   }
+  info = () => {
+    message.info('산책로의 시작점부터 5개의 점을 만들어주세요.');
+  };
   render() {
     return (
       <Col span={14}>
-        <Layout>
+        <Layout onLoad={this.info()}>
           <Content>
-            <div id="id_addTrail_Map">
-              <div className="cl_addtrail_alert">
-                {this.state.visible ? (
-                  <Alert
-                    message="지도에 산책로의 시작 지점부터 5개의 핀을 찍어주세요."
-                    type="success"
-                    closable
-                    afterClose={this.handleClose}
-                  />
-                ) : null}
-              </div>
-            </div>
+            <div id="id_addTrail_Map"></div>
           </Content>
         </Layout>
       </Col>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ThemeList from '../component/Main/ThemeList';
 import TrailList from '../component/Main/TrailList';
-import { Button, Layout } from 'antd';
+import { Button, Layout, Icon } from 'antd';
 import '../component/Main/mypage.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -19,8 +19,7 @@ class mypage_page extends Component {
       isLogin: this.props.isLogin,
     };
   }
-  // componentDidUpdate(prevProps, prevState, snapshot)
-  componentDidUpdate() {}
+
   componentDidMount() {
     axios
       .get(`${NGROK_URL}/trails`, {
@@ -56,20 +55,31 @@ class mypage_page extends Component {
           handleSelectThemeBtn={this.props.handleSelectThemeBtn}
         ></ThemeList>
         <Layout>
-          <div className="cl_temperary">
-            <Button
-              type="primary"
-              className="cl_addTrailBtn"
-              onClick={() => this.props.handleSelectThemeBtn(null)}
+          <div className="cl_temperary ">
+            <div className="a">
+              <Icon
+                type="filter"
+                className="cl_allTrail"
+                onClick={() => this.props.handleSelectThemeBtn(null)}
+              />
+              Every trail
+            </div>
+            <di className="b">
+              <Link to="/addtrail">
+                <Icon type="plus-circle" className="cl_addTrailBtn" /> Add trail
+              </Link>
+            </di>
+
+            <div
+              className="c"
+              onClick={() => {
+                localStorage.clear();
+              }}
             >
-              모든 trail 보기
-            </Button>
-            <Button type="primary" className="cl_addTrailBtn">
-              <Link to="/addtrail">Add Trail</Link>
-            </Button>
-            <Button type="primary" className="cl_addTrailBtn">
-              <Link to="/">로그아웃</Link>
-            </Button>
+              <Link to="/">
+                <Icon className="cl_logout_btn" type="logout" /> Logout
+              </Link>
+            </div>
           </div>
 
           <TrailList

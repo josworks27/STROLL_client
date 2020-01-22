@@ -1,46 +1,6 @@
-/*
-  1. 이미지 포스팅 (POST)
-      endpoint: /trails/:tag/:trailid/image
-      body: body:{
-              "img": 이미지파일
-            }
-      response: es.status(201).json({
-                  "id": 5,
-                  "fileName": "1579413412815.jpg",
-                  "filePath": "uploads/1579413412815.jpg",
-                  "updatedAt": "2020-01-19T05:56:52.841Z",
-                  "createdAt": "2020-01-19T05:56:52.841Z"
-                })
-                res.sendStatus(401)
-  
-  2. 전체 포스팅 (POST)
-      endpoint: /trails
-      body:{
-            "newLocations": array(5),
-            "tag": "night view",
-            "imageId": 1,
-            "title": "my trail",
-            "review": "so good",
-            "adminDistrict": "Seoul",
-          }
-      response: res.status(201).json({
-                  "id": 3,
-                  "userId": 1,
-                  "locationId": 3,
-                  "categoryId": 3,
-                  "imageId": 3,
-                  "title": "test",
-                  "review": "test",
-                  "adminDistrict": "yokohama",
-                  "updatedAt": "2020-01-19T04:06:35.595Z",
-                  "createdAt": "2020-01-19T04:06:35.595Z"
-                })
-                res.sendStatus(401)      
-*/
-
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { Form, Icon, Input, Button, Upload, Rate, Alert, message } from 'antd';
+import { Redirect } from 'react-router-dom';
+import { Form, Input, Button, message, Icon } from 'antd';
 import { Col, Layout } from 'antd';
 import { Select } from 'antd';
 import axios from 'axios';
@@ -51,7 +11,6 @@ axios.defaults.withCredentials = true;
 const { Option } = Select;
 const { Content } = Layout;
 const { TextArea } = Input;
-const { Dragger } = Upload;
 const formData = new FormData();
 
 class Info_Trail_Input extends Component {
@@ -104,8 +63,8 @@ class Info_Trail_Input extends Component {
         console.log('axios 요청 직전 구문', formData);
         // postDataWithoutData(submitData).bind(this);
         axios
-        .post(`${NGROK_URL}/trails`, formData, {
-          // .post('http://ba4625d3.ngrok.io/trails', formData, {
+          .post(`${NGROK_URL}/trails`, formData, {
+            // .post('http://ba4625d3.ngrok.io/trails', formData, {
             headers: {
               'content-type': 'multipart/form-data',
               // accept: 'application/json',
@@ -244,7 +203,7 @@ class Info_Trail_Input extends Component {
                 }}
                 className="cl_addTrail_form"
               >
-                {/* <div className="cl_addTRail_head">Create Your Trail !</div> */}
+                <div className="cl_addTRail_head"> Create Your Trail !</div>
                 <Form.Item className="cl_Trailname">
                   {getFieldDecorator('trailname', {
                     rules: [
@@ -316,10 +275,23 @@ class Info_Trail_Input extends Component {
                   </Button>
                 </Form.Item>
               </Form>
-              <form onSubmit={this.onFormSubmit}>
-                <h1>File Upload</h1>
-                <input type="file" name="img" onChange={this.onChangeFile} />
-                <button type="submit">Upload</button>
+              <form onSubmit={this.onFormSubmit} className="cl_addTrail_upload">
+                <div className="filebox">
+                  <label for="ex_file">
+                    <Icon type="inbox" className="cl_inbox_icon" />
+                  </label>
+
+                  <input
+                    type="file"
+                    name="img"
+                    onChange={this.onChangeFile}
+                    id="ex_file"
+                  />
+                </div>
+
+                <button type="submit" className="cl_upload_btn">
+                  <Icon type="upload" />
+                </button>
               </form>
             </Content>
           </Layout>
