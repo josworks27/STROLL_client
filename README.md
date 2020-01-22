@@ -1,6 +1,6 @@
 
 <p align="center"> 
-  <img width="319" alt="스크린샷 2020-01-22 오전 1 32 23" src="https://user-images.githubusercontent.com/54742523/72823532-34c18180-3cb7-11ea-944d-c7a32e179511.png">
+<img width="324" alt="스크린샷 2020-01-22 오후 8 52 07" src="https://user-images.githubusercontent.com/54742523/72894310-5a559600-3d5e-11ea-93b5-4f2bc0a4ab4e.png">
   
 ###
 ###
