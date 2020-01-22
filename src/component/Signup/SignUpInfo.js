@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 import 'antd/dist/antd.css';
-import './SignUpInfo.css';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Input, Tooltip, Icon, Button, message } from 'antd';

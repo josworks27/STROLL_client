@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Form, Icon, Input, Button, message } from 'antd';
 import 'antd/dist/antd.css';
-import './LoginInfo.css';
 import axios from 'axios';
 const NGROK_URL = require('../../ngrokurl');
 

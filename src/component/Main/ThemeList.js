@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ThemeListElement from './ThemeListElement';
-import { Menu } from 'antd';
-import { Layout } from 'antd';
+import { Menu, Icon, Layout } from 'antd';
 
 const { Sider } = Layout;
 
@@ -31,7 +30,29 @@ export default class ThemeList extends Component {
   render() {
     var tags = this.makeTag();
     if (!tags) {
-      tags = ['wait for a sec..'];
+      return (
+        <Sider id="id_mypage_sider">
+          <Menu
+            theme="dark"
+            defaultSelectedKeys={['1']}
+            mode="inline"
+            className="cl_ThemeList"
+          >
+            <div className="cl_ThemeList_category">
+              #Tag
+              <div className="cl_Main_loading">
+                {' '}
+                <img
+                  className="cl_Main_img_loading"
+                  src="https://ifh.cc/g/NTev7.png"
+                ></img>
+                <Icon type="loading" className="cl_Main_icon_loading" />
+              </div>
+            </div>
+          </Menu>
+        </Sider>
+      );
+      // tags = ['wait for a sec..'];
     }
     console.log(tags);
     return (

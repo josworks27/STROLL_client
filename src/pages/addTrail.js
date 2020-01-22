@@ -36,6 +36,7 @@ class addTrail_page extends Component {
           <div className="cl_addTrail_logo">STROLL</div>
         </Link>
         <Info_Map
+          onmouseover={() => this.info()}
           location={location}
           isLogin={isLogin}
           currentTheme={currentTheme}

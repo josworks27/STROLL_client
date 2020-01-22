@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './style.css';
 import { Layout } from 'antd';
 const { Content } = Layout;
 
