@@ -4,25 +4,28 @@
 }
 /* 공통 */
 #id_trailinfo_main_row {
+  background: rgb(241, 242, 245);
   width: 90%;
-  margin: auto;
+  margin: 3%;
   height: 90%;
 }
 .cl_trailinfo_header {
+  font-size: large;
   padding-left: 5%;
-  background-color: rgb(138, 188, 48);
+  border-bottom: 1px solid rgb(232, 232, 232);
+  background: none;
+  font-weight: 400;
 }
 .cl_trailinfo_footer {
-  padding: 5%;
-  background-color: rgb(138, 188, 48);
 }
 .cl_trailinfo_content {
+  background: none;
 }
 /* Info_Map */
 #id_trailinfo_info_map {
-  margin: 2%;
-  width: 55%;
-  height: 100%;
+  width: 58%;
+  margin-top: 2%;
+  height: 94%;
 }
 #id_img_trailinfo {
   width: 100%;
@@ -33,40 +36,45 @@
   height: 90%;
 }
 #id_trailinfo_map {
-  margin: auto;
-  width: 80%;
-  height: 60%;
+  margin-left: 8%;
+  width: 87%;
+  height: 86%;
 }
 #id_button_home {
-  float: right;
+  left: 101%;
+  font-size: 3em;
+  top: -11%;
+  position: absolute;
 }
+
 /* Info_Trail */
 #id_trailinfo_info_trail {
   margin: 2%;
   width: 35%;
+  height: 92%;
+}
+.cl_trailinfo_layout {
+  box-shadow: -0.3px 1px 10px -3px lightgrey;
+  border-radius: 7px;
+  border: 1px solid rgb(230, 230, 230);
   height: 100%;
+  background: white;
 }
 #id_trialinfo_review {
-  height: 20%;
+  padding-top: 5px;
+  padding-left: 5%;
 }
 #id_infoTrail_textarea {
   margin: 0;
   width: 100%;
 }
-#id_infoTrail_rating {
-  float: right;
-  /* width: 50%; */
-  margin: 0;
+.cl_infoTrail_rating {
+  top: -305px;
+  z-index: 4;
+  left: 72%;
+  position: relative;
 }
-#id_infoTrail_commetbtn {
-  float: left;
-  /* width:50%; */
-  margin: 0;
-  background-color: rgb(0, 110, 0);
-}
-/* .ant-form-item{
-  margin:0;
-} */
+
 /* Photozone */
 #id_Photozone_image {
   height: 100%;
@@ -79,11 +87,82 @@
 #id_trialinfo_commentBox {
   height: 50%;
 }
-#id_trailinfo_commentlist {
-  height: 40%;
-  background-color: grey;
-  overflow: scroll;
+#id_comments_text {
+  font-size: large;
 }
+.cl_trailinfo_review {
+  padding-left: 5.5%;
+  height: 20%;
+  padding-top: 2%;
+}
+/* ! comments */
+.cl_comments {
+  padding-left: 3%;
+  width: 128%;
+  margin-top: -81.7%;
+  height: 108%;
+  background-color: white;
+  overflow: scroll;
+  margin-left: -14%;
+}
+.cl_comment_rate {
+  font-size: initial;
+  top: 37px;
+  position: relative;
+  left: 70%;
+}
+.ant-comment-content-author > span {
+  padding-right: 8px;
+  font-size: 17px;
+  line-height: 18px;
+}
+.cl_comment {
+  border-bottom: 1px solid rgb(240, 240, 240);
+}
+/* ! comments */
+
+/* ! comments add */
+.cl_infotrail_input {
+  border: rgb(230, 230, 230);
+  left: 4px;
+  width: 109%;
+  margin-top: 10;
+  top: 118px;
+}
+.cl_infotrail_btn_form {
+  top: 56px;
+  border: none;
+  background: none;
+  box-shadow: none;
+  left: 344px;
+}
+
+.cl_infotrail_btn {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+.cl_infotrail_btn:hover {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+.cl_infotrail_btn:focus {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+.cl_infotrail_send {
+  font-size: larger;
+  color: rgb(109, 109, 109);
+}
+.cl_infotrail_avatar {
+  left: -39px;
+  top: 154px;
+}
+
+/* ! comments add */
+
 /* ! loading */
 .cl_trailInfo_loading {
   font-weight: 500;
