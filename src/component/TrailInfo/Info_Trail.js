@@ -42,8 +42,9 @@ class Info_Trail extends Component {
         axios
           .post(`${NGROK_URL}/trails/${tag}/${trailid}/comment`, commentData)
           .then(res => {
+            console.log('코멘트 res>>>>>>>', res.data);
             if (res.status === 200) {
-              console.log('코멘트 포스팅 성공');
+              console.log('코멘트 포스팅 성공>>>>>>>', res.data);
               this.setState({
                 commentList: this.state.commentList.concat(res.data),
               });
@@ -58,6 +59,7 @@ class Info_Trail extends Component {
     });
   };
   render() {
+    console.log('인포트레일의 코멘트리스트', this.state.commentList);
     const { getFieldDecorator } = this.props.form;
     // const rateList = this.props.
     return (

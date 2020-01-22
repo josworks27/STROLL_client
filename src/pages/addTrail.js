@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
 import React, { Component } from 'react';
-import { Row } from 'antd';
+import { Row, message } from 'antd';
 import Info_Map from '../component/AddTrail/Info_Map';
 import Info_Trail from '../component/AddTrail/Info_Trail_Input';
 import { Link } from 'react-router-dom';
@@ -23,8 +23,8 @@ class addTrail_page extends Component {
       markerList: markerList,
     });
   };
-  handleClose = () => {
-    this.setState({ visible: false });
+  info = () => {
+    message.info('산책로의 시작점부터 5개의 점을 만들어주세요.');
   };
   render() {
     const { location, isLogin, currentTheme, markerList } = this.state;

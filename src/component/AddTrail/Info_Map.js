@@ -1,7 +1,7 @@
 /*global daum*/
 /*global kakao*/
 import React, { Component } from 'react';
-import { Col, Layout, Alert, message } from 'antd';
+import { Col, Layout } from 'antd';
 
 const { Content } = Layout;
 export default class Info_Map extends Component {
@@ -16,9 +16,7 @@ export default class Info_Map extends Component {
       handleLastMarkerAdded: this.props.handleLastMarkerAdded,
     };
   }
-  handleClose = () => {
-    this.setState({ visible: false });
-  };
+
   componentDidMount() {
     var { handleLastMarkerAdded } = this.state;
     var container = document.getElementById('id_addTrail_Map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -317,13 +315,11 @@ export default class Info_Map extends Component {
       return content;
     }
   }
-  info = () => {
-    message.info('산책로의 시작점부터 5개의 점을 만들어주세요.');
-  };
+
   render() {
     return (
       <Col span={14}>
-        <Layout onLoad={this.info()}>
+        <Layout>
           <Content>
             <div id="id_addTrail_Map"></div>
           </Content>
