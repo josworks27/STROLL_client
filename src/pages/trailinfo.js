@@ -33,7 +33,6 @@ class trailinfo_page extends Component {
         .then(res => {
           if (res.status === 200) {
             localStorage.setItem('currentTrail', JSON.stringify(res.data));
-
             this.setState({
               currentT: this.state.currentT.concat(res.data),
             });
