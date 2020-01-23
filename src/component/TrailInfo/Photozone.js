@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 const { Footer } = Layout;
-const NGROK_URL = require('../../ngrokurl');
+const URL = require('../../ngrokurl');
 class Photozone extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class Photozone extends Component {
     ) : (
       <img
         id="id_Photozone_image"
-        src={NGROK_URL + '/' + this.props.images.fileName}
+        src={URL + '/' + this.props.images.fileName}
         alt=""
       />
     );

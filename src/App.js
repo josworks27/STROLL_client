@@ -9,7 +9,7 @@ import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import './index.css';
 axios.defaults.withCredentials = true;
-const NGROK_URL = require('./ngrokurl');
+const URL = require('./ngrokurl');
 
 export default class App extends Component {
   constructor(props) {
@@ -55,12 +55,13 @@ export default class App extends Component {
   }
   // mypage에 theme을 전달하는 함수
   componentDidMount() {
-    let URL = `${NGROK_URL}/trails`;
+    let myurl = `${URL}/trails`;
     axios
-      .get(URL, {
+      .get(myurl, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.token}`,
+          // Authorization: `Bearer ${localStorage.token}`,
+          Authorization: `Bearer ${localStorage.cookie}`,
         },
       })
       .then(res => {
@@ -77,13 +78,14 @@ export default class App extends Component {
   }
   handleSelectThemeBtn(theme) {
     //axio요청 => theme에 따른 요청... state 만들어서 내려줘야함..
-    let URL = !theme ? `${NGROK_URL}/trails` : `${NGROK_URL}/trails/` + theme;
+    let myurl = !theme ? `${URL}/trails` : `${URL}/trails/` + theme;
 
     axios
-      .get(URL, {
+      .get(myurl, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.token}`,
+          // Authorization: `Bearer ${localStorage.token}`,
+          Authorization: `Bearer ${localStorage.cookie}`,
         },
       })
       .then(res => {
