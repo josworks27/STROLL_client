@@ -5,7 +5,7 @@ import { Col, Layout } from 'antd';
 import { Select } from 'antd';
 import axios from 'axios';
 import FormData from 'form-data';
-const NGROK_URL = require('../../ngrokurl');
+const URL = require('../../ngrokurl');
 axios.defaults.withCredentials = true;
 
 const { Option } = Select;
@@ -31,6 +31,7 @@ class Info_Trail_Input extends Component {
   onFormSubmit(e) {
     e.preventDefault();
     formData.append('img', this.state.file);
+    console.log('이미지 추가', formData)
   }
   onChangeFile(e) {
     this.setState({ file: e.target.files[0] });
@@ -45,25 +46,27 @@ class Info_Trail_Input extends Component {
         formData.append('tag', values.category);
         formData.append('title', values.trailname);
         formData.append('review', values.review);
+        console.log('폼데이터 확인', formData.title)
         let submitData = {
           newLocations: this.props.markerList,
           tag: values.category,
           title: values.trailname,
           review: values.review,
-          image: values.image,
+          img: this.state.file,
         };
-
+        // console.log('전체 데이터 완성', formData)
         // // 1. 이미지 axios 포스팅
         // postDataWithData(submitData);
 
         // 2. 전체 포스팅
         // postDataWithoutData(submitData).bind(this);
         axios
-          .post(`${NGROK_URL}/trails`, formData, {
+          .post(`${URL}/trails`, formData, {
             headers: {
               'content-type': 'multipart/form-data',
-              // accept: 'application/json',
-              Authorization: `Bearer ${localStorage.token}`,
+              accept: 'application/json',
+              // Authorization: `Bearer ${localStorage.token}`,
+              // Authorization: `Bearer ${localStorage.cookie}`,
             },
           })
           .then(res => {
@@ -168,8 +171,9 @@ class Info_Trail_Input extends Component {
                     >
                       <Option value="With pet">With pet</Option>
                       <Option value="Night view">Night view</Option>
-                      <Option value="Calm">Lake view</Option>
-                      <Option value="Lake">beach view</Option>
+                      <Option value="Calm">Calm</Option>
+                      <Option value="Lake view">Lake view</Option>
+                      <Option value="Beach view">Beach view</Option>
                     </Select>,
                   )}
                 </Form.Item>

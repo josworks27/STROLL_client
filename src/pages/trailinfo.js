@@ -5,7 +5,7 @@ import Info_Trail from '../component/TrailInfo/Info_Trail';
 import axios from 'axios';
 import { Row, Icon } from 'antd';
 import '../component/TrailInfo/TrailInfo.css';
-const NGROK_URL = require('../ngrokurl');
+const URL = require('../ngrokurl');
 
 //     /trails/:tag/:trailId
 
@@ -22,11 +22,12 @@ class trailinfo_page extends Component {
     if (!trailInfo) {
       axios
         .get(
-          `${NGROK_URL}/trails/${this.props.currentTrail.category.tag}/${this.props.currentTrail.id}`,
+          `${URL}/trails/${this.props.currentTrail.category.tag}/${this.props.currentTrail.id}`,
           {
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.token}`,
+              // Authorization: `Bearer ${localStorage.token}`,
+              Authorization: `Bearer ${localStorage.cookie}`,
             },
           },
         )
@@ -52,11 +53,12 @@ class trailinfo_page extends Component {
 
       axios
         .get(
-          `${NGROK_URL}/trails/${parseTrailInfo.category.tag}/${parseTrailInfo.id}`,
+          `${URL}/trails/${parseTrailInfo.category.tag}/${parseTrailInfo.id}`,
           {
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${localStorage.token}`,
+              // Authorization: `Bearer ${localStorage.token}`,
+              Authorization: `Bearer ${localStorage.cookie}`,
             },
           },
         )

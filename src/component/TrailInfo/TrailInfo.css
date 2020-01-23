@@ -10,12 +10,33 @@
   height: 90%;
 }
 .cl_trailinfo_header {
-  font-size: large;
+  font-size: 3.3vmax;
+  color: rgb(138, 188, 48);
+  font-weight: 800;
   padding-left: 5%;
   border-bottom: 1px solid rgb(232, 232, 232);
   background: none;
-  font-weight: 400;
+  /* font-weight: 400; */
 }
+.cl_trailinfo_infoheader{
+  font-size: 1.8vmax;
+  color: rgb(138, 188, 48);
+  font-weight: 500;
+  padding-left: 5%;
+  border-bottom: 1px solid rgb(232, 232, 232);
+  background: none;
+}
+/* .cl_trialinfo_head {
+  font-size: 3.3vmax;
+  padding-left: 1%;
+  background: rgb(241, 242, 245);
+  width: 73%;
+  color: rgb(138, 188, 48);
+  font-weight: 800;
+  position: absolute;
+  top: 6%;
+  left: 14%;
+} */
 .cl_trailinfo_footer {
 }
 .cl_trailinfo_content {
@@ -178,3 +199,6 @@
   left: 50.3%;
   width: 5%;
 }
+
+
+

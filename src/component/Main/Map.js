@@ -6,8 +6,10 @@ export default class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Lat: null,
-      Lng: null,
+      Lat: 37.495643,
+      Lng: 126.991876
+      // Lat: null,
+      // Lng: null,
     };
   }
   componentDidMount() {
@@ -15,8 +17,10 @@ export default class Map extends Component {
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
       center: new window.daum.maps.LatLng(
-        this.props.location[0],
-        this.props.location[1],
+        this.state.Lat,
+        this.state.Lng
+        // this.props.location[0],
+        // this.props.location[1],
       ), //지도의 중심좌표.
       level: 5, //지도의 레벨(확대, 축소 정도)
     };

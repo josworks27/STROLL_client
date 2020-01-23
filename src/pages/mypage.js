@@ -5,7 +5,7 @@ import { Layout, Icon } from 'antd';
 import '../component/Main/Main.css';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
-const NGROK_URL = require('../ngrokurl');
+const URL = require('../ngrokurl');
 
 axios.defaults.withCredentials = true;
 
@@ -22,10 +22,11 @@ class mypage_page extends Component {
 
   componentDidMount() {
     axios
-      .get(`${NGROK_URL}/trails`, {
+      .get(`${URL}/trails`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.token}`,
+          // Authorization: `Bearer ${localStorage.token}`,
+          Authorization: `Bearer ${localStorage.cookie}`,
         },
       })
       .then(res => {

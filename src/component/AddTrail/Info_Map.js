@@ -23,8 +23,10 @@ export default class Info_Map extends Component {
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
       center: new window.daum.maps.LatLng(
-        this.state.location[0],
-        this.state.location[1],
+        37.495643,
+        126.991876
+        // this.state.location[0],
+        // this.state.location[1],
       ), //지도의 중심좌표.
       level: 5, //지도의 레벨(확대, 축소 정도)
     };

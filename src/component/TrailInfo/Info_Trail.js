@@ -17,7 +17,7 @@ import {
 import CommentList from './CommentList';
 import axios from 'axios';
 const { Header, Footer } = Layout;
-const NGROK_URL = require('../../ngrokurl');
+const URL = require('../../ngrokurl');
 const { TextArea } = Input;
 class Info_Trail extends Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class Info_Trail extends Component {
           rating: values.rate,
         };
         axios
-          .post(`${NGROK_URL}/trails/${tag}/${trailid}/comment`, commentData)
+          .post(`${URL}/trails/${tag}/${trailid}/comment`, commentData)
           .then(res => {
             if (res.status === 200) {
               this.setState({
@@ -64,7 +64,7 @@ class Info_Trail extends Component {
     return (
       <Col span={12} id="id_trailinfo_info_trail">
         <Layout className="cl_trailinfo_layout">
-          <Header className="cl_trailinfo_header">
+          <Header className="cl_trailinfo_infoheader">
             {this.props.currentT[0].trail.title}
           </Header>
           <RecentReview
