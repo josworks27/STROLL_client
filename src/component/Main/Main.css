@@ -87,7 +87,7 @@
 }
 
 #id_Mypage_main_row {
-  margin-top: 9%;
+  margin-top: 1%;
   height: 78%;
 }
 
@@ -112,12 +112,13 @@
 /* ! Mypage Contents */
 .cl_trailTag {
   margin-left: 3%;
-  margin-top: 6.1%;
+  margin-top: 6.5%;
   font-weight: 700;
   color: rgb(138, 188, 48);
   font-size: xx-large;
-  position: absolute;
+  position: relative;
   z-index: 3;
+  display: flex;
 }
 .cl_Mypage_main_content {
   margin-top: 2.7%;
