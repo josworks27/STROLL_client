@@ -4,6 +4,56 @@
   
 ###
 ###
+
+## Setup
+To run this project, install it locally using npm:
+
+```
+$ npm install
+$ npm start
+```
+## Directory structure
+
+```
+├── App.js
+├── Root.js
+├── component
+│   ├── AddTrail
+│   │   ├── AddTrail.css
+│   │   ├── Info_Map.js
+│   │   └── Info_Trail_Input.js
+│   ├── Login
+│   │   ├── LoginInfo.css
+│   │   └── LoginInfo.js
+│   ├── Main
+│   │   ├── Map.js
+│   │   ├── ThemeList.js
+│   │   ├── ThemeListElement.js
+│   │   ├── TrailList.js
+│   │   ├── TrailListElement.js
+│   │   └── mypage.css
+│   ├── Signup
+│   │   ├── SignUpInfo.css
+│   │   └── SignUpInfo.js
+│   └── TrailInfo
+│       ├── CommentList.js
+│       ├── CommentListElement.js
+│       ├── Info_Map.js
+│       ├── Info_Trail.js
+│       ├── Photozone.js
+│       ├── RecentReview.js
+│       ├── navermap.png
+│       └── style.css
+├── index.css
+├── index.js
+└── pages
+    ├── addTrail.js
+    ├── login.js
+    ├── mypage.js
+    ├── signup.js
+    └── trailinfo.js
+
+```
   
 ## Contents
 
@@ -14,7 +64,7 @@
 - **Add Walking trails**  
   If you don't have a Walking trails you want or if you want to add one, you can add one using the Add Trail button.
   
-  
+
 ## Usage
 
 - Sign up  
@@ -44,6 +94,8 @@
   
 ![Screen-Recording-2020-01-24-at-7 37 12-PM](https://user-images.githubusercontent.com/54762756/73063112-5e5df100-3ee1-11ea-9db2-f72ed7abc901.gif)
   
-  
+
+
+
   #
 [**enjoy your stroll with STROLL !**](http://stroll1.s3-website.ap-northeast-2.amazonaws.com/)
